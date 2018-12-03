@@ -3,12 +3,35 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "rollup --config",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint src/",
+    "fix": "eslint --fix src/"
   },
   "repository": {
     "type": "git",
     "url": "git@github.com:mohno007/typetalk-emoreact.git"
   },
   "author": "Motohiro OHNO <m-ohno@atware.co.jp>",
-  "license": "GPL3"
+  "license": "GPL3",
+  "devDependencies": {
+    "eslint": "^5.9.0",
+    "eslint-config-prettier": "^3.3.0",
+    "eslint-plugin-prettier": "^3.0.0",
+    "husky": "^1.2.0",
+    "lint-staged": "^8.1.0",
+    "prettier": "1.15.3",
+    "rollup": "^0.67.3"
+  },
+  "lint-staged": {
+    "src/*.js": [
+      "eslint --fix",
+      "git add"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  }
 }
