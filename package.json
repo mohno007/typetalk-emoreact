@@ -1,0 +1,14 @@
+{
+  "name": "typetalk-emoreact",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:mohno007/typetalk-emoreact.git"
+  },
+  "author": "Motohiro OHNO <m-ohno@atware.co.jp>",
+  "license": "GPL3"
+}
