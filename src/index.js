@@ -1,19 +1,7 @@
+import { Like } from './like.js';
+import { Message } from './message.js';
+
 window.addEventListener('load', function() {
-  /**
-   * いいね
-   */
-  class Like {
-    constructor(user, message) {
-      Object.assign(this, { user, message });
-    }
-  }
-
-  class Message {
-    constructor(id, user, likes) {
-      Object.assign(this, { id, user, likes });
-    }
-  }
-
   const buildLike = likeNode => {
     const node = likeNode.querySelector('img[tt-effect-like=""]');
 
@@ -67,16 +55,4 @@ window.addEventListener('load', function() {
     Array.from(document.querySelectorAll('.message > .message__post'));
 
   console.log(getMessages().map(buildMessage));
-
-  // User
-  // Messages
-  // Message
-  // Likes(likes)
-  // Like(user, message)
-  // Emoji(value)
-  // Reaction(user, reactions)
-  //
-  // Messages
-  //   -> (Likes -> Reactions)
-  //   -> Messages
 });
