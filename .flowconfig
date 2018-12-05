@@ -1,0 +1,7 @@
+[include]
+
+[ignore]
+./dist/
+./rollup.config.js
+
+[libs]

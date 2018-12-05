@@ -1,58 +1,72 @@
 import { Like } from './like.js';
 import { Message } from './message.js';
 
-window.addEventListener('load', function() {
-  const buildLike = likeNode => {
-    const node = likeNode.querySelector('img[tt-effect-like=""]');
+const notNull = e => e !== null;
 
-    if (node === null) {
-      return null;
+// いいね を作る
+const buildLike = likeNode => {
+  const node = likeNode.querySelector('img[tt-effect-like=""]');
+
+  if (node === null) {
+    return null;
+  }
+
+  const tooltip = node.getAttribute('tt-tooltip');
+
+  if (tooltip) {
+    // いったん名前に" by "が含まれている場合を考慮しない
+    const match = tooltip.match(/(?<comment>.*) by (?<username>.*)/);
+
+    if (match === null) {
+      const username = tooltip;
+      return new Like(username, '');
     }
 
-    const tooltip = node.getAttribute('tt-tooltip');
+    const { comment, username } = match.groups;
 
-    if (tooltip) {
-      // いったん名前に" by "が含まれている場合を考慮しない
-      const match = tooltip.match(/(?<comment>.*) by (?<username>.*)/);
+    return new Like(username, comment);
+  }
 
-      if (match === null) {
-        throw new Error('tooltipが意図しないフォーマットで記述されています');
-      }
+  const c = node.getAttribute('c');
 
-      const { comment, username } = match.groups;
+  if (c) {
+    return new Like(c, '');
+  }
 
-      return new Like(username, comment);
-    }
+  throw new Error(
+    'いいねの抽出に必要な含まれていません。破壊的変更が行われたと考えられるため、作者に連絡してください。'
+  );
+};
 
-    const c = node.getAttribute('c');
-
-    if (c) {
-      return new Like(c, '');
-    }
-  };
-
-  const buildLikes = messageNode =>
-    Array.from(
-      messageNode.querySelectorAll(
-        '.message-like__users > .message-like__users-inner'
-      )
+// いいねのリストを作る
+const buildLikes = messageNode =>
+  Array.from(
+    messageNode.querySelectorAll(
+      '.message-like__users > .message-like__users-inner'
     )
-      .map(buildLike)
-      .filter(e => e !== null);
+  )
+    .map(buildLike)
+    .filter(notNull);
 
-  const buildMessage = messageNode => {
-    const idOpt = messageNode.querySelector('a[ng-href]');
-    const id = idOpt === null ? null : idOpt.href;
-    const user = '';
-    const likes = buildLikes(messageNode);
+// メッセージを構築する
+const buildMessage = messageNode => {
+  const idOpt = messageNode.querySelector('a[ng-href]');
+  const id = idOpt === null ? null : idOpt.href;
+  const user = '';
+  const likes = buildLikes(messageNode);
 
-    const msg = new Message(id, user, likes);
-    msg.raw = messageNode;
-    return msg;
-  };
+  const msg = new Message(id, user, likes);
+  msg.raw = messageNode;
 
-  const getMessages = () =>
-    Array.from(document.querySelectorAll('.message > .message__post'));
+  return msg;
+};
 
-  console.log(getMessages().map(buildMessage));
+const getMessageNodes = () =>
+  Array.from(document.querySelectorAll('.message > .message__post'));
+
+// メインの処理
+window.addEventListener('load', function() {
+  const messages = getMessageNodes().map(buildMessage);
+
+  messages.map(message => message);
 });
