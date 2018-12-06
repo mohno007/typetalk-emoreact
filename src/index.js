@@ -1,5 +1,6 @@
-import { Like } from './like.js';
+import { User } from './users.js';
 import { Message } from './message.js';
+import { Like } from './like.js';
 
 const notNull = e => e !== null;
 
@@ -17,20 +18,24 @@ const buildLike = likeNode => {
     // いったん名前に" by "が含まれている場合を考慮しない
     const match = tooltip.match(/(?<comment>.*) by (?<username>.*)/);
 
+    // マッチしない場合は名前のみで、コメントがないものとみなす
     if (match === null) {
       const username = tooltip;
-      return new Like(username, '');
+      const user = new User(username);
+      return new Like(user, '');
     }
 
     const { comment, username } = match.groups;
+    const user = new User(username);
 
-    return new Like(username, comment);
+    return new Like(user, comment);
   }
 
   const c = node.getAttribute('c');
 
   if (c) {
-    return new Like(c, '');
+    const user = new User(c);
+    return new Like(user, '');
   }
 
   throw new Error(
@@ -52,7 +57,7 @@ const buildLikes = messageNode =>
 const buildMessage = messageNode => {
   const idOpt = messageNode.querySelector('a[ng-href]');
   const id = idOpt === null ? null : idOpt.href;
-  const user = '';
+  const user = new User('');
   const likes = buildLikes(messageNode);
 
   const msg = new Message(id, user, likes);
@@ -68,5 +73,5 @@ const getMessageNodes = () =>
 window.addEventListener('load', function() {
   const messages = getMessageNodes().map(buildMessage);
 
-  messages.map(message => message);
+  console.log(messages);
 });

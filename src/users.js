@@ -1,6 +1,6 @@
 export class User {
   constructor(name) {
-    Object.assign(name);
+    Object.assign(this, { name });
   }
 }
 
