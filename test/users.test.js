@@ -12,10 +12,7 @@ describe('User', function() {
 describe('Users', function() {
   describe('#length', function() {
     it('should return correct length of users', function() {
-      const users = new Users([
-        new User('山田太郎'),
-        new User('山田花子'),
-      ]);
+      const users = new Users([new User('山田太郎'), new User('山田花子')]);
 
       Assert.equal(users.length(), 2);
     });
@@ -25,6 +22,5 @@ describe('Users', function() {
 
       Assert.equal(users.length(), 0);
     });
-
   });
 });

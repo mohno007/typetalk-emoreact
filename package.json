@@ -4,9 +4,9 @@
   "description": "",
   "scripts": {
     "build": "rollup --config",
-    "test": "rollup --config ./rollup-test.config.js && mocha --require intelli-espower-loader ./test/build/",
-    "lint": "eslint src/",
-    "fix": "eslint --fix src/"
+    "test": "rollup --config ./rollup-test.config.js && mocha --require intelli-espower-loader ./build/test/",
+    "lint": "eslint src/ test/",
+    "fix": "eslint --fix src/ test/"
   },
   "repository": {
     "type": "git",
@@ -27,8 +27,8 @@
     "rollup": "^0.67.3"
   },
   "lint-staged": {
-    "src/*.js": [
-      "eslint --fix",
+    "{src,test}/*.js": [
+      "npm run fix",
       "git add"
     ]
   },

@@ -6,7 +6,7 @@ export default [
     external: ['assert'],
     experimentalCodeSplitting: true,
     output: {
-      dir: 'test/build/',
+      dir: 'build/test/',
       format: 'cjs',
       sourcemap: 'inline',
     },
