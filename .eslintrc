@@ -3,7 +3,6 @@
     "es6": true,
     "browser": true,
     "mocha": true,
-    "cjs": true
   },
   "parserOptions": {
     "ecmaVersion": 9,
