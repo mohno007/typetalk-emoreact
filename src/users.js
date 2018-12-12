@@ -18,4 +18,18 @@ export class Users {
   length() {
     return this.users.length;
   }
+
+  merge(other) {
+    const users = [];
+    users.push(...this.users, ...other.users);
+  }
+
+  [Symbol.iterator]() {
+    let self = this;
+    return (function*() {
+      for (const user of self.users) {
+        yield user;
+      }
+    })();
+  }
 }

@@ -1,8 +1,16 @@
 import emojiRegex from 'emoji-regex';
 
-// リアクション
-// 絵文字とそれをつけたユーザから成る。
+import { Users } from './users.js';
+
+/**
+ * リアクション
+ * 絵文字とそれをつけたユーザから成る。
+ */
 export class Reaction {
+  /**
+   * @param {String} emoji 絵文字
+   * @param {Users}  users ユーザの集合
+   */
   constructor(emoji, users) {
     Object.assign(this, { emoji, users });
   }
@@ -13,15 +21,33 @@ export class Reaction {
   }
 }
 
-// 単一のメッセージに対するリアクションの集合
+/**
+ * 単一のメッセージに対するリアクションの集合
+ */
 export class Reactions {
+  /**
+   * @return {Reactions} 空のリアクション
+   */
+  static empty() {
+    return new this(new Map());
+  }
+
+  /**
+   * @param {Like} like いいね
+   * @return {Reactions} リアクションの集合
+   */
   static fromLike(like) {
     // リアクションを抽出する責務はReaction側
     const regex = emojiRegex();
 
     const reactions = new Map();
-    let match;
 
+    if (like.noComment()) {
+      reactions.set('❤️', [like.user]);
+      return new Reactions(reactions);
+    }
+
+    let match;
     while ((match = regex.exec(like.comment))) {
       const emoji = match[0];
 
@@ -33,16 +59,69 @@ export class Reactions {
       }
     }
 
-    return new Reactions(reactions);
+    if (reactions.size === 0) {
+      reactions.set('💬', [like.user]);
+      return new Reactions(reactions);
+    }
+
+    return new this(reactions);
   }
 
+  /**
+   * @param likes {Array<Like>} いいねの配列
+   * @return {Reactions} リアクションの集合
+   */
+  static fromLikes(likes) {
+    const reactions = likes.reduce(
+      (reactions, like) => reactions.merge(this.fromLike(like)),
+      this.empty()
+    );
+
+    return reactions;
+  }
+
+  /**
+   * @param {Map<String, Array<User>>} reactions リアクションのMap
+   */
   constructor(reactions) {
+    // 内部では一貫して、Map<String, Array<User>>を用いる。
+    // 外部に情報を公開するときは一貫して、Reaction型に変換して公開する
     Object.assign(this, { reactions });
   }
 
-  forEach(f) {
-    for (const [emoji, users] of this.reactions) {
-      f(new Reaction(emoji, users));
-    }
+  merge(other) {
+    const result = new Map();
+
+    result.merge = function(other, onConflict) {
+      const result = this;
+
+      for (const [key, otherValue] of other) {
+        if (result.has(key)) {
+          const selfValue = result.get(key);
+          const v = onConflict(key, selfValue, otherValue);
+          result.set(key, v);
+        } else {
+          result.set(key, otherValue);
+        }
+      }
+
+      return result;
+    };
+
+    const onConflict = (_, lhsUsers, rhsUsers) => [...lhsUsers, ...rhsUsers];
+
+    result.merge(this.reactions, onConflict);
+    result.merge(other.reactions, onConflict);
+
+    return new this.constructor(result);
+  }
+
+  [Symbol.iterator]() {
+    let self = this;
+    return (function*() {
+      for (const [emoji, users] of self.reactions) {
+        yield new Reaction(emoji, new Users(users));
+      }
+    })();
   }
 }

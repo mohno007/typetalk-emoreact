@@ -5,22 +5,22 @@ describe('User', function() {
   it('should have `name`', function() {
     const user = new User('山田太郎');
 
-    Assert.equal(user.name, '山田太郎');
+    Assert(user.name == '山田太郎');
   });
 });
 
 describe('Users', function() {
   describe('#length', function() {
-    it('should return correct length of users', function() {
+    it('はユーザ数を返す', function() {
       const users = new Users([new User('山田太郎'), new User('山田花子')]);
 
-      Assert.equal(users.length(), 2);
+      Assert(users.length() == 2);
     });
 
-    it('should return 0 for empty users', function() {
+    it('はユーザが誰も居ないなら 0を返す', function() {
       const users = new Users([]);
 
-      Assert.equal(users.length(), 0);
+      Assert(users.length() == 0);
     });
   });
 });

@@ -1,3 +1,6 @@
+import commonjs from 'rollup-plugin-commonjs';
+import nodeResolve from 'rollup-plugin-node-resolve';
+
 const banner = `
 // ==UserScript==
 // @name         Typetalk emoreact
@@ -33,5 +36,15 @@ export default [
       format: 'iife',
       banner,
     },
+    plugins: [
+      nodeResolve({
+        jsnext: true,
+        main: true,
+      }),
+      commonjs({
+        include: 'node_modules/**',
+        sourceMap: false,
+      }),
+    ],
   },
 ];
