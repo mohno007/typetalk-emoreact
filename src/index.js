@@ -2,6 +2,7 @@ import { User } from './users.js';
 import { Message } from './message.js';
 import { Like } from './like.js';
 import { Reactions } from './reactions.js';
+import * as view from './view.js';
 
 const notNull = e => e !== null;
 
@@ -71,69 +72,17 @@ const buildMessage = messageNode => {
 const getMessageNodes = () =>
   Array.from(document.querySelectorAll('.message > .message__post'));
 
-//////////////////////////////////////////////////////////////////////
-const charMap = {
-  '&': '&amp;',
-  "'": '&#x27;',
-  '`': '&#x60;',
-  '"': '&quot;',
-  '<': '&lt;',
-  '>': '&gt;',
-};
-
-const html = (callSites, ...substitutions) => {
-  const escapedSubstitutions = substitutions.map(value =>
-    value.toString().replace(/[&\\`'"<>]/g, match => charMap[match])
-  );
-
-  const htmlString = String.raw(callSites, ...escapedSubstitutions);
-
-  const template = document.createElement('template');
-  template.innerHTML = htmlString;
-
-  return template.content;
-};
-
-const reactions = reactions => {
-  const h = html`
-    <div
-      style="
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    padding: 5px;
-    width: 80%;
-  "
-    ></div>
-  `;
-
-  const container = h.firstChild;
-  for (const r of reactions) {
-    container.appendChild(reaction(r));
-  }
-
-  return h;
-};
-
-const reaction = reaction => html`
-  <div class="typetalk_emoreact_reaction">
-    <div class="typetalk_emoreact_reaction--emoji">${reaction.emoji}</div>
-    <div class="typetalk_emoreact_reaction--users">
-      ${
-        Array.from(reaction.users)
-          .map(u => u.name)
-          .join(',')
-      }
-    </div>
-  </div>
-`;
-
 const showMessages = messages => {
   messages.forEach(message => {
     const found = document.querySelector(`a[ng-href="${message.postUrl}"]`);
 
     if (!found) return;
 
-    const reactionsDom = reactions(message.reactions);
+    const reactionsDom = view.reactions(
+      message.reactions,
+      { addEmoji: () => {} },
+      () => {}
+    );
 
     const messageContainer = found.parentNode.parentNode.parentNode;
     const messageOptions = messageContainer.querySelector(
@@ -144,44 +93,59 @@ const showMessages = messages => {
   });
 };
 
+// Application Service相当ぐらいのやつ？
+const renderMessages = () => {
+  const messages = getMessageNodes().map(buildMessage);
+
+  const messagesWithReactions = messages.map(message => {
+    const reactions = Reactions.fromLikes(message.likes);
+    return message.withReactions(reactions);
+  });
+
+  console.log(messagesWithReactions);
+
+  showMessages(messagesWithReactions);
+};
+
+/*
+const removeMessages = () => {
+  Array.from(document.querySelectorAll('.typetalk_emoreact_reaction')).forEach(
+    e => e.remove()
+  );
+};
+*/
+
+const loadEmoreact = () => {
+  setTimeout(function() {
+    document.head.appendChild(view.style);
+    renderMessages();
+
+    /*
+    const messagesContainer = document.querySelector('.js_message');
+    const observer = new MutationObserver(() => {
+      observer.disconnect();
+      observer.takeRecords();
+      removeMessages();
+      renderMessages();
+      observe();
+    });
+    const observe = () =>
+      observer.observe(messagesContainer, { childList: true, subtree: true });
+
+    observe();
+    */
+  }, 1000);
+};
+
 // メインの処理
 window.addEventListener('load', function() {
-  setTimeout(function() {
-    const style = html`
-      <style>
-        .typetalk_emoreact_reaction {
-          display: flex;
-          flex-direction: row;
-        }
+  loadEmoreact();
 
-        .typetalk_emoreact_reaction--emoji {
-          border: 1px solid #ddd;
-          border-radius: 5px;
-          margin-left: 5px;
-        }
-        .typetalk_emoreact_reaction--users {
-          display: none;
-          opacity: 0;
-        }
+  let url = location.href;
+  setInterval(() => {
+    if (url === location.href) return;
 
-        .typetalk_emoreact_reaction:hover .typetalk_emoreact_reaction--users {
-          display: block;
-          opacity: 1;
-          transition: opacity 0.5s linear 0s;
-        }
-      </style>
-    `;
-    document.head.appendChild(style);
-
-    const messages = getMessageNodes().map(buildMessage);
-
-    const messagesWithReactions = messages.map(message => {
-      const reactions = Reactions.fromLikes(message.likes);
-      return message.withReactions(reactions);
-    });
-
-    console.log(messagesWithReactions);
-
-    showMessages(messagesWithReactions);
-  }, 2000);
+    url = location.href;
+    setTimeout(renderMessages, 100);
+  }, 1000);
 });
