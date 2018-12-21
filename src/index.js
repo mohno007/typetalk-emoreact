@@ -32,6 +32,18 @@ const createState = reactions => ({
   showEmojiList: false,
 });
 
+const mount = (root, view, actions, state) => {
+  const reduce = state => async reducer => {
+    const newState = await reducer(state);
+    const newView = view(newState, actions, reduce(newState));
+
+    Array.from(root.childNodes).forEach(node => root.removeChild(node));
+    root.appendChild(newView);
+  };
+
+  reduce(state)(e => e);
+};
+
 const mountEmoreact = messages => {
   const typetalk = new Typetalk();
   const actions_ = actions(typetalk);
@@ -41,17 +53,7 @@ const mountEmoreact = messages => {
 
     if (!found) return;
 
-    const state = createState(message.reactions);
-
     const root = document.createElement('div');
-    const reduce = state => async reducer => {
-      const newState = await reducer(state);
-      const newView = view.reactions(newState, actions_, reduce(newState));
-
-      Array.from(root.childNodes).forEach(node => root.removeChild(node));
-      root.appendChild(newView);
-    };
-
     const messageContainer = found.parentNode.parentNode.parentNode;
     const messageOptions = messageContainer.querySelector(
       '.message__option-wrap'
@@ -59,7 +61,7 @@ const mountEmoreact = messages => {
 
     messageContainer.insertBefore(root, messageOptions.nextSibilings);
 
-    reduce(state)(e => e);
+    mount(root, view.reactions, actions_, createState(message.reactions));
   });
 };
 
