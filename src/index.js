@@ -1,101 +1,70 @@
-import { User } from './users.js';
-import { Message } from './message.js';
-import { Like } from './like.js';
 import { Reactions } from './reactions.js';
 import * as view from './view.js';
+import * as view2model from './view2model.js';
+import { Typetalk } from './typetalk_request.js';
 
-const notNull = e => e !== null;
+const actions = (/*typetalk*/) => ({
+  addEmoji: (/*topicId, messageId, emoji*/) => async state => {
+    try {
+      // await typetalk.like(topicId, messageId, emoji);
 
-// いいね を作る
-const buildLike = likeNode => {
-  const node = likeNode.querySelector('img[tt-effect-like=""]');
-
-  if (node === null) {
-    return null;
-  }
-
-  const tooltip = node.getAttribute('tt-tooltip');
-
-  if (tooltip) {
-    // いったん名前に" by "が含まれている場合を考慮しない
-    const match = tooltip.match(/(?<comment>.*) by (?<username>.*)/);
-
-    // マッチしない場合は名前のみで、コメントがないものとみなす
-    if (match === null) {
-      const username = tooltip;
-      const user = new User(username);
-      return Like.noComment(user);
+      return state;
+    } catch (e) {
+      window.alert(`失敗: ${e}`);
+      return state;
     }
+  },
 
-    const { comment, username } = match.groups;
-    const user = new User(username);
+  addEmojiOk: (/* emoji */) => state => ({
+    ...state,
+    /*state.reactions*/
+  }),
 
-    return Like.withComment(user, comment);
-  }
+  showEmojiList: () => state => ({
+    ...state,
+    showEmojiList: true,
+  }),
+});
 
-  const c = node.getAttribute('c');
+const createState = reactions => ({
+  reactions,
+  state: 'INITIAL',
+  showEmojiList: false,
+});
 
-  if (c) {
-    const user = new User(c);
-    return Like.noComment(user);
-  }
+const mountEmoreact = messages => {
+  const typetalk = new Typetalk();
+  const actions_ = actions(typetalk);
 
-  throw new Error(
-    'いいねの抽出に必要な含まれていません。破壊的変更が行われたと考えられるため、作者に連絡してください。'
-  );
-};
-
-// いいねのリストを作る
-const buildLikes = messageNode =>
-  Array.from(
-    messageNode.querySelectorAll(
-      '.message-like__users > .message-like__users-inner > .message-like__users-img'
-    )
-  )
-    .map(buildLike)
-    .filter(notNull);
-
-// メッセージを構築する
-const buildMessage = messageNode => {
-  const postUrlOpt = messageNode.querySelector('a[ng-href]');
-  const postUrl =
-    postUrlOpt === null ? null : postUrlOpt.getAttribute('ng-href');
-  const user = new User('');
-  const likes = buildLikes(messageNode);
-
-  const msg = new Message(postUrl, user, likes);
-  msg.raw = messageNode;
-
-  return msg;
-};
-
-const getMessageNodes = () =>
-  Array.from(document.querySelectorAll('.message > .message__post'));
-
-const showMessages = messages => {
   messages.forEach(message => {
     const found = document.querySelector(`a[ng-href="${message.postUrl}"]`);
 
     if (!found) return;
 
-    const reactionsDom = view.reactions(
-      message.reactions,
-      { addEmoji: () => {} },
-      () => {}
-    );
+    const state = createState(message.reactions);
+
+    const root = document.createElement('div');
+    const reduce = state => async reducer => {
+      const newState = await reducer(state);
+      const newView = view.reactions(newState, actions_, reduce(newState));
+
+      Array.from(root.childNodes).forEach(node => root.removeChild(node));
+      root.appendChild(newView);
+    };
 
     const messageContainer = found.parentNode.parentNode.parentNode;
     const messageOptions = messageContainer.querySelector(
       '.message__option-wrap'
     );
 
-    messageContainer.insertBefore(reactionsDom, messageOptions.nextSibilings);
+    messageContainer.insertBefore(root, messageOptions.nextSibilings);
+
+    reduce(state)(e => e);
   });
 };
 
-// Application Service相当ぐらいのやつ？
 const renderMessages = () => {
-  const messages = getMessageNodes().map(buildMessage);
+  const messages = view2model.buildMessages();
 
   const messagesWithReactions = messages.map(message => {
     const reactions = Reactions.fromLikes(message.likes);
@@ -104,7 +73,7 @@ const renderMessages = () => {
 
   console.log(messagesWithReactions);
 
-  showMessages(messagesWithReactions);
+  mountEmoreact(messagesWithReactions);
 };
 
 /*

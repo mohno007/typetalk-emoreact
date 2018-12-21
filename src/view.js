@@ -23,28 +23,58 @@ const html = (callSites, ...substitutions) => {
 export const style = html`
   <style>
     .typetalk_emoreact_reactions {
-      border: 1px solid #ddd;
+      position: absolute;
+      bottom: 8px;
+      right: 90px;
+      border: 1px solid #eee;
       border-radius: 5px;
       padding: 5px;
-      width: 80%;
       display: flex;
       flex-direction: row;
     }
 
-    .typetalk_emoreact_reactions--button {
+    .typetalk_emoreact_reactions--add_button {
       width: 2em;
       color: #aaa;
-      background: #fff;
       border: 1px solid #ddd;
       border-radius: 1em;
       font-weight: bold;
+      cursor: pointer;
+
+      transition: box-shadow, color 0.2s linear 0s;
+    }
+
+    .typetalk_emoreact_reactions--add_button:focus {
+      outline: 0;
+    }
+
+    .typetalk_emoreact_reactions--add_button:hover {
+      color: #777;
+      box-shadow: 0 0 2px #bbb;
+    }
+
+    .typetalk_emoreact_reactions--add_button:active {
+      box-shadow: 0 0 1px #333;
     }
 
     .typetalk_emoreact_reaction--emoji {
       border: 1px solid #ddd;
       border-radius: 5px;
       margin-left: 5px;
-      cursor: pointer;
+
+      transition: box-shadow 0.2s linear 0s;
+    }
+
+    .typetalk_emoreact_reaction--emoji:focus {
+      outline: 0;
+    }
+
+    .typetalk_emoreact_reaction--emoji:hover {
+      box-shadow: 0 0 2px #bbb;
+    }
+
+    .typetalk_emoreact_reaction--emoji:active {
+      box-shadow: 0 0 1px #333;
     }
 
     .typetalk_emoreact_reaction--emoji__emoji {
@@ -52,19 +82,24 @@ export const style = html`
       font-size: 4em;
       transform: scale(0.25) translateY(1.1em);
       margin: -1em -0.333em;
+      cursor: pointer;
     }
 
     .typetalk_emoreact_reaction--users {
       visibility: hidden;
       position: absolute;
+      bottom: 2.6em;
       opacity: 0;
       transition: opacity 0.2s linear 0s;
-      margin-top: -5em;
+
+      width: max-content;
+      max-width: 20vw;
 
       background: rgba(80, 80, 80, 0.8);
       padding: 0.5em 1em;
       border-radius: 10px;
       color: white;
+      font-size: 0.8em;
     }
 
     :hover > .typetalk_emoreact_reaction--users {
@@ -75,12 +110,19 @@ export const style = html`
 `;
 
 // リアクションの一覧を出す
-export const reactions = (reactions, actions, reduce) => {
+export const reactions = (state, actions, reduce) => {
+  const { reactions } = state;
   const h = html`
     <div class="typetalk_emoreact_reactions">
-      <button class="typetalk_emoreact_reactions--button">＋</button>
+      <button class="typetalk_emoreact_reactions--add_button">＋</button>
+      <div class="typetalk_emoreact_reaction--emoji-list"></div>
     </div>
   `;
+
+  const addButton = h.querySelector('.typetalk_emoreact_reactions--add_button');
+  addButton.addEventListener('click', () => {
+    reduce(actions.showEmojiList());
+  });
 
   const container = h.firstElementChild;
   for (const r of reactions) {
@@ -94,21 +136,24 @@ export const reactions = (reactions, actions, reduce) => {
 const reaction = (reaction, actions, reduce) => {
   const h = html`
     <div class="typetalk_emoreact_reaction">
-      <div class="typetalk_emoreact_reaction--emoji">
-        <button class="typetalk_emoreact_reaction--emoji__emoji">
+      <button class="typetalk_emoreact_reaction--emoji">
+        <span class="typetalk_emoreact_reaction--emoji__emoji">
           ${reaction.emoji}
         </span>
-      </div>
+      </button>
       <div class="typetalk_emoreact_reaction--users">
-        ${Array.from(reaction.users)
-          .map(u => u.name)
-          .join(',')}
+        ${
+          Array.from(reaction.users)
+            .map(u => u.name)
+            .join(',')
+        }
       </div>
     </div>
   `;
 
   const query = '.typetalk_emoreact_reaction--emoji';
-  h.querySelector(query).addEventListener('click', () => {
+  h.querySelector(query).addEventListener('click', ev => {
+    ev.preventDefault();
     reduce(actions.addEmoji());
   });
 
