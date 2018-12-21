@@ -57,6 +57,22 @@ export const style = html`
       box-shadow: 0 0 1px #333;
     }
 
+    .typetalk_emoreact_reaction--emoji-list {
+      position: absolute;
+      bottom: 2em;
+      width: 10em;
+      height: 4em;
+      overflow-y: scroll;
+
+      padding: 0.25em 0.75em;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+
+      background: #fff;
+
+      transition: opacity 0.2s linear 0s;
+    }
+
     .typetalk_emoreact_reaction--emoji {
       border: 1px solid #ddd;
       border-radius: 5px;
@@ -111,17 +127,24 @@ export const style = html`
 
 // リアクションの一覧を出す
 export const reactions = (state, actions, reduce) => {
-  const { reactions } = state;
+  const { reactions, showEmojiList } = state;
   const h = html`
     <div class="typetalk_emoreact_reactions">
       <button class="typetalk_emoreact_reactions--add_button">＋</button>
-      <div class="typetalk_emoreact_reaction--emoji-list"></div>
+      <div
+        class="typetalk_emoreact_reaction--emoji-list"
+        style="visibility: ${showEmojiList ? 'visible' : 'hidden'}"
+      >
+        😣😣😣😣😣😣😣😣😣😣😣😣😣😣😣😣😣😣😣😣😣😣😣😣😣😣😣😣😣😣
+      </div>
     </div>
   `;
 
   const addButton = h.querySelector('.typetalk_emoreact_reactions--add_button');
   addButton.addEventListener('click', () => {
-    reduce(actions.showEmojiList());
+    !showEmojiList
+      ? reduce(actions.showEmojiList())
+      : reduce(actions.hideEmojiList());
   });
 
   const container = h.firstElementChild;

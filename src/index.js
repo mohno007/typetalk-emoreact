@@ -8,6 +8,7 @@ const actions = (/*typetalk*/) => ({
     try {
       // await typetalk.like(topicId, messageId, emoji);
 
+      // state.reactions.reactions.delete('😣'); みたいな
       return state;
     } catch (e) {
       window.alert(`失敗: ${e}`);
@@ -23,6 +24,11 @@ const actions = (/*typetalk*/) => ({
   showEmojiList: () => state => ({
     ...state,
     showEmojiList: true,
+  }),
+
+  hideEmojiList: () => state => ({
+    ...state,
+    showEmojiList: false,
   }),
 });
 
