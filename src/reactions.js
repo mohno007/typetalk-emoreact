@@ -4,6 +4,32 @@ import nodeEmoji from 'node-emoji';
 import { Users } from './users.js';
 
 /**
+ * Set同士のmergeを行う
+ *
+ * Setのオブジェクトに直接設定して使う想定。
+ *
+ * this: Set
+ * @param {Set<K, V>} other 他のSet
+ * @param {(key: K, selfValue: V, otherValue: V) => V} 衝突時の処理を描く
+ * @return {Set<K, V>} 新しいSet
+ */
+function mergeSet(other, onConflict) {
+  const result = this;
+
+  for (const [key, otherValue] of other) {
+    if (result.has(key)) {
+      const selfValue = result.get(key);
+      const v = onConflict(key, selfValue, otherValue);
+      result.set(key, v);
+    } else {
+      result.set(key, otherValue);
+    }
+  }
+
+  return result;
+}
+
+/**
  * リアクション
  * 絵文字とそれをつけたユーザから成る。
  */
@@ -95,22 +121,7 @@ export class Reactions {
 
   merge(other) {
     const result = new Map();
-
-    result.merge = function(other, onConflict) {
-      const result = this;
-
-      for (const [key, otherValue] of other) {
-        if (result.has(key)) {
-          const selfValue = result.get(key);
-          const v = onConflict(key, selfValue, otherValue);
-          result.set(key, v);
-        } else {
-          result.set(key, otherValue);
-        }
-      }
-
-      return result;
-    };
+    result.merge = mergeSet;
 
     const onConflict = (_, lhsUsers, rhsUsers) => [...lhsUsers, ...rhsUsers];
 
