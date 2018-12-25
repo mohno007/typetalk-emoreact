@@ -1,4 +1,5 @@
 import emojiRegex from 'emoji-regex';
+import nodeEmoji from 'node-emoji';
 
 import { Users } from './users.js';
 
@@ -47,8 +48,10 @@ export class Reactions {
       return new Reactions(reactions);
     }
 
+    let commentEmojified = nodeEmoji.emojify(like.comment);
+
     let match;
-    while ((match = regex.exec(like.comment))) {
+    while ((match = regex.exec(commentEmojified))) {
       const emoji = match[0];
 
       if (reactions.has(emoji)) {
@@ -59,7 +62,8 @@ export class Reactions {
       }
     }
 
-    if (reactions.size === 0) {
+    const hasNormalText = nodeEmoji.strip(commentEmojified).length > 0;
+    if (hasNormalText) {
       reactions.set('💬', [like.user]);
       return new Reactions(reactions);
     }

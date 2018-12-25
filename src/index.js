@@ -4,7 +4,9 @@ import * as view2model from './view2model.js';
 import { Typetalk } from './typetalk_request.js';
 
 const actions = (/*typetalk*/) => ({
-  addEmoji: (/*topicId, messageId, emoji*/) => async state => {
+  addReaction: (/*message, emoji*/) => async state => {
+    // const myReactions = message.reactions.findByUser(state.me);
+
     try {
       // await typetalk.like(topicId, messageId, emoji);
 
@@ -16,7 +18,7 @@ const actions = (/*typetalk*/) => ({
     }
   },
 
-  addEmojiOk: (/* emoji */) => state => ({
+  addReactionOk: (/* emoji */) => state => ({
     ...state,
     /*state.reactions*/
   }),
@@ -32,8 +34,8 @@ const actions = (/*typetalk*/) => ({
   }),
 });
 
-const createState = reactions => ({
-  reactions,
+const createState = message => ({
+  message,
   state: 'INITIAL',
   showEmojiList: false,
 });
@@ -67,7 +69,7 @@ const mountEmoreact = messages => {
 
     messageContainer.insertBefore(root, messageOptions.nextSibilings);
 
-    mount(root, view.reactions, actions_, createState(message.reactions));
+    mount(root, view.reactions, actions_, createState(message));
   });
 };
 

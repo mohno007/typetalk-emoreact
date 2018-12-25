@@ -1,3 +1,5 @@
+import nodeEmoji from 'node-emoji';
+
 const sanitizeMap = {
   '<': '&lt;',
   '>': '&gt;',
@@ -57,11 +59,11 @@ export const style = html`
       box-shadow: 0 0 1px #333;
     }
 
-    .typetalk_emoreact_reaction--emoji-list {
+    .typetalk_emoreact_reaction--emoji_list {
       position: absolute;
       bottom: 2em;
       width: 10em;
-      height: 4em;
+      height: 8em;
       overflow-y: scroll;
 
       padding: 0.25em 0.75em;
@@ -71,6 +73,14 @@ export const style = html`
       background: #fff;
 
       transition: opacity 0.2s linear 0s;
+    }
+
+    .typetalk_emoreact_reaction--emoji_list--button {
+      width: 1em;
+
+      outline: 0;
+
+      cursor: pointer;
     }
 
     .typetalk_emoreact_reaction--emoji {
@@ -125,18 +135,37 @@ export const style = html`
   </style>
 `;
 
+const emojiList = (actions, reduce) => {
+  const h = html``;
+
+  const emojis = nodeEmoji.search('');
+  emojis.forEach(emoji => {
+    const emojiButton = html`
+      <button
+        class="typetalk_emoreact_reaction--emoji_list--button"
+        title="${emoji.key}"
+      >
+        ${emoji.emoji}
+      </button>
+    `;
+    emojiButton.firstElementChild.addEventListener('click', () =>
+      reduce(actions.addEmoji())
+    );
+    h.appendChild(emojiButton);
+  });
+
+  return h;
+};
+
 // リアクションの一覧を出す
-export const reactions = (state, actions, reduce) => {
-  const { reactions, showEmojiList } = state;
+export const reactions = ({ message, showEmojiList }, actions, reduce) => {
   const h = html`
     <div class="typetalk_emoreact_reactions">
       <button class="typetalk_emoreact_reactions--add_button">＋</button>
       <div
-        class="typetalk_emoreact_reaction--emoji-list"
+        class="typetalk_emoreact_reaction--emoji_list"
         style="visibility: ${showEmojiList ? 'visible' : 'hidden'}"
-      >
-        😣😣😣😣😣😣😣😣😣😣😣😣😣😣😣😣😣😣😣😣😣😣😣😣😣😣😣😣😣😣
-      </div>
+      ></div>
     </div>
   `;
 
@@ -148,15 +177,28 @@ export const reactions = (state, actions, reduce) => {
   });
 
   const container = h.firstElementChild;
-  for (const r of reactions) {
-    container.appendChild(reaction(r, actions, reduce));
+  for (const r of message.reactions) {
+    container.appendChild(reaction({ message, reaction: r }, actions, reduce));
+  }
+
+  if (showEmojiList) {
+    h.querySelector('.typetalk_emoreact_reaction--emoji_list').appendChild(
+      emojiList(actions, reduce)
+    );
+
+    /*
+    h.querySelector('.typetalk_emoreact_reactions').addEventListener(
+      'mouseleave',
+      () => reduce(actions.hideEmojiList())
+    );
+    */
   }
 
   return h;
 };
 
 // 単一のリアクションを出す
-const reaction = (reaction, actions, reduce) => {
+const reaction = ({ /*message,*/ reaction }, actions, reduce) => {
   const h = html`
     <div class="typetalk_emoreact_reaction">
       <button class="typetalk_emoreact_reaction--emoji">

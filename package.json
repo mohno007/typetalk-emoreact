@@ -23,10 +23,12 @@
     "intelli-espower-loader": "^1.0.1",
     "lint-staged": "^8.1.0",
     "mocha": "^5.2.0",
+    "node-emoji": "^1.8.1",
     "power-assert": "^1.6.1",
     "prettier": "1.15.3",
     "rollup": "^0.67.3",
     "rollup-plugin-commonjs": "^9.2.0",
+    "rollup-plugin-json": "^3.1.0",
     "rollup-plugin-node-resolve": "^4.0.0"
   },
   "lint-staged": {

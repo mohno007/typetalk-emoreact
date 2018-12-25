@@ -1,5 +1,6 @@
 import commonjs from 'rollup-plugin-commonjs';
 import nodeResolve from 'rollup-plugin-node-resolve';
+import nodeJson from 'rollup-plugin-json';
 
 const banner = `
 // ==UserScript==
@@ -45,6 +46,7 @@ export default [
         include: 'node_modules/**',
         sourceMap: false,
       }),
+      nodeJson(),
     ],
   },
 ];

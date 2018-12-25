@@ -11,6 +11,9 @@ export class User {
  * ユーザの集合
  */
 export class Users {
+  /**
+   * @param {Array<User>}
+   */
   constructor(users) {
     Object.assign(this, { users });
   }
