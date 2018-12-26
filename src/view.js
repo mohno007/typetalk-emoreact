@@ -186,12 +186,10 @@ export const reactions = ({ message, showEmojiList }, actions, reduce) => {
       emojiList(actions, reduce)
     );
 
-    /*
     h.querySelector('.typetalk_emoreact_reactions').addEventListener(
       'mouseleave',
       () => reduce(actions.hideEmojiList())
     );
-    */
   }
 
   return h;

@@ -70,7 +70,7 @@ export class Reactions {
     const reactions = new Map();
 
     if (like.noComment()) {
-      reactions.set('❤️', [like.user]);
+      reactions.set('❤️', Users.of(like.user));
       return new Reactions(reactions);
     }
 
@@ -82,15 +82,17 @@ export class Reactions {
 
       if (reactions.has(emoji)) {
         const users = reactions.get(emoji);
-        users.push(like.user);
+        if (users.notIncludes(like.user)) {
+          reactions.set(emoji, users.push(like.user));
+        }
       } else {
-        reactions.set(emoji, [like.user]);
+        reactions.set(emoji, Users.of(like.user));
       }
     }
 
     const hasNormalText = nodeEmoji.strip(commentEmojified).length > 0;
     if (hasNormalText) {
-      reactions.set('💬', [like.user]);
+      reactions.set('💬', Users.of(like.user));
       return new Reactions(reactions);
     }
 
@@ -123,7 +125,7 @@ export class Reactions {
     const result = new Map();
     result.merge = mergeMap;
 
-    const onConflict = (_, lhsUsers, rhsUsers) => [...lhsUsers, ...rhsUsers];
+    const onConflict = (_, lhsUsers, rhsUsers) => lhsUsers.merge(rhsUsers);
 
     result.merge(this.reactions, onConflict);
     result.merge(other.reactions, onConflict);
@@ -135,7 +137,7 @@ export class Reactions {
     let self = this;
     return (function*() {
       for (const [emoji, users] of self.reactions) {
-        yield new Reaction(emoji, new Users(users));
+        yield new Reaction(emoji, users);
       }
     })();
   }
