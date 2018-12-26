@@ -1,3 +1,7 @@
+import commonjs from 'rollup-plugin-commonjs';
+import nodeResolve from 'rollup-plugin-node-resolve';
+import nodeJson from 'rollup-plugin-json';
+
 import { glob } from 'glob';
 
 export default [
@@ -10,5 +14,16 @@ export default [
       format: 'cjs',
       sourcemap: 'inline',
     },
+    plugins: [
+      nodeResolve({
+        jsnext: true,
+        main: true,
+      }),
+      commonjs({
+        include: 'node_modules/**',
+        sourceMap: false,
+      }),
+      nodeJson(),
+    ],
   },
 ];
