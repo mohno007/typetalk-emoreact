@@ -5,7 +5,7 @@
 // @downloadURL  https://mohno007.github.io/typetalk-emoreact/TypetalkEmoreact.user.js
 // @updateURL    https://mohno007.github.io/typetalk-emoreact/TypetalkEmoreact.user.js
 // @supportURL   https://github.com/mohno007/typetalk-emoreact/issues/new
-// @version      0.1.4
+// @version      0.1.5
 // @description  Emoji Reaction
 // @author       m-ohno
 // @match        https://typetalk.com/*
@@ -5425,6 +5425,14 @@
     const typetalk = new Typetalk();
     const actions_ = typetalkSideEffect(typetalk)(actions);
 
+    let myNameOpt = document.querySelector('.profile-content__name');
+    myNameOpt = myNameOpt && myNameOpt.textContent.match(/(.*) さん/);
+    myNameOpt = myNameOpt && myNameOpt[1];
+
+    if (!myNameOpt) return;
+
+    const myName = myNameOpt;
+
     messages.forEach(message => {
       const found = document.querySelector(`a[ng-href="${message.postUrl}"]`);
 
@@ -5442,7 +5450,7 @@
         root,
         reactions,
         actions_,
-        createState(message, new User('Motohiro Ohno 👨🏻‍💻🦀'))
+        createState(message, new User(myName))
       );
     });
   };
