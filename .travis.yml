@@ -1,14 +1,22 @@
 language: node_js
 node_js:
-- '11'
+    - '11'
 script:
-- npm run test
-- npm run build
+    - npm run test
+    - npm run build
 deploy:
-  provider: releases
-  api_key:
-    secure: U9th6sVUfTbHXekZWP7SqTzUtROO6dgFLO5K+VsZTdSJm5a0a0bzs40JT6IJXjYzV4xw2Ie5tviA9SH4L8u75NaqozAxB0wvi08j1xDWSF915aBlucbZuN8CSv34ZO+C/FO1WYx5NfEinOVHOVGHd/2J3yxvHfJbV80n1SOhKV46X62xb7sH0bIm/1woZ97wY7BvasvNqqx4PMZMul7mIqbHNdEt7Yt3G85HCf0PLRIkFJx6AiC/I0QweofJA0ew5tCAWZ/oHW6EUDeVUEMi62HmeoKor0UzJoGSWC13M5sKg+TKv+l3MofurB4dJFlVn9xKnDaIovIliiaIAt/USDc74LDllzOkc34bL33vszs9LXAfKAHQPCg4KOnJ5Sc5li9rIGxMDFeufkQhR5VN+K+Y9MMly42flM7PpfbX3alWgVWejf7oevc6JiK3jC7JIqeHBc1NLDcJ0HobODU8FcTew4w7lMruh0Gt6gu65AqgCyXaYaoVb9ooCaI/elMJBwdD0LNaDZgvXJUtigbNqny/k//FDte8b3fcxCuoBKwF9pPriAMxhRGKipOGJeZ+PzQmUIX01BAPbORbbpSwDA5OV5DYrs4ZiCFvxWrF7Q0a5St5W9zF297aAAzMmK6FiSs5vLQwl9qWOZ9RS2yoh/E/2o98Wvz02yfrcpl6+dk=
-  file: dist/TypetalkEmoreact.user.js
-  skip_cleanup: true
-  on:
-    tags: true
+    matrix:
+        - provider: releases
+          api_key:
+              secure: U9th6sVUfTbHXekZWP7SqTzUtROO6dgFLO5K+VsZTdSJm5a0a0bzs40JT6IJXjYzV4xw2Ie5tviA9SH4L8u75NaqozAxB0wvi08j1xDWSF915aBlucbZuN8CSv34ZO+C/FO1WYx5NfEinOVHOVGHd/2J3yxvHfJbV80n1SOhKV46X62xb7sH0bIm/1woZ97wY7BvasvNqqx4PMZMul7mIqbHNdEt7Yt3G85HCf0PLRIkFJx6AiC/I0QweofJA0ew5tCAWZ/oHW6EUDeVUEMi62HmeoKor0UzJoGSWC13M5sKg+TKv+l3MofurB4dJFlVn9xKnDaIovIliiaIAt/USDc74LDllzOkc34bL33vszs9LXAfKAHQPCg4KOnJ5Sc5li9rIGxMDFeufkQhR5VN+K+Y9MMly42flM7PpfbX3alWgVWejf7oevc6JiK3jC7JIqeHBc1NLDcJ0HobODU8FcTew4w7lMruh0Gt6gu65AqgCyXaYaoVb9ooCaI/elMJBwdD0LNaDZgvXJUtigbNqny/k//FDte8b3fcxCuoBKwF9pPriAMxhRGKipOGJeZ+PzQmUIX01BAPbORbbpSwDA5OV5DYrs4ZiCFvxWrF7Q0a5St5W9zF297aAAzMmK6FiSs5vLQwl9qWOZ9RS2yoh/E/2o98Wvz02yfrcpl6+dk=
+          file: dist/TypetalkEmoreact.user.js
+          skip_cleanup: true
+          on:
+              tags: true
+        - provider: pages
+          github-token: iEflV7p2v77Uq/i4AenUxSejZJbwFk0LvS1vU3pdpOawjDy8VhAJHAuEKnMthZR2uxLmVFIhGYBurSWgnL24kjA90Oqswpj/kW+NZf84cHNnimMWOHPqEJ9+q53MInNl4uKegPI9eNA9nZO/dd8Uk8OeCV6OVmTOeAlhASWVjGEYNIyuBR/4BFpGEJC+HYm6Ce36rpKyfn6QiiEaDss0yI9fs2BWg+8zvue72paSSWDrg8eR7MS0qEatjsIEYm3ri1Rh03tzZlHwv0ZpFBnL8rQ7jQoj5S/Tr5Af70Q0iPkbNZ9knbtx+zNft5LQlDZ5mGSxMt/KvUWQsop4ndF1HmQ3GSlACcOYh+SO7EzZorK22ENC7HdojaHvpUAVagFS5R1F/K3TKNuyGbyrro9fN67wamc7ZcoSj6sLF9sSfKH7MyE6M3kzHQVZN52IQ7b9SDY3BPrr0VGORIzKXui6hOrxMB5g/vOjvJhXmXQdN5S+RKJDbwTf2Vrmii/Z/8RbVzT1yt13IUXM+Nuu/NoQVibabwbnLCL2XGYte4fx81xJyAEtpQKG4cqp92KaNb0ERkSYQoEmrmyj3HZOt6d5aY1zl+qiUoo8mFhvGghutd2gOztlNv0e3uDOP0xhcyA38MSZJzegFTGO9ODgFuDebFRpGZ7Ya/tQRqpAm2DzkSY=
+          keep-history: true
+          skip-cleanup: true
+          local-dir: dist/
+          on:
+              tags: true

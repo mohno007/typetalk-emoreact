@@ -1,12 +1,18 @@
 import commonjs from 'rollup-plugin-commonjs';
 import nodeResolve from 'rollup-plugin-node-resolve';
 import nodeJson from 'rollup-plugin-json';
+import fs from 'fs';
 
+const packageJson = JSON.parse(fs.readFileSync("package.json"));
 const banner = `
 // ==UserScript==
 // @name         Typetalk emoreact
-// @namespace    https://atw-proj.backlog.jp/git/AA9/typetalk-emoreact
-// @version      0.1
+// @namespace    https://github.com/mohno007/typetalk-emoreact
+// @homepage     https://github.com/mohno007/typetalk-emoreact
+// @downloadURL  https://mohno007.github.com/typetalk-emoreact/TypetalkEmoreact.user.js
+// @updateURL    https://mohno007.github.com/typetalk-emoreact/TypetalkEmoreact.user.js
+// @supportURL   https://github.com/mohno007/typetalk-emoreact/issues/new
+// @version      ${packageJson.version}
 // @description  Emoji Reaction
 // @author       m-ohno
 // @match        https://typetalk.com/*
