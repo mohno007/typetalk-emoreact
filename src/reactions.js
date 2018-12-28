@@ -83,7 +83,7 @@ export class Reactions {
       if (reactions.has(emoji)) {
         const users = reactions.get(emoji);
         if (users.notIncludes(like.user)) {
-          reactions.set(emoji, users.push(like.user));
+          reactions.set(emoji, users.append(like.user));
         }
       } else {
         reactions.set(emoji, Users.of(like.user));
@@ -116,14 +116,15 @@ export class Reactions {
    * @param {Map<String, Array<User>>} reactions リアクションのMap
    */
   constructor(reactions) {
-    // 内部では一貫して、Map<String, Array<User>>を用いる。
-    // 外部に情報を公開するときは一貫して、Reaction型に変換して公開する
     Object.assign(this, { reactions });
   }
 
   merge(other) {
     const result = new Map();
     result.merge = mergeMap;
+
+    console.log(this);
+    console.log(other);
 
     const onConflict = (_, lhsUsers, rhsUsers) => lhsUsers.merge(rhsUsers);
 

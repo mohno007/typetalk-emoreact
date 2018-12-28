@@ -30,11 +30,11 @@ export class Users {
   }
 
   append(user) {
-    return new User([...this.users, user]);
+    return new this.constructor([...this.users, user]);
   }
 
   merge(other) {
-    return new User([...this.users, ...other.users]);
+    return new this.constructor([...this.users, ...other.users]);
   }
 
   includes(user) {

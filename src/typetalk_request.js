@@ -27,7 +27,7 @@ export class Typetalk {
       `/topics/${topicId}/posts/${messageId}/like.json`,
       request
     ).then(res =>
-      res.code === 200
+      res.status === 200
         ? res.json()
         : Promise.reject(new Error('リクエストに失敗しました'))
     );
@@ -40,7 +40,7 @@ export class Typetalk {
       `/topics/${topicId}/posts/${messageId}/unlike.json`,
       request
     ).then(res =>
-      res.code === 200
+      res.status === 200
         ? res.json()
         : Promise.reject(new Error('リクエストに失敗しました'))
     );

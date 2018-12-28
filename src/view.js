@@ -1,4 +1,4 @@
-import nodeEmoji from 'node-emoji';
+//import nodeEmoji from 'node-emoji';
 
 const sanitizeMap = {
   '<': '&lt;',
@@ -135,22 +135,102 @@ export const style = html`
   </style>
 `;
 
-const emojiList = (actions, reduce) => {
+const emojiList = ({ message, me }, actions, reduce) => {
   const h = html``;
 
-  const emojis = nodeEmoji.search('');
+  const emojis = [
+    '😀',
+    '😁',
+    '😂',
+    '🤣',
+    '😃',
+    '😄',
+    '😅',
+    '😆',
+    '😉',
+    '😊',
+    '😋',
+    '😎',
+    '😍',
+    '😘',
+    '🥰',
+    '😗',
+    '😙',
+    '😚',
+    '☺️',
+    '🤗',
+    '🤩',
+    '🤔',
+    '😑',
+    '😶',
+    '🙄',
+    '😏',
+    '😣',
+    '😥',
+    '😮',
+    '🤐',
+    '😯',
+    '😪',
+    '😫',
+    '😴',
+    '😌',
+    '😛',
+    '😜',
+    '😝',
+    '🤤',
+    '😒',
+    '😓',
+    '😔',
+    '😕',
+    '🙃',
+    '🤑',
+    '😲',
+    '🙁',
+    '😖',
+    '😞',
+    '😟',
+    '😤',
+    '😢',
+    '😭',
+    '😦',
+    '😧',
+    '😨',
+    '😩',
+    '😬',
+    '😰',
+    '😱',
+    '🤭',
+    '😈',
+    '👿',
+    '👹',
+    '👺',
+    '💀',
+    '👻',
+    '👽',
+    '🤖',
+    '😺',
+    '😸',
+    '😹',
+    '😻',
+    '😼',
+    '👍',
+    '✅',
+  ];
+
   emojis.forEach(emoji => {
     const emojiButton = html`
-      <button
-        class="typetalk_emoreact_reaction--emoji_list--button"
-        title="${emoji.key}"
-      >
-        ${emoji.emoji}
+      <button class="typetalk_emoreact_reaction--emoji_list--button">
+        ${emoji}
       </button>
     `;
-    emojiButton.firstElementChild.addEventListener('click', () =>
-      reduce(actions.addEmoji())
-    );
+    emojiButton.firstElementChild.addEventListener('click', () => {
+      // TODO ビューの責務ではないので必ず直す
+      const like = message.likes.find(like => like.user.equals(me));
+      const newComment = ((like && like.comment) || '') + emoji;
+      reduce(
+        actions.updateLike(message.postUrl.match(/(\d+)$/)[1], newComment)
+      );
+    });
     h.appendChild(emojiButton);
   });
 
@@ -158,7 +238,7 @@ const emojiList = (actions, reduce) => {
 };
 
 // リアクションの一覧を出す
-export const reactions = ({ message, showEmojiList }, actions, reduce) => {
+export const reactions = ({ me, message, showEmojiList }, actions, reduce) => {
   const h = html`
     <div class="typetalk_emoreact_reactions">
       <button class="typetalk_emoreact_reactions--add_button">＋</button>
@@ -178,12 +258,14 @@ export const reactions = ({ message, showEmojiList }, actions, reduce) => {
 
   const container = h.firstElementChild;
   for (const r of message.reactions) {
-    container.appendChild(reaction({ message, reaction: r }, actions, reduce));
+    container.appendChild(
+      reaction({ message, me, reaction: r }, actions, reduce)
+    );
   }
 
   if (showEmojiList) {
     h.querySelector('.typetalk_emoreact_reaction--emoji_list').appendChild(
-      emojiList(actions, reduce)
+      emojiList({ me, message }, actions, reduce)
     );
 
     h.querySelector('.typetalk_emoreact_reactions').addEventListener(
@@ -196,7 +278,7 @@ export const reactions = ({ message, showEmojiList }, actions, reduce) => {
 };
 
 // 単一のリアクションを出す
-const reaction = ({ /*message,*/ reaction }, actions, reduce) => {
+const reaction = ({ me, message, reaction }, actions, reduce) => {
   const h = html`
     <div class="typetalk_emoreact_reaction">
       <button class="typetalk_emoreact_reaction--emoji">
@@ -217,7 +299,10 @@ const reaction = ({ /*message,*/ reaction }, actions, reduce) => {
   const query = '.typetalk_emoreact_reaction--emoji';
   h.querySelector(query).addEventListener('click', ev => {
     ev.preventDefault();
-    reduce(actions.addEmoji());
+    // TODO ビューの責務ではないので必ず直す
+    const like = message.likes.find(like => like.user.equals(me));
+    const newComment = ((like && like.comment) || '') + reaction.emoji.emoji;
+    reduce(actions.updateLike(message.postUrl.match(/(\d+)$/)[1], newComment));
   });
 
   return h;

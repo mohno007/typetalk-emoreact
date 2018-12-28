@@ -1,27 +1,46 @@
 import { Reactions } from './reactions.js';
+import { Message } from './message.js';
+import { Like } from './like.js';
+import { User } from './users.js';
 import * as view from './view.js';
 import * as view2model from './view2model.js';
+import { createSideEffect } from './sideeffect.js';
 import { Typetalk } from './typetalk_request.js';
 
-const actions = (/*typetalk*/) => ({
-  addReaction: (/*message, emoji*/) => async state => {
-    // const myReactions = message.reactions.findByUser(state.me);
+// const sleep = x => new Promise(res => setTimeout(res, x));
 
-    try {
-      // await typetalk.like(topicId, messageId, emoji);
+const mount = (root, view, actions, initialState) => {
+  const reduce = state => async reducer => {
+    const _reducer = await reducer;
+    const newState = _reducer(state);
+    const newView = view(newState, actions, reduce(newState));
 
-      // state.reactions.reactions.delete('😣'); みたいな
-      return state;
-    } catch (e) {
-      window.alert(`失敗: ${e}`);
-      return state;
-    }
+    Array.from(root.childNodes).forEach(node => root.removeChild(node));
+    root.appendChild(newView);
+  };
+
+  reduce(initialState)(e => e);
+};
+
+const actions = {
+  // TODO もうちょっとマシなアクション名考えたい
+  updateLikeOk: newComment => state => {
+    // TODO ここの責務じゃないし危ないし、何やってるか分かりづらい
+    const newMessage = new Message();
+    Object.assign(newMessage, state.message);
+    newMessage.likes = [...newMessage.likes];
+    const index = newMessage.likes.find(l => l.user == state.me);
+
+    if (index < 0) return state;
+
+    newMessage.likes.splice(index, 1, Like.withComment(state.me, newComment));
+    newMessage.reactions = Reactions.fromLikes(newMessage.likes);
+
+    return {
+      ...state,
+      message: newMessage,
+    };
   },
-
-  addReactionOk: (/* emoji */) => state => ({
-    ...state,
-    /*state.reactions*/
-  }),
 
   showEmojiList: () => state => ({
     ...state,
@@ -32,29 +51,43 @@ const actions = (/*typetalk*/) => ({
     ...state,
     showEmojiList: false,
   }),
-});
+};
 
-const createState = message => ({
-  message,
+const typetalkSideEffect = typetalk =>
+  createSideEffect(actions => ({
+    async updateLike(messageId, newComment) {
+      // TODO ここでtopicId引いてきてるのダサいので直したい
+      const topicId = location.href.match(/topics\/(\d+)/)[1];
+
+      try {
+        await typetalk.unlike(topicId, messageId);
+      } catch (e) {
+        console.log(e);
+      }
+
+      try {
+        await typetalk.like(topicId, messageId, newComment);
+
+        // state.reactions.reactions.delete('😣'); みたいな
+
+        return actions.updateLikeOk(newComment);
+      } catch (e) {
+        window.alert(`失敗: ${e}`);
+        return actions.updateLikeFailed();
+      }
+    },
+  }));
+
+const createState = (message, me) => ({
   state: 'INITIAL',
+  message,
+  me,
   showEmojiList: false,
 });
 
-const mount = (root, view, actions, state) => {
-  const reduce = state => async reducer => {
-    const newState = await reducer(state);
-    const newView = view(newState, actions, reduce(newState));
-
-    Array.from(root.childNodes).forEach(node => root.removeChild(node));
-    root.appendChild(newView);
-  };
-
-  reduce(state)(e => e);
-};
-
 const mountEmoreact = messages => {
   const typetalk = new Typetalk();
-  const actions_ = actions(typetalk);
+  const actions_ = typetalkSideEffect(typetalk)(actions);
 
   messages.forEach(message => {
     const found = document.querySelector(`a[ng-href="${message.postUrl}"]`);
@@ -69,7 +102,12 @@ const mountEmoreact = messages => {
 
     messageContainer.insertBefore(root, messageOptions.nextSibilings);
 
-    mount(root, view.reactions, actions_, createState(message));
+    mount(
+      root,
+      view.reactions,
+      actions_,
+      createState(message, new User('Motohiro Ohno 👨🏻‍💻🦀'))
+    );
   });
 };
 
@@ -125,6 +163,6 @@ window.addEventListener('load', function() {
     if (url === location.href) return;
 
     url = location.href;
-    setTimeout(renderMessages, 100);
+    setTimeout(renderMessages, 500);
   }, 1000);
 });
