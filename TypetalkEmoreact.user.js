@@ -2,10 +2,10 @@
 // @name         Typetalk emoreact
 // @namespace    https://github.com/mohno007/typetalk-emoreact
 // @homepage     https://github.com/mohno007/typetalk-emoreact
-// @downloadURL  https://mohno007.github.com/typetalk-emoreact/TypetalkEmoreact.user.js
-// @updateURL    https://mohno007.github.com/typetalk-emoreact/TypetalkEmoreact.user.js
+// @downloadURL  https://mohno007.github.io/typetalk-emoreact/TypetalkEmoreact.user.js
+// @updateURL    https://mohno007.github.io/typetalk-emoreact/TypetalkEmoreact.user.js
 // @supportURL   https://github.com/mohno007/typetalk-emoreact/issues/new
-// @version      0.1.3
+// @version      0.1.4
 // @description  Emoji Reaction
 // @author       m-ohno
 // @match        https://typetalk.com/*
