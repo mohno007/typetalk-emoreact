@@ -91,6 +91,10 @@ export const style = html`
       transition: box-shadow 0.2s linear 0s;
     }
 
+    .typetalk_emoreact_reaction--emoji__me {
+      background: #fee;
+    }
+
     .typetalk_emoreact_reaction--emoji:focus {
       outline: 0;
     }
@@ -100,7 +104,7 @@ export const style = html`
     }
 
     .typetalk_emoreact_reaction--emoji:active {
-      box-shadow: 0 0 1px #333;
+      box-shadow: 0 0 1px #555;
     }
 
     .typetalk_emoreact_reaction--emoji__emoji {
@@ -139,6 +143,9 @@ const emojiList = ({ message, me }, actions, reduce) => {
   const h = html``;
 
   const emojis = [
+    '👍',
+    '✅',
+    '❤️',
     '😀',
     '😁',
     '😂',
@@ -157,7 +164,6 @@ const emojiList = ({ message, me }, actions, reduce) => {
     '😗',
     '😙',
     '😚',
-    '☺️',
     '🤗',
     '🤩',
     '🤔',
@@ -213,8 +219,6 @@ const emojiList = ({ message, me }, actions, reduce) => {
     '😹',
     '😻',
     '😼',
-    '👍',
-    '✅',
   ];
 
   emojis.forEach(emoji => {

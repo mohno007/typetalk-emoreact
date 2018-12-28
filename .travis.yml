@@ -1,0 +1,14 @@
+language: node_js
+node_js:
+- '11'
+script:
+- npm run test
+- npm run build
+deploy:
+  provider: releases
+  api_key:
+    secure: U9th6sVUfTbHXekZWP7SqTzUtROO6dgFLO5K+VsZTdSJm5a0a0bzs40JT6IJXjYzV4xw2Ie5tviA9SH4L8u75NaqozAxB0wvi08j1xDWSF915aBlucbZuN8CSv34ZO+C/FO1WYx5NfEinOVHOVGHd/2J3yxvHfJbV80n1SOhKV46X62xb7sH0bIm/1woZ97wY7BvasvNqqx4PMZMul7mIqbHNdEt7Yt3G85HCf0PLRIkFJx6AiC/I0QweofJA0ew5tCAWZ/oHW6EUDeVUEMi62HmeoKor0UzJoGSWC13M5sKg+TKv+l3MofurB4dJFlVn9xKnDaIovIliiaIAt/USDc74LDllzOkc34bL33vszs9LXAfKAHQPCg4KOnJ5Sc5li9rIGxMDFeufkQhR5VN+K+Y9MMly42flM7PpfbX3alWgVWejf7oevc6JiK3jC7JIqeHBc1NLDcJ0HobODU8FcTew4w7lMruh0Gt6gu65AqgCyXaYaoVb9ooCaI/elMJBwdD0LNaDZgvXJUtigbNqny/k//FDte8b3fcxCuoBKwF9pPriAMxhRGKipOGJeZ+PzQmUIX01BAPbORbbpSwDA5OV5DYrs4ZiCFvxWrF7Q0a5St5W9zF297aAAzMmK6FiSs5vLQwl9qWOZ9RS2yoh/E/2o98Wvz02yfrcpl6+dk=
+  file: dist/TypetalkEmoreact.user.js
+  skip_cleanup: true
+  on:
+    tags: true
