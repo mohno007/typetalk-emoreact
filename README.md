@@ -11,4 +11,4 @@
 1. Tampermonkeyのインストール画面が出てきたら、「インストール」ボタンを押下する
 1. Typetalkの適当なTopicに入ると、メッセージの右端に絵文字追加ボタンが表示されます
 
-![](https://imgur.com/a/0M7n9zl.png)
+![](https://imgur.com/a/0M7n9zl)
