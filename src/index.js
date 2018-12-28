@@ -89,6 +89,14 @@ const mountEmoreact = messages => {
   const typetalk = new Typetalk();
   const actions_ = typetalkSideEffect(typetalk)(actions);
 
+  let myNameOpt = document.querySelector('.profile-content__name');
+  myNameOpt = myNameOpt && myNameOpt.textContent.match(/(.*) さん/);
+  myNameOpt = myNameOpt && myNameOpt[1];
+
+  if (!myNameOpt) return;
+
+  const myName = myNameOpt;
+
   messages.forEach(message => {
     const found = document.querySelector(`a[ng-href="${message.postUrl}"]`);
 
@@ -106,7 +114,7 @@ const mountEmoreact = messages => {
       root,
       view.reactions,
       actions_,
-      createState(message, new User('Motohiro Ohno 👨🏻‍💻🦀'))
+      createState(message, new User(myName))
     );
   });
 };
