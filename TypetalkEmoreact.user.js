@@ -5,7 +5,7 @@
 // @downloadURL  https://mohno007.github.io/typetalk-emoreact/TypetalkEmoreact.user.js
 // @updateURL    https://mohno007.github.io/typetalk-emoreact/TypetalkEmoreact.user.js
 // @supportURL   https://github.com/mohno007/typetalk-emoreact/issues/new
-// @version      0.1.6
+// @version      0.1.7
 // @description  Emoji Reaction
 // @author       m-ohno
 // @match        https://typetalk.com/*
@@ -5204,7 +5204,7 @@
       ev.preventDefault();
       // TODO ビューの責務ではないので必ず直す
       const like = message.likes.find(like => like.user.equals(me));
-      const newComment = ((like && like.comment) || '') + reaction.emoji.emoji;
+      const newComment = ((like && like.comment) || '') + reaction.emoji;
       reduce(actions.updateLike(message.postUrl.match(/(\d+)$/)[1], newComment));
     });
 
