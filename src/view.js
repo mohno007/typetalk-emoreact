@@ -305,7 +305,7 @@ const reaction = ({ me, message, reaction }, actions, reduce) => {
     ev.preventDefault();
     // TODO ビューの責務ではないので必ず直す
     const like = message.likes.find(like => like.user.equals(me));
-    const newComment = ((like && like.comment) || '') + reaction.emoji.emoji;
+    const newComment = ((like && like.comment) || '') + reaction.emoji;
     reduce(actions.updateLike(message.postUrl.match(/(\d+)$/)[1], newComment));
   });
 
