@@ -89,8 +89,12 @@ const mountEmoreact = messages => {
   const typetalk = new Typetalk();
   const actions_ = typetalkSideEffect(typetalk)(actions);
 
+  // TODO ここの取得もいい感じにしたい
   let myNameOpt = document.querySelector('.profile-content__name');
-  myNameOpt = myNameOpt && myNameOpt.textContent.match(/(.*) さん/);
+  myNameOpt =
+    myNameOpt &&
+    (myNameOpt.textContent.match(/(.*) さん/) ||
+      myNameOpt.textContent.match(/Hi, (.*)/));
   myNameOpt = myNameOpt && myNameOpt[1];
 
   if (!myNameOpt) return;
