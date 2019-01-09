@@ -5,7 +5,7 @@
 // @downloadURL  https://mohno007.github.io/typetalk-emoreact/TypetalkEmoreact.user.js
 // @updateURL    https://mohno007.github.io/typetalk-emoreact/TypetalkEmoreact.user.js
 // @supportURL   https://github.com/mohno007/typetalk-emoreact/issues/new
-// @version      0.1.5
+// @version      0.1.6
 // @description  Emoji Reaction
 // @author       m-ohno
 // @match        https://typetalk.com/*
@@ -5425,8 +5425,12 @@
     const typetalk = new Typetalk();
     const actions_ = typetalkSideEffect(typetalk)(actions);
 
+    // TODO ここの取得もいい感じにしたい
     let myNameOpt = document.querySelector('.profile-content__name');
-    myNameOpt = myNameOpt && myNameOpt.textContent.match(/(.*) さん/);
+    myNameOpt =
+      myNameOpt &&
+      (myNameOpt.textContent.match(/(.*) さん/) ||
+        myNameOpt.textContent.match(/Hi, (.*)/));
     myNameOpt = myNameOpt && myNameOpt[1];
 
     if (!myNameOpt) return;
