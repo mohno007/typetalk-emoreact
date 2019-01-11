@@ -130,13 +130,15 @@ export const style = html`
       transition: opacity 0.2s linear 0s;
 
       width: max-content;
-      max-width: 20vw;
+      max-width: 10vw;
 
       background: rgba(80, 80, 80, 0.8);
       padding: 0.5em 1em;
       border-radius: 10px;
       color: white;
       font-size: 0.8em;
+
+      word-break: break-all;
     }
 
     :hover > .typetalk_emoreact_reaction--users {
@@ -304,7 +306,7 @@ const reaction = ({ me, message, reaction }, actions, reduce) => {
         ${
           Array.from(reaction.users)
             .map(u => u.name)
-            .join(',')
+            .join(', ')
         }
       </div>
     </div>
