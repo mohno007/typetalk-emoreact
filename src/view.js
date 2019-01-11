@@ -87,6 +87,11 @@ export const style = html`
       border: 1px solid #ddd;
       border-radius: 5px;
       margin-left: 5px;
+      cursor: pointer;
+
+      display: flex;
+      flex-direction: row;
+      align-items: center;
 
       transition: box-shadow 0.2s linear 0s;
     }
@@ -108,11 +113,13 @@ export const style = html`
     }
 
     .typetalk_emoreact_reaction--emoji__emoji {
-      display: inline-block;
-      font-size: 4em;
-      transform: scale(0.25) translateY(1.1em);
-      margin: -1em -0.333em;
-      cursor: pointer;
+      margin-left: 0.125em;
+    }
+
+    .typetalk_emoreact_reaction--emoji__count {
+      margin-right: 0.125em;
+      font-size: 0.9em;
+      color: #777;
     }
 
     .typetalk_emoreact_reaction--users {
@@ -288,6 +295,9 @@ const reaction = ({ me, message, reaction }, actions, reduce) => {
       <button class="typetalk_emoreact_reaction--emoji">
         <span class="typetalk_emoreact_reaction--emoji__emoji">
           ${reaction.emoji}
+        </span>
+        <span class="typetalk_emoreact_reaction--emoji__count">
+          ${reaction.count()}
         </span>
       </button>
       <div class="typetalk_emoreact_reaction--users">
