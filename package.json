@@ -13,7 +13,7 @@
     "url": "git@github.com:mohno007/typetalk-emoreact.git"
   },
   "author": "Motohiro OHNO <m-ohno@atware.co.jp>",
-  "license": "GPL3",
+  "license": "GPL-3.0-or-later",
   "devDependencies": {
     "emoji-regex": "^7.0.1",
     "eslint": "^5.9.0",
