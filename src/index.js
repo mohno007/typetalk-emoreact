@@ -28,12 +28,15 @@ const actions = {
     // TODO ここの責務じゃないし危ないし、何やってるか分かりづらい
     const newMessage = new Message();
     Object.assign(newMessage, state.message);
-    newMessage.likes = [...newMessage.likes];
-    const index = newMessage.likes.find(l => l.user == state.me);
+    newMessage.likes = [...state.message.likes];
+    const index = newMessage.likes.findIndex(l => l.user.equals(state.me));
 
-    if (index < 0) return state;
+    if (index < 0) {
+      newMessage.likes.push(Like.withComment(state.me, newComment));
+    } else {
+      newMessage.likes.splice(index, 1, Like.withComment(state.me, newComment));
+    }
 
-    newMessage.likes.splice(index, 1, Like.withComment(state.me, newComment));
     newMessage.reactions = Reactions.fromLikes(newMessage.likes);
 
     return {
