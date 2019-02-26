@@ -4,7 +4,7 @@ import { Reactions } from '../src/reactions.js';
 import Assert from 'assert';
 
 describe('Reactions', function() {
-  it('should be created from Like which has comment', function() {
+  it('は、コメント付きいいねから生成できる', function() {
     const user = new User('hoge');
     const like = Like.withComment(user, '😊😁😂');
     const reactions = Reactions.fromLike(like);
@@ -12,7 +12,7 @@ describe('Reactions', function() {
     Assert(reactions instanceof Reactions);
   });
 
-  it('should be created from Like which has no comment', function() {
+  it('は、コメント無しいいねから生成できる', function() {
     const user = new User('hoge');
     const like = Like.noComment(user);
     const reactions = Reactions.fromLike(like);
@@ -20,7 +20,7 @@ describe('Reactions', function() {
     Assert(reactions instanceof Reactions);
   });
 
-  it('should be iterable', function() {
+  it('は、iterableである', function() {
     const user = new User('hoge');
     const like = Like.withComment(user, '😊😁😂');
     const reactions = Reactions.fromLike(like);
@@ -43,11 +43,11 @@ describe('Reactions', function() {
 
     const merged = reactions1.merge(reactions2);
 
-    it('should return Reaction', function() {
+    it('は、Reactionsを返す', function() {
       Assert(merged instanceof Reactions);
     });
 
-    it('should have merged', function() {});
+    it('は、両方のコメントを含むこと', function() {});
   });
 });
 
