@@ -16,7 +16,7 @@ const buildLike = likeNode => {
 
   if (tooltip) {
     // いったん名前に" by "が含まれている場合を考慮しない
-    const match = tooltip.match(/(?<comment>.*) by (?<username>.*)/);
+    const match = tooltip.match(/(.*) by (.*)/);
 
     // マッチしない場合は名前のみで、コメントがないものとみなす
     if (match === null) {
@@ -25,7 +25,7 @@ const buildLike = likeNode => {
       return Like.noComment(user);
     }
 
-    const { comment, username } = match.groups;
+    const [comment, username] = match;
     const user = new User(username);
 
     return Like.withComment(user, comment);
@@ -71,3 +71,19 @@ export const buildMessages = () =>
   Array.from(document.querySelectorAll('.message > .message__post')).map(
     buildMessage
   );
+
+export const currentUser = () => {
+  // TODO ここの取得もいい感じにしたい
+  let myNameOpt = document.querySelector('.profile-content__name');
+  myNameOpt =
+    myNameOpt &&
+    (myNameOpt.textContent.match(/(.*) さん/) ||
+      myNameOpt.textContent.match(/Hi, (.*)/));
+  myNameOpt = myNameOpt && myNameOpt[1];
+
+  if (!myNameOpt) return;
+
+  const myName = myNameOpt;
+
+  return new User(myName);
+};
