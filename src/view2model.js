@@ -18,6 +18,8 @@ const buildLike = likeNode => {
     // いったん名前に" by "が含まれている場合を考慮しない
     const match = tooltip.match(/(.*) by (.*)/);
 
+    console.log(match);
+
     // マッチしない場合は名前のみで、コメントがないものとみなす
     if (match === null) {
       const username = tooltip;
@@ -25,7 +27,8 @@ const buildLike = likeNode => {
       return Like.noComment(user);
     }
 
-    const [comment, username] = match;
+    const comment = match[1];
+    const username = match[2];
     const user = new User(username);
 
     return Like.withComment(user, comment);
