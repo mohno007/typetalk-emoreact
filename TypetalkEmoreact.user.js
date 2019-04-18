@@ -5,7 +5,7 @@
 // @downloadURL  https://mohno007.github.io/typetalk-emoreact/TypetalkEmoreact.user.js
 // @updateURL    https://mohno007.github.io/typetalk-emoreact/TypetalkEmoreact.user.js
 // @supportURL   https://github.com/mohno007/typetalk-emoreact/issues/new
-// @version      0.1.10
+// @version      0.1.12
 // @description  Emoji Reaction
 // @author       m-ohno
 // @match        https://typetalk.com/*
@@ -4897,6 +4897,85 @@
     }
   }
 
+  const emojis = [
+    '👍',
+    '✅',
+    '❤️',
+    '😀',
+    '😁',
+    '😂',
+    '🤣',
+    '😃',
+    '😄',
+    '😅',
+    '😆',
+    '😉',
+    '😊',
+    '😋',
+    '😎',
+    '😍',
+    '😘',
+    '🥰',
+    '😗',
+    '😙',
+    '😚',
+    '🤗',
+    '🤩',
+    '🤔',
+    '😑',
+    '😶',
+    '🙄',
+    '😏',
+    '😣',
+    '😥',
+    '😮',
+    '🤐',
+    '😯',
+    '😪',
+    '😫',
+    '😴',
+    '😌',
+    '😛',
+    '😜',
+    '😝',
+    '🤤',
+    '😒',
+    '😓',
+    '😔',
+    '😕',
+    '🙃',
+    '🤑',
+    '😲',
+    '🙁',
+    '😖',
+    '😞',
+    '😟',
+    '😤',
+    '😢',
+    '😭',
+    '😦',
+    '😧',
+    '😨',
+    '😩',
+    '😬',
+    '😰',
+    '😱',
+    '🤭',
+    '😈',
+    '👿',
+    '👹',
+    '👺',
+    '💀',
+    '👻',
+    '👽',
+    '🤖',
+    '😺',
+    '😸',
+    '😹',
+    '😻',
+    '😼',
+  ];
+
   //import nodeEmoji from 'node-emoji';
 
   const sanitizeMap = {
@@ -5050,85 +5129,6 @@
   const emojiList = ({ message, me }, actions, reduce) => {
     const h = html``;
 
-    const emojis = [
-      '👍',
-      '✅',
-      '❤️',
-      '😀',
-      '😁',
-      '😂',
-      '🤣',
-      '😃',
-      '😄',
-      '😅',
-      '😆',
-      '😉',
-      '😊',
-      '😋',
-      '😎',
-      '😍',
-      '😘',
-      '🥰',
-      '😗',
-      '😙',
-      '😚',
-      '🤗',
-      '🤩',
-      '🤔',
-      '😑',
-      '😶',
-      '🙄',
-      '😏',
-      '😣',
-      '😥',
-      '😮',
-      '🤐',
-      '😯',
-      '😪',
-      '😫',
-      '😴',
-      '😌',
-      '😛',
-      '😜',
-      '😝',
-      '🤤',
-      '😒',
-      '😓',
-      '😔',
-      '😕',
-      '🙃',
-      '🤑',
-      '😲',
-      '🙁',
-      '😖',
-      '😞',
-      '😟',
-      '😤',
-      '😢',
-      '😭',
-      '😦',
-      '😧',
-      '😨',
-      '😩',
-      '😬',
-      '😰',
-      '😱',
-      '🤭',
-      '😈',
-      '👿',
-      '👹',
-      '👺',
-      '💀',
-      '👻',
-      '👽',
-      '🤖',
-      '😺',
-      '😸',
-      '😹',
-      '😻',
-      '😼',
-    ];
-
     emojis.forEach(emoji => {
       const emojiButton = html`
       <button class="typetalk_emoreact_reaction--emoji_list--button">
@@ -5237,7 +5237,9 @@
 
     if (tooltip) {
       // いったん名前に" by "が含まれている場合を考慮しない
-      const match = tooltip.match(/(?<comment>.*) by (?<username>.*)/);
+      const match = tooltip.match(/(.*) by (.*)/);
+
+      console.log(match);
 
       // マッチしない場合は名前のみで、コメントがないものとみなす
       if (match === null) {
@@ -5246,7 +5248,8 @@
         return Like.noComment(user);
       }
 
-      const { comment, username } = match.groups;
+      const comment = match[1];
+      const username = match[2];
       const user = new User(username);
 
       return Like.withComment(user, comment);
