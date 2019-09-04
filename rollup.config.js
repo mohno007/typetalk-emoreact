@@ -44,10 +44,7 @@ export default [
       banner,
     },
     plugins: [
-      nodeResolve({
-        jsnext: true,
-        main: true,
-      }),
+      nodeResolve(),
       commonjs({
         include: 'node_modules/**',
         sourceMap: false,
