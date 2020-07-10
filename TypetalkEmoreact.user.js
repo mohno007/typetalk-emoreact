@@ -5,7 +5,7 @@
 // @downloadURL  https://mohno007.github.io/typetalk-emoreact/TypetalkEmoreact.user.js
 // @updateURL    https://mohno007.github.io/typetalk-emoreact/TypetalkEmoreact.user.js
 // @supportURL   https://github.com/mohno007/typetalk-emoreact/issues/new
-// @version      0.1.12
+// @version      0.1.13
 // @description  Emoji Reaction
 // @author       m-ohno
 // @match        https://typetalk.com/*
@@ -32,13 +32,13 @@
 
   var emojiRegex = function () {
     // https://mths.be/emoji
-    return /\uD83C\uDFF4(?:\uDB40\uDC67\uDB40\uDC62(?:\uDB40\uDC65\uDB40\uDC6E\uDB40\uDC67|\uDB40\uDC77\uDB40\uDC6C\uDB40\uDC73|\uDB40\uDC73\uDB40\uDC63\uDB40\uDC74)\uDB40\uDC7F|\u200D\u2620\uFE0F)|\uD83D\uDC69\u200D\uD83D\uDC69\u200D(?:\uD83D\uDC66\u200D\uD83D\uDC66|\uD83D\uDC67\u200D(?:\uD83D[\uDC66\uDC67]))|\uD83D\uDC68(?:\u200D(?:\u2764\uFE0F\u200D(?:\uD83D\uDC8B\u200D)?\uD83D\uDC68|(?:\uD83D[\uDC68\uDC69])\u200D(?:\uD83D\uDC66\u200D\uD83D\uDC66|\uD83D\uDC67\u200D(?:\uD83D[\uDC66\uDC67]))|\uD83D\uDC66\u200D\uD83D\uDC66|\uD83D\uDC67\u200D(?:\uD83D[\uDC66\uDC67])|\uD83C[\uDF3E\uDF73\uDF93\uDFA4\uDFA8\uDFEB\uDFED]|\uD83D[\uDCBB\uDCBC\uDD27\uDD2C\uDE80\uDE92]|\uD83E[\uDDB0-\uDDB3])|(?:\uD83C[\uDFFB-\uDFFF])\u200D(?:\uD83C[\uDF3E\uDF73\uDF93\uDFA4\uDFA8\uDFEB\uDFED]|\uD83D[\uDCBB\uDCBC\uDD27\uDD2C\uDE80\uDE92]|\uD83E[\uDDB0-\uDDB3]))|\uD83D\uDC69\u200D(?:\u2764\uFE0F\u200D(?:\uD83D\uDC8B\u200D(?:\uD83D[\uDC68\uDC69])|\uD83D[\uDC68\uDC69])|\uD83C[\uDF3E\uDF73\uDF93\uDFA4\uDFA8\uDFEB\uDFED]|\uD83D[\uDCBB\uDCBC\uDD27\uDD2C\uDE80\uDE92]|\uD83E[\uDDB0-\uDDB3])|\uD83D\uDC69\u200D\uD83D\uDC66\u200D\uD83D\uDC66|(?:\uD83D\uDC41\uFE0F\u200D\uD83D\uDDE8|\uD83D\uDC69(?:\uD83C[\uDFFB-\uDFFF])\u200D[\u2695\u2696\u2708]|\uD83D\uDC68(?:(?:\uD83C[\uDFFB-\uDFFF])\u200D[\u2695\u2696\u2708]|\u200D[\u2695\u2696\u2708])|(?:(?:\u26F9|\uD83C[\uDFCB\uDFCC]|\uD83D\uDD75)\uFE0F|\uD83D\uDC6F|\uD83E[\uDD3C\uDDDE\uDDDF])\u200D[\u2640\u2642]|(?:\u26F9|\uD83C[\uDFCB\uDFCC]|\uD83D\uDD75)(?:\uD83C[\uDFFB-\uDFFF])\u200D[\u2640\u2642]|(?:\uD83C[\uDFC3\uDFC4\uDFCA]|\uD83D[\uDC6E\uDC71\uDC73\uDC77\uDC81\uDC82\uDC86\uDC87\uDE45-\uDE47\uDE4B\uDE4D\uDE4E\uDEA3\uDEB4-\uDEB6]|\uD83E[\uDD26\uDD37-\uDD39\uDD3D\uDD3E\uDDB8\uDDB9\uDDD6-\uDDDD])(?:(?:\uD83C[\uDFFB-\uDFFF])\u200D[\u2640\u2642]|\u200D[\u2640\u2642])|\uD83D\uDC69\u200D[\u2695\u2696\u2708])\uFE0F|\uD83D\uDC69\u200D\uD83D\uDC67\u200D(?:\uD83D[\uDC66\uDC67])|\uD83D\uDC69\u200D\uD83D\uDC69\u200D(?:\uD83D[\uDC66\uDC67])|\uD83D\uDC68(?:\u200D(?:(?:\uD83D[\uDC68\uDC69])\u200D(?:\uD83D[\uDC66\uDC67])|\uD83D[\uDC66\uDC67])|\uD83C[\uDFFB-\uDFFF])|\uD83C\uDFF3\uFE0F\u200D\uD83C\uDF08|\uD83D\uDC69\u200D\uD83D\uDC67|\uD83D\uDC69(?:\uD83C[\uDFFB-\uDFFF])\u200D(?:\uD83C[\uDF3E\uDF73\uDF93\uDFA4\uDFA8\uDFEB\uDFED]|\uD83D[\uDCBB\uDCBC\uDD27\uDD2C\uDE80\uDE92]|\uD83E[\uDDB0-\uDDB3])|\uD83D\uDC69\u200D\uD83D\uDC66|\uD83C\uDDF6\uD83C\uDDE6|\uD83C\uDDFD\uD83C\uDDF0|\uD83C\uDDF4\uD83C\uDDF2|\uD83D\uDC69(?:\uD83C[\uDFFB-\uDFFF])|\uD83C\uDDED(?:\uD83C[\uDDF0\uDDF2\uDDF3\uDDF7\uDDF9\uDDFA])|\uD83C\uDDEC(?:\uD83C[\uDDE6\uDDE7\uDDE9-\uDDEE\uDDF1-\uDDF3\uDDF5-\uDDFA\uDDFC\uDDFE])|\uD83C\uDDEA(?:\uD83C[\uDDE6\uDDE8\uDDEA\uDDEC\uDDED\uDDF7-\uDDFA])|\uD83C\uDDE8(?:\uD83C[\uDDE6\uDDE8\uDDE9\uDDEB-\uDDEE\uDDF0-\uDDF5\uDDF7\uDDFA-\uDDFF])|\uD83C\uDDF2(?:\uD83C[\uDDE6\uDDE8-\uDDED\uDDF0-\uDDFF])|\uD83C\uDDF3(?:\uD83C[\uDDE6\uDDE8\uDDEA-\uDDEC\uDDEE\uDDF1\uDDF4\uDDF5\uDDF7\uDDFA\uDDFF])|\uD83C\uDDFC(?:\uD83C[\uDDEB\uDDF8])|\uD83C\uDDFA(?:\uD83C[\uDDE6\uDDEC\uDDF2\uDDF3\uDDF8\uDDFE\uDDFF])|\uD83C\uDDF0(?:\uD83C[\uDDEA\uDDEC-\uDDEE\uDDF2\uDDF3\uDDF5\uDDF7\uDDFC\uDDFE\uDDFF])|\uD83C\uDDEF(?:\uD83C[\uDDEA\uDDF2\uDDF4\uDDF5])|\uD83C\uDDF8(?:\uD83C[\uDDE6-\uDDEA\uDDEC-\uDDF4\uDDF7-\uDDF9\uDDFB\uDDFD-\uDDFF])|\uD83C\uDDEE(?:\uD83C[\uDDE8-\uDDEA\uDDF1-\uDDF4\uDDF6-\uDDF9])|\uD83C\uDDFF(?:\uD83C[\uDDE6\uDDF2\uDDFC])|\uD83C\uDDEB(?:\uD83C[\uDDEE-\uDDF0\uDDF2\uDDF4\uDDF7])|\uD83C\uDDF5(?:\uD83C[\uDDE6\uDDEA-\uDDED\uDDF0-\uDDF3\uDDF7-\uDDF9\uDDFC\uDDFE])|\uD83C\uDDE9(?:\uD83C[\uDDEA\uDDEC\uDDEF\uDDF0\uDDF2\uDDF4\uDDFF])|\uD83C\uDDF9(?:\uD83C[\uDDE6\uDDE8\uDDE9\uDDEB-\uDDED\uDDEF-\uDDF4\uDDF7\uDDF9\uDDFB\uDDFC\uDDFF])|\uD83C\uDDE7(?:\uD83C[\uDDE6\uDDE7\uDDE9-\uDDEF\uDDF1-\uDDF4\uDDF6-\uDDF9\uDDFB\uDDFC\uDDFE\uDDFF])|[#\*0-9]\uFE0F\u20E3|\uD83C\uDDF1(?:\uD83C[\uDDE6-\uDDE8\uDDEE\uDDF0\uDDF7-\uDDFB\uDDFE])|\uD83C\uDDE6(?:\uD83C[\uDDE8-\uDDEC\uDDEE\uDDF1\uDDF2\uDDF4\uDDF6-\uDDFA\uDDFC\uDDFD\uDDFF])|\uD83C\uDDF7(?:\uD83C[\uDDEA\uDDF4\uDDF8\uDDFA\uDDFC])|\uD83C\uDDFB(?:\uD83C[\uDDE6\uDDE8\uDDEA\uDDEC\uDDEE\uDDF3\uDDFA])|\uD83C\uDDFE(?:\uD83C[\uDDEA\uDDF9])|(?:\uD83C[\uDFC3\uDFC4\uDFCA]|\uD83D[\uDC6E\uDC71\uDC73\uDC77\uDC81\uDC82\uDC86\uDC87\uDE45-\uDE47\uDE4B\uDE4D\uDE4E\uDEA3\uDEB4-\uDEB6]|\uD83E[\uDD26\uDD37-\uDD39\uDD3D\uDD3E\uDDB8\uDDB9\uDDD6-\uDDDD])(?:\uD83C[\uDFFB-\uDFFF])|(?:\u26F9|\uD83C[\uDFCB\uDFCC]|\uD83D\uDD75)(?:\uD83C[\uDFFB-\uDFFF])|(?:[\u261D\u270A-\u270D]|\uD83C[\uDF85\uDFC2\uDFC7]|\uD83D[\uDC42\uDC43\uDC46-\uDC50\uDC66\uDC67\uDC70\uDC72\uDC74-\uDC76\uDC78\uDC7C\uDC83\uDC85\uDCAA\uDD74\uDD7A\uDD90\uDD95\uDD96\uDE4C\uDE4F\uDEC0\uDECC]|\uD83E[\uDD18-\uDD1C\uDD1E\uDD1F\uDD30-\uDD36\uDDB5\uDDB6\uDDD1-\uDDD5])(?:\uD83C[\uDFFB-\uDFFF])|(?:[\u231A\u231B\u23E9-\u23EC\u23F0\u23F3\u25FD\u25FE\u2614\u2615\u2648-\u2653\u267F\u2693\u26A1\u26AA\u26AB\u26BD\u26BE\u26C4\u26C5\u26CE\u26D4\u26EA\u26F2\u26F3\u26F5\u26FA\u26FD\u2705\u270A\u270B\u2728\u274C\u274E\u2753-\u2755\u2757\u2795-\u2797\u27B0\u27BF\u2B1B\u2B1C\u2B50\u2B55]|\uD83C[\uDC04\uDCCF\uDD8E\uDD91-\uDD9A\uDDE6-\uDDFF\uDE01\uDE1A\uDE2F\uDE32-\uDE36\uDE38-\uDE3A\uDE50\uDE51\uDF00-\uDF20\uDF2D-\uDF35\uDF37-\uDF7C\uDF7E-\uDF93\uDFA0-\uDFCA\uDFCF-\uDFD3\uDFE0-\uDFF0\uDFF4\uDFF8-\uDFFF]|\uD83D[\uDC00-\uDC3E\uDC40\uDC42-\uDCFC\uDCFF-\uDD3D\uDD4B-\uDD4E\uDD50-\uDD67\uDD7A\uDD95\uDD96\uDDA4\uDDFB-\uDE4F\uDE80-\uDEC5\uDECC\uDED0-\uDED2\uDEEB\uDEEC\uDEF4-\uDEF9]|\uD83E[\uDD10-\uDD3A\uDD3C-\uDD3E\uDD40-\uDD45\uDD47-\uDD70\uDD73-\uDD76\uDD7A\uDD7C-\uDDA2\uDDB0-\uDDB9\uDDC0-\uDDC2\uDDD0-\uDDFF])|(?:[#\*0-9\xA9\xAE\u203C\u2049\u2122\u2139\u2194-\u2199\u21A9\u21AA\u231A\u231B\u2328\u23CF\u23E9-\u23F3\u23F8-\u23FA\u24C2\u25AA\u25AB\u25B6\u25C0\u25FB-\u25FE\u2600-\u2604\u260E\u2611\u2614\u2615\u2618\u261D\u2620\u2622\u2623\u2626\u262A\u262E\u262F\u2638-\u263A\u2640\u2642\u2648-\u2653\u265F\u2660\u2663\u2665\u2666\u2668\u267B\u267E\u267F\u2692-\u2697\u2699\u269B\u269C\u26A0\u26A1\u26AA\u26AB\u26B0\u26B1\u26BD\u26BE\u26C4\u26C5\u26C8\u26CE\u26CF\u26D1\u26D3\u26D4\u26E9\u26EA\u26F0-\u26F5\u26F7-\u26FA\u26FD\u2702\u2705\u2708-\u270D\u270F\u2712\u2714\u2716\u271D\u2721\u2728\u2733\u2734\u2744\u2747\u274C\u274E\u2753-\u2755\u2757\u2763\u2764\u2795-\u2797\u27A1\u27B0\u27BF\u2934\u2935\u2B05-\u2B07\u2B1B\u2B1C\u2B50\u2B55\u3030\u303D\u3297\u3299]|\uD83C[\uDC04\uDCCF\uDD70\uDD71\uDD7E\uDD7F\uDD8E\uDD91-\uDD9A\uDDE6-\uDDFF\uDE01\uDE02\uDE1A\uDE2F\uDE32-\uDE3A\uDE50\uDE51\uDF00-\uDF21\uDF24-\uDF93\uDF96\uDF97\uDF99-\uDF9B\uDF9E-\uDFF0\uDFF3-\uDFF5\uDFF7-\uDFFF]|\uD83D[\uDC00-\uDCFD\uDCFF-\uDD3D\uDD49-\uDD4E\uDD50-\uDD67\uDD6F\uDD70\uDD73-\uDD7A\uDD87\uDD8A-\uDD8D\uDD90\uDD95\uDD96\uDDA4\uDDA5\uDDA8\uDDB1\uDDB2\uDDBC\uDDC2-\uDDC4\uDDD1-\uDDD3\uDDDC-\uDDDE\uDDE1\uDDE3\uDDE8\uDDEF\uDDF3\uDDFA-\uDE4F\uDE80-\uDEC5\uDECB-\uDED2\uDEE0-\uDEE5\uDEE9\uDEEB\uDEEC\uDEF0\uDEF3-\uDEF9]|\uD83E[\uDD10-\uDD3A\uDD3C-\uDD3E\uDD40-\uDD45\uDD47-\uDD70\uDD73-\uDD76\uDD7A\uDD7C-\uDDA2\uDDB0-\uDDB9\uDDC0-\uDDC2\uDDD0-\uDDFF])\uFE0F|(?:[\u261D\u26F9\u270A-\u270D]|\uD83C[\uDF85\uDFC2-\uDFC4\uDFC7\uDFCA-\uDFCC]|\uD83D[\uDC42\uDC43\uDC46-\uDC50\uDC66-\uDC69\uDC6E\uDC70-\uDC78\uDC7C\uDC81-\uDC83\uDC85-\uDC87\uDCAA\uDD74\uDD75\uDD7A\uDD90\uDD95\uDD96\uDE45-\uDE47\uDE4B-\uDE4F\uDEA3\uDEB4-\uDEB6\uDEC0\uDECC]|\uD83E[\uDD18-\uDD1C\uDD1E\uDD1F\uDD26\uDD30-\uDD39\uDD3D\uDD3E\uDDB5\uDDB6\uDDB8\uDDB9\uDDD1-\uDDDD])/g;
+    return /\uD83C\uDFF4\uDB40\uDC67\uDB40\uDC62(?:\uDB40\uDC65\uDB40\uDC6E\uDB40\uDC67|\uDB40\uDC73\uDB40\uDC63\uDB40\uDC74|\uDB40\uDC77\uDB40\uDC6C\uDB40\uDC73)\uDB40\uDC7F|\uD83D\uDC68(?:\uD83C\uDFFC\u200D(?:\uD83E\uDD1D\u200D\uD83D\uDC68\uD83C\uDFFB|\uD83C[\uDF3E\uDF73\uDF93\uDFA4\uDFA8\uDFEB\uDFED]|\uD83D[\uDCBB\uDCBC\uDD27\uDD2C\uDE80\uDE92]|\uD83E[\uDDAF-\uDDB3\uDDBC\uDDBD])|\uD83C\uDFFF\u200D(?:\uD83E\uDD1D\u200D\uD83D\uDC68(?:\uD83C[\uDFFB-\uDFFE])|\uD83C[\uDF3E\uDF73\uDF93\uDFA4\uDFA8\uDFEB\uDFED]|\uD83D[\uDCBB\uDCBC\uDD27\uDD2C\uDE80\uDE92]|\uD83E[\uDDAF-\uDDB3\uDDBC\uDDBD])|\uD83C\uDFFE\u200D(?:\uD83E\uDD1D\u200D\uD83D\uDC68(?:\uD83C[\uDFFB-\uDFFD])|\uD83C[\uDF3E\uDF73\uDF93\uDFA4\uDFA8\uDFEB\uDFED]|\uD83D[\uDCBB\uDCBC\uDD27\uDD2C\uDE80\uDE92]|\uD83E[\uDDAF-\uDDB3\uDDBC\uDDBD])|\uD83C\uDFFD\u200D(?:\uD83E\uDD1D\u200D\uD83D\uDC68(?:\uD83C[\uDFFB\uDFFC])|\uD83C[\uDF3E\uDF73\uDF93\uDFA4\uDFA8\uDFEB\uDFED]|\uD83D[\uDCBB\uDCBC\uDD27\uDD2C\uDE80\uDE92]|\uD83E[\uDDAF-\uDDB3\uDDBC\uDDBD])|\u200D(?:\u2764\uFE0F\u200D(?:\uD83D\uDC8B\u200D)?\uD83D\uDC68|(?:\uD83D[\uDC68\uDC69])\u200D(?:\uD83D\uDC66\u200D\uD83D\uDC66|\uD83D\uDC67\u200D(?:\uD83D[\uDC66\uDC67]))|\uD83D\uDC66\u200D\uD83D\uDC66|\uD83D\uDC67\u200D(?:\uD83D[\uDC66\uDC67])|(?:\uD83D[\uDC68\uDC69])\u200D(?:\uD83D[\uDC66\uDC67])|[\u2695\u2696\u2708]\uFE0F|\uD83D[\uDC66\uDC67]|\uD83C[\uDF3E\uDF73\uDF93\uDFA4\uDFA8\uDFEB\uDFED]|\uD83D[\uDCBB\uDCBC\uDD27\uDD2C\uDE80\uDE92]|\uD83E[\uDDAF-\uDDB3\uDDBC\uDDBD])|(?:\uD83C\uDFFB\u200D[\u2695\u2696\u2708]|\uD83C\uDFFF\u200D[\u2695\u2696\u2708]|\uD83C\uDFFE\u200D[\u2695\u2696\u2708]|\uD83C\uDFFD\u200D[\u2695\u2696\u2708]|\uD83C\uDFFC\u200D[\u2695\u2696\u2708])\uFE0F|\uD83C\uDFFB\u200D(?:\uD83C[\uDF3E\uDF73\uDF93\uDFA4\uDFA8\uDFEB\uDFED]|\uD83D[\uDCBB\uDCBC\uDD27\uDD2C\uDE80\uDE92]|\uD83E[\uDDAF-\uDDB3\uDDBC\uDDBD])|\uD83C[\uDFFB-\uDFFF])|(?:\uD83E\uDDD1\uD83C\uDFFB\u200D\uD83E\uDD1D\u200D\uD83E\uDDD1|\uD83D\uDC69\uD83C\uDFFC\u200D\uD83E\uDD1D\u200D\uD83D\uDC69)\uD83C\uDFFB|\uD83E\uDDD1(?:\uD83C\uDFFF\u200D\uD83E\uDD1D\u200D\uD83E\uDDD1(?:\uD83C[\uDFFB-\uDFFF])|\u200D\uD83E\uDD1D\u200D\uD83E\uDDD1)|(?:\uD83E\uDDD1\uD83C\uDFFE\u200D\uD83E\uDD1D\u200D\uD83E\uDDD1|\uD83D\uDC69\uD83C\uDFFF\u200D\uD83E\uDD1D\u200D(?:\uD83D[\uDC68\uDC69]))(?:\uD83C[\uDFFB-\uDFFE])|(?:\uD83E\uDDD1\uD83C\uDFFC\u200D\uD83E\uDD1D\u200D\uD83E\uDDD1|\uD83D\uDC69\uD83C\uDFFD\u200D\uD83E\uDD1D\u200D\uD83D\uDC69)(?:\uD83C[\uDFFB\uDFFC])|\uD83D\uDC69(?:\uD83C\uDFFE\u200D(?:\uD83E\uDD1D\u200D\uD83D\uDC68(?:\uD83C[\uDFFB-\uDFFD\uDFFF])|\uD83C[\uDF3E\uDF73\uDF93\uDFA4\uDFA8\uDFEB\uDFED]|\uD83D[\uDCBB\uDCBC\uDD27\uDD2C\uDE80\uDE92]|\uD83E[\uDDAF-\uDDB3\uDDBC\uDDBD])|\uD83C\uDFFC\u200D(?:\uD83E\uDD1D\u200D\uD83D\uDC68(?:\uD83C[\uDFFB\uDFFD-\uDFFF])|\uD83C[\uDF3E\uDF73\uDF93\uDFA4\uDFA8\uDFEB\uDFED]|\uD83D[\uDCBB\uDCBC\uDD27\uDD2C\uDE80\uDE92]|\uD83E[\uDDAF-\uDDB3\uDDBC\uDDBD])|\uD83C\uDFFB\u200D(?:\uD83E\uDD1D\u200D\uD83D\uDC68(?:\uD83C[\uDFFC-\uDFFF])|\uD83C[\uDF3E\uDF73\uDF93\uDFA4\uDFA8\uDFEB\uDFED]|\uD83D[\uDCBB\uDCBC\uDD27\uDD2C\uDE80\uDE92]|\uD83E[\uDDAF-\uDDB3\uDDBC\uDDBD])|\uD83C\uDFFD\u200D(?:\uD83E\uDD1D\u200D\uD83D\uDC68(?:\uD83C[\uDFFB\uDFFC\uDFFE\uDFFF])|\uD83C[\uDF3E\uDF73\uDF93\uDFA4\uDFA8\uDFEB\uDFED]|\uD83D[\uDCBB\uDCBC\uDD27\uDD2C\uDE80\uDE92]|\uD83E[\uDDAF-\uDDB3\uDDBC\uDDBD])|\u200D(?:\u2764\uFE0F\u200D(?:\uD83D\uDC8B\u200D(?:\uD83D[\uDC68\uDC69])|\uD83D[\uDC68\uDC69])|\uD83C[\uDF3E\uDF73\uDF93\uDFA4\uDFA8\uDFEB\uDFED]|\uD83D[\uDCBB\uDCBC\uDD27\uDD2C\uDE80\uDE92]|\uD83E[\uDDAF-\uDDB3\uDDBC\uDDBD])|\uD83C\uDFFF\u200D(?:\uD83C[\uDF3E\uDF73\uDF93\uDFA4\uDFA8\uDFEB\uDFED]|\uD83D[\uDCBB\uDCBC\uDD27\uDD2C\uDE80\uDE92]|\uD83E[\uDDAF-\uDDB3\uDDBC\uDDBD]))|\uD83D\uDC69\u200D\uD83D\uDC69\u200D(?:\uD83D\uDC66\u200D\uD83D\uDC66|\uD83D\uDC67\u200D(?:\uD83D[\uDC66\uDC67]))|(?:\uD83E\uDDD1\uD83C\uDFFD\u200D\uD83E\uDD1D\u200D\uD83E\uDDD1|\uD83D\uDC69\uD83C\uDFFE\u200D\uD83E\uDD1D\u200D\uD83D\uDC69)(?:\uD83C[\uDFFB-\uDFFD])|\uD83D\uDC69\u200D\uD83D\uDC66\u200D\uD83D\uDC66|\uD83D\uDC69\u200D\uD83D\uDC69\u200D(?:\uD83D[\uDC66\uDC67])|(?:\uD83D\uDC41\uFE0F\u200D\uD83D\uDDE8|\uD83D\uDC69(?:\uD83C\uDFFF\u200D[\u2695\u2696\u2708]|\uD83C\uDFFE\u200D[\u2695\u2696\u2708]|\uD83C\uDFFC\u200D[\u2695\u2696\u2708]|\uD83C\uDFFB\u200D[\u2695\u2696\u2708]|\uD83C\uDFFD\u200D[\u2695\u2696\u2708]|\u200D[\u2695\u2696\u2708])|(?:(?:\u26F9|\uD83C[\uDFCB\uDFCC]|\uD83D\uDD75)\uFE0F|\uD83D\uDC6F|\uD83E[\uDD3C\uDDDE\uDDDF])\u200D[\u2640\u2642]|(?:\u26F9|\uD83C[\uDFCB\uDFCC]|\uD83D\uDD75)(?:\uD83C[\uDFFB-\uDFFF])\u200D[\u2640\u2642]|(?:\uD83C[\uDFC3\uDFC4\uDFCA]|\uD83D[\uDC6E\uDC71\uDC73\uDC77\uDC81\uDC82\uDC86\uDC87\uDE45-\uDE47\uDE4B\uDE4D\uDE4E\uDEA3\uDEB4-\uDEB6]|\uD83E[\uDD26\uDD37-\uDD39\uDD3D\uDD3E\uDDB8\uDDB9\uDDCD-\uDDCF\uDDD6-\uDDDD])(?:(?:\uD83C[\uDFFB-\uDFFF])\u200D[\u2640\u2642]|\u200D[\u2640\u2642])|\uD83C\uDFF4\u200D\u2620)\uFE0F|\uD83D\uDC69\u200D\uD83D\uDC67\u200D(?:\uD83D[\uDC66\uDC67])|\uD83C\uDFF3\uFE0F\u200D\uD83C\uDF08|\uD83D\uDC15\u200D\uD83E\uDDBA|\uD83D\uDC69\u200D\uD83D\uDC66|\uD83D\uDC69\u200D\uD83D\uDC67|\uD83C\uDDFD\uD83C\uDDF0|\uD83C\uDDF4\uD83C\uDDF2|\uD83C\uDDF6\uD83C\uDDE6|[#\*0-9]\uFE0F\u20E3|\uD83C\uDDE7(?:\uD83C[\uDDE6\uDDE7\uDDE9-\uDDEF\uDDF1-\uDDF4\uDDF6-\uDDF9\uDDFB\uDDFC\uDDFE\uDDFF])|\uD83C\uDDF9(?:\uD83C[\uDDE6\uDDE8\uDDE9\uDDEB-\uDDED\uDDEF-\uDDF4\uDDF7\uDDF9\uDDFB\uDDFC\uDDFF])|\uD83C\uDDEA(?:\uD83C[\uDDE6\uDDE8\uDDEA\uDDEC\uDDED\uDDF7-\uDDFA])|\uD83E\uDDD1(?:\uD83C[\uDFFB-\uDFFF])|\uD83C\uDDF7(?:\uD83C[\uDDEA\uDDF4\uDDF8\uDDFA\uDDFC])|\uD83D\uDC69(?:\uD83C[\uDFFB-\uDFFF])|\uD83C\uDDF2(?:\uD83C[\uDDE6\uDDE8-\uDDED\uDDF0-\uDDFF])|\uD83C\uDDE6(?:\uD83C[\uDDE8-\uDDEC\uDDEE\uDDF1\uDDF2\uDDF4\uDDF6-\uDDFA\uDDFC\uDDFD\uDDFF])|\uD83C\uDDF0(?:\uD83C[\uDDEA\uDDEC-\uDDEE\uDDF2\uDDF3\uDDF5\uDDF7\uDDFC\uDDFE\uDDFF])|\uD83C\uDDED(?:\uD83C[\uDDF0\uDDF2\uDDF3\uDDF7\uDDF9\uDDFA])|\uD83C\uDDE9(?:\uD83C[\uDDEA\uDDEC\uDDEF\uDDF0\uDDF2\uDDF4\uDDFF])|\uD83C\uDDFE(?:\uD83C[\uDDEA\uDDF9])|\uD83C\uDDEC(?:\uD83C[\uDDE6\uDDE7\uDDE9-\uDDEE\uDDF1-\uDDF3\uDDF5-\uDDFA\uDDFC\uDDFE])|\uD83C\uDDF8(?:\uD83C[\uDDE6-\uDDEA\uDDEC-\uDDF4\uDDF7-\uDDF9\uDDFB\uDDFD-\uDDFF])|\uD83C\uDDEB(?:\uD83C[\uDDEE-\uDDF0\uDDF2\uDDF4\uDDF7])|\uD83C\uDDF5(?:\uD83C[\uDDE6\uDDEA-\uDDED\uDDF0-\uDDF3\uDDF7-\uDDF9\uDDFC\uDDFE])|\uD83C\uDDFB(?:\uD83C[\uDDE6\uDDE8\uDDEA\uDDEC\uDDEE\uDDF3\uDDFA])|\uD83C\uDDF3(?:\uD83C[\uDDE6\uDDE8\uDDEA-\uDDEC\uDDEE\uDDF1\uDDF4\uDDF5\uDDF7\uDDFA\uDDFF])|\uD83C\uDDE8(?:\uD83C[\uDDE6\uDDE8\uDDE9\uDDEB-\uDDEE\uDDF0-\uDDF5\uDDF7\uDDFA-\uDDFF])|\uD83C\uDDF1(?:\uD83C[\uDDE6-\uDDE8\uDDEE\uDDF0\uDDF7-\uDDFB\uDDFE])|\uD83C\uDDFF(?:\uD83C[\uDDE6\uDDF2\uDDFC])|\uD83C\uDDFC(?:\uD83C[\uDDEB\uDDF8])|\uD83C\uDDFA(?:\uD83C[\uDDE6\uDDEC\uDDF2\uDDF3\uDDF8\uDDFE\uDDFF])|\uD83C\uDDEE(?:\uD83C[\uDDE8-\uDDEA\uDDF1-\uDDF4\uDDF6-\uDDF9])|\uD83C\uDDEF(?:\uD83C[\uDDEA\uDDF2\uDDF4\uDDF5])|(?:\uD83C[\uDFC3\uDFC4\uDFCA]|\uD83D[\uDC6E\uDC71\uDC73\uDC77\uDC81\uDC82\uDC86\uDC87\uDE45-\uDE47\uDE4B\uDE4D\uDE4E\uDEA3\uDEB4-\uDEB6]|\uD83E[\uDD26\uDD37-\uDD39\uDD3D\uDD3E\uDDB8\uDDB9\uDDCD-\uDDCF\uDDD6-\uDDDD])(?:\uD83C[\uDFFB-\uDFFF])|(?:\u26F9|\uD83C[\uDFCB\uDFCC]|\uD83D\uDD75)(?:\uD83C[\uDFFB-\uDFFF])|(?:[\u261D\u270A-\u270D]|\uD83C[\uDF85\uDFC2\uDFC7]|\uD83D[\uDC42\uDC43\uDC46-\uDC50\uDC66\uDC67\uDC6B-\uDC6D\uDC70\uDC72\uDC74-\uDC76\uDC78\uDC7C\uDC83\uDC85\uDCAA\uDD74\uDD7A\uDD90\uDD95\uDD96\uDE4C\uDE4F\uDEC0\uDECC]|\uD83E[\uDD0F\uDD18-\uDD1C\uDD1E\uDD1F\uDD30-\uDD36\uDDB5\uDDB6\uDDBB\uDDD2-\uDDD5])(?:\uD83C[\uDFFB-\uDFFF])|(?:[\u231A\u231B\u23E9-\u23EC\u23F0\u23F3\u25FD\u25FE\u2614\u2615\u2648-\u2653\u267F\u2693\u26A1\u26AA\u26AB\u26BD\u26BE\u26C4\u26C5\u26CE\u26D4\u26EA\u26F2\u26F3\u26F5\u26FA\u26FD\u2705\u270A\u270B\u2728\u274C\u274E\u2753-\u2755\u2757\u2795-\u2797\u27B0\u27BF\u2B1B\u2B1C\u2B50\u2B55]|\uD83C[\uDC04\uDCCF\uDD8E\uDD91-\uDD9A\uDDE6-\uDDFF\uDE01\uDE1A\uDE2F\uDE32-\uDE36\uDE38-\uDE3A\uDE50\uDE51\uDF00-\uDF20\uDF2D-\uDF35\uDF37-\uDF7C\uDF7E-\uDF93\uDFA0-\uDFCA\uDFCF-\uDFD3\uDFE0-\uDFF0\uDFF4\uDFF8-\uDFFF]|\uD83D[\uDC00-\uDC3E\uDC40\uDC42-\uDCFC\uDCFF-\uDD3D\uDD4B-\uDD4E\uDD50-\uDD67\uDD7A\uDD95\uDD96\uDDA4\uDDFB-\uDE4F\uDE80-\uDEC5\uDECC\uDED0-\uDED2\uDED5\uDEEB\uDEEC\uDEF4-\uDEFA\uDFE0-\uDFEB]|\uD83E[\uDD0D-\uDD3A\uDD3C-\uDD45\uDD47-\uDD71\uDD73-\uDD76\uDD7A-\uDDA2\uDDA5-\uDDAA\uDDAE-\uDDCA\uDDCD-\uDDFF\uDE70-\uDE73\uDE78-\uDE7A\uDE80-\uDE82\uDE90-\uDE95])|(?:[#\*0-9\xA9\xAE\u203C\u2049\u2122\u2139\u2194-\u2199\u21A9\u21AA\u231A\u231B\u2328\u23CF\u23E9-\u23F3\u23F8-\u23FA\u24C2\u25AA\u25AB\u25B6\u25C0\u25FB-\u25FE\u2600-\u2604\u260E\u2611\u2614\u2615\u2618\u261D\u2620\u2622\u2623\u2626\u262A\u262E\u262F\u2638-\u263A\u2640\u2642\u2648-\u2653\u265F\u2660\u2663\u2665\u2666\u2668\u267B\u267E\u267F\u2692-\u2697\u2699\u269B\u269C\u26A0\u26A1\u26AA\u26AB\u26B0\u26B1\u26BD\u26BE\u26C4\u26C5\u26C8\u26CE\u26CF\u26D1\u26D3\u26D4\u26E9\u26EA\u26F0-\u26F5\u26F7-\u26FA\u26FD\u2702\u2705\u2708-\u270D\u270F\u2712\u2714\u2716\u271D\u2721\u2728\u2733\u2734\u2744\u2747\u274C\u274E\u2753-\u2755\u2757\u2763\u2764\u2795-\u2797\u27A1\u27B0\u27BF\u2934\u2935\u2B05-\u2B07\u2B1B\u2B1C\u2B50\u2B55\u3030\u303D\u3297\u3299]|\uD83C[\uDC04\uDCCF\uDD70\uDD71\uDD7E\uDD7F\uDD8E\uDD91-\uDD9A\uDDE6-\uDDFF\uDE01\uDE02\uDE1A\uDE2F\uDE32-\uDE3A\uDE50\uDE51\uDF00-\uDF21\uDF24-\uDF93\uDF96\uDF97\uDF99-\uDF9B\uDF9E-\uDFF0\uDFF3-\uDFF5\uDFF7-\uDFFF]|\uD83D[\uDC00-\uDCFD\uDCFF-\uDD3D\uDD49-\uDD4E\uDD50-\uDD67\uDD6F\uDD70\uDD73-\uDD7A\uDD87\uDD8A-\uDD8D\uDD90\uDD95\uDD96\uDDA4\uDDA5\uDDA8\uDDB1\uDDB2\uDDBC\uDDC2-\uDDC4\uDDD1-\uDDD3\uDDDC-\uDDDE\uDDE1\uDDE3\uDDE8\uDDEF\uDDF3\uDDFA-\uDE4F\uDE80-\uDEC5\uDECB-\uDED2\uDED5\uDEE0-\uDEE5\uDEE9\uDEEB\uDEEC\uDEF0\uDEF3-\uDEFA\uDFE0-\uDFEB]|\uD83E[\uDD0D-\uDD3A\uDD3C-\uDD45\uDD47-\uDD71\uDD73-\uDD76\uDD7A-\uDDA2\uDDA5-\uDDAA\uDDAE-\uDDCA\uDDCD-\uDDFF\uDE70-\uDE73\uDE78-\uDE7A\uDE80-\uDE82\uDE90-\uDE95])\uFE0F|(?:[\u261D\u26F9\u270A-\u270D]|\uD83C[\uDF85\uDFC2-\uDFC4\uDFC7\uDFCA-\uDFCC]|\uD83D[\uDC42\uDC43\uDC46-\uDC50\uDC66-\uDC78\uDC7C\uDC81-\uDC83\uDC85-\uDC87\uDC8F\uDC91\uDCAA\uDD74\uDD75\uDD7A\uDD90\uDD95\uDD96\uDE45-\uDE47\uDE4B-\uDE4F\uDEA3\uDEB4-\uDEB6\uDEC0\uDECC]|\uD83E[\uDD0F\uDD18-\uDD1F\uDD26\uDD30-\uDD39\uDD3C-\uDD3E\uDDB5\uDDB6\uDDB8\uDDB9\uDDBB\uDDCD-\uDDCF\uDDD1-\uDDDD])/g;
   };
 
-  var commonjsGlobal = typeof window !== 'undefined' ? window : typeof global !== 'undefined' ? global : typeof self !== 'undefined' ? self : {};
+  var commonjsGlobal = typeof globalThis !== 'undefined' ? globalThis : typeof window !== 'undefined' ? window : typeof global !== 'undefined' ? global : typeof self !== 'undefined' ? self : {};
 
   function getCjsExportFromNamespace (n) {
-  	return n && n.default || n;
+  	return n && n['default'] || n;
   }
 
   /**
@@ -911,174 +911,40 @@
 
   var lodash_toarray = toArray;
 
-  var interrobang = "⁉️";
-  var tm = "™️";
-  var information_source = "ℹ️";
-  var left_right_arrow = "↔️";
-  var arrow_up_down = "↕️";
-  var arrow_upper_left = "↖️";
-  var arrow_upper_right = "↗️";
-  var arrow_lower_right = "↘️";
-  var arrow_lower_left = "↙️";
-  var keyboard = "⌨";
-  var sunny = "☀️";
-  var cloud = "☁️";
-  var umbrella = "☔️";
-  var showman = "☃";
-  var comet = "☄";
-  var ballot_box_with_check = "☑️";
-  var coffee = "☕️";
-  var shamrock = "☘";
-  var skull_and_crossbones = "☠";
-  var radioactive_sign = "☢";
-  var biohazard_sign = "☣";
-  var orthodox_cross = "☦";
-  var wheel_of_dharma = "☸";
-  var white_frowning_face = "☹";
-  var aries = "♈️";
-  var taurus = "♉️";
-  var sagittarius = "♐️";
-  var capricorn = "♑️";
-  var aquarius = "♒️";
-  var pisces = "♓️";
-  var spades = "♠️";
-  var clubs = "♣️";
-  var hearts = "♥️";
-  var diamonds = "♦️";
-  var hotsprings = "♨️";
-  var hammer_and_pick = "⚒";
-  var anchor = "⚓️";
-  var crossed_swords = "⚔";
-  var scales = "⚖";
-  var alembic = "⚗";
-  var gear = "⚙";
-  var scissors = "✂️";
+  var umbrella_with_rain_drops = "☔";
+  var coffee = "☕";
+  var aries = "♈";
+  var taurus = "♉";
+  var sagittarius = "♐";
+  var capricorn = "♑";
+  var aquarius = "♒";
+  var pisces = "♓";
+  var anchor = "⚓";
   var white_check_mark = "✅";
-  var airplane = "✈️";
-  var email = "✉️";
-  var envelope = "✉️";
-  var black_nib = "✒️";
-  var heavy_check_mark = "✔️";
-  var heavy_multiplication_x = "✖️";
-  var star_of_david = "✡";
   var sparkles = "✨";
-  var eight_spoked_asterisk = "✳️";
-  var eight_pointed_black_star = "✴️";
-  var snowflake = "❄️";
-  var sparkle = "❇️";
   var question = "❓";
   var grey_question = "❔";
   var grey_exclamation = "❕";
-  var exclamation = "❗️";
-  var heavy_exclamation_mark = "❗️";
-  var heavy_heart_exclamation_mark_ornament = "❣";
-  var heart = "❤️";
+  var exclamation = "❗";
+  var heavy_exclamation_mark = "❗";
   var heavy_plus_sign = "➕";
   var heavy_minus_sign = "➖";
   var heavy_division_sign = "➗";
-  var arrow_heading_up = "⤴️";
-  var arrow_heading_down = "⤵️";
-  var wavy_dash = "〰️";
-  var congratulations = "㊗️";
-  var secret = "㊙️";
+  var hash = "#️⃣";
+  var keycap_star = "*️⃣";
+  var zero = "0️⃣";
+  var one = "1️⃣";
+  var two = "2️⃣";
+  var three = "3️⃣";
+  var four = "4️⃣";
+  var five = "5️⃣";
+  var six = "6️⃣";
+  var seven = "7️⃣";
+  var eight = "8️⃣";
+  var nine = "9️⃣";
   var copyright = "©️";
   var registered = "®️";
-  var bangbang = "‼️";
-  var leftwards_arrow_with_hook = "↩️";
-  var arrow_right_hook = "↪️";
-  var watch = "⌚️";
-  var hourglass = "⌛️";
-  var fast_forward = "⏩";
-  var rewind = "⏪";
-  var arrow_double_up = "⏫";
-  var arrow_double_down = "⏬";
-  var black_right_pointing_double_triangle_with_vertical_bar = "⏭";
-  var black_left_pointing_double_triangle_with_vertical_bar = "⏮";
-  var black_right_pointing_triangle_with_double_vertical_bar = "⏯";
-  var alarm_clock = "⏰";
-  var stopwatch = "⏱";
-  var timer_clock = "⏲";
-  var hourglass_flowing_sand = "⏳";
-  var double_vertical_bar = "⏸";
-  var black_square_for_stop = "⏹";
-  var black_circle_for_record = "⏺";
-  var m = "Ⓜ️";
-  var black_small_square = "▪️";
-  var white_small_square = "▫️";
-  var arrow_forward = "▶️";
-  var arrow_backward = "◀️";
-  var white_medium_square = "◻️";
-  var black_medium_square = "◼️";
-  var white_medium_small_square = "◽️";
-  var black_medium_small_square = "◾️";
-  var phone = "☎️";
-  var telephone = "☎️";
-  var point_up = "☝️";
-  var star_and_crescent = "☪";
-  var peace_symbol = "☮";
-  var yin_yang = "☯";
-  var relaxed = "☺️";
-  var gemini = "♊️";
-  var cancer = "♋️";
-  var leo = "♌️";
-  var virgo = "♍️";
-  var libra = "♎️";
-  var scorpius = "♏️";
-  var recycle = "♻️";
-  var wheelchair = "♿️";
-  var atom_symbol = "⚛";
-  var fleur_de_lis = "⚜";
-  var warning = "⚠️";
-  var zap = "⚡️";
-  var white_circle = "⚪️";
-  var black_circle = "⚫️";
-  var coffin = "⚰";
-  var funeral_urn = "⚱";
-  var soccer = "⚽️";
-  var baseball = "⚾️";
-  var snowman = "⛄️";
-  var partly_sunny = "⛅️";
-  var thunder_cloud_and_rain = "⛈";
-  var ophiuchus = "⛎";
-  var pick = "⛏";
-  var helmet_with_white_cross = "⛑";
-  var chains = "⛓";
-  var no_entry = "⛔️";
-  var shinto_shrine = "⛩";
-  var church = "⛪️";
-  var mountain = "⛰";
-  var umbrella_on_ground = "⛱";
-  var fountain = "⛲️";
-  var golf = "⛳️";
-  var ferry = "⛴";
-  var boat = "⛵️";
-  var sailboat = "⛵️";
-  var skier = "⛷";
-  var ice_skate = "⛸";
-  var person_with_ball = "⛹";
-  var tent = "⛺️";
-  var fuelpump = "⛽️";
-  var fist = "✊";
-  var hand = "✋";
-  var raised_hand = "✋";
-  var v = "✌️";
-  var writing_hand = "✍";
-  var pencil2 = "✏️";
-  var latin_cross = "✝";
-  var x = "❌";
-  var negative_squared_cross_mark = "❎";
-  var arrow_right = "➡️";
-  var curly_loop = "➰";
-  var loop = "➿";
-  var arrow_left = "⬅️";
-  var arrow_up = "⬆️";
-  var arrow_down = "⬇️";
-  var black_large_square = "⬛️";
-  var white_large_square = "⬜️";
-  var star = "⭐️";
-  var o = "⭕️";
-  var part_alternation_mark = "〽️";
-  var mahjong = "🀄️";
+  var mahjong = "🀄";
   var black_joker = "🃏";
   var a = "🅰️";
   var b = "🅱️";
@@ -1094,10 +960,21 @@
   var sos = "🆘";
   var up = "🆙";
   var vs = "🆚";
+  var cn = "🇨🇳";
+  var de = "🇩🇪";
+  var es = "🇪🇸";
+  var fr = "🇫🇷";
+  var gb = "🇬🇧";
+  var uk = "🇬🇧";
+  var it = "🇮🇹";
+  var jp = "🇯🇵";
+  var kr = "🇰🇷";
+  var ru = "🇷🇺";
+  var us = "🇺🇸";
   var koko = "🈁";
   var sa = "🈂️";
-  var u7121 = "🈚️";
-  var u6307 = "🈯️";
+  var u7121 = "🈚";
+  var u6307 = "🈯";
   var u7981 = "🈲";
   var u7a7a = "🈳";
   var u5408 = "🈴";
@@ -1143,21 +1020,21 @@
   var sun_with_face = "🌞";
   var star2 = "🌟";
   var stars = "🌠";
-  var thermometer = "🌡";
-  var mostly_sunny = "🌤";
-  var sun_small_cloud = "🌤";
-  var barely_sunny = "🌥";
-  var sun_behind_cloud = "🌥";
-  var partly_sunny_rain = "🌦";
-  var sun_behind_rain_cloud = "🌦";
-  var rain_cloud = "🌧";
-  var snow_cloud = "🌨";
-  var lightning = "🌩";
-  var lightning_cloud = "🌩";
-  var tornado = "🌪";
-  var tornado_cloud = "🌪";
-  var fog = "🌫";
-  var wind_blowing_face = "🌬";
+  var thermometer = "🌡️";
+  var mostly_sunny = "🌤️";
+  var sun_small_cloud = "🌤️";
+  var barely_sunny = "🌥️";
+  var sun_behind_cloud = "🌥️";
+  var partly_sunny_rain = "🌦️";
+  var sun_behind_rain_cloud = "🌦️";
+  var rain_cloud = "🌧️";
+  var snow_cloud = "🌨️";
+  var lightning = "🌩️";
+  var lightning_cloud = "🌩️";
+  var tornado = "🌪️";
+  var tornado_cloud = "🌪️";
+  var fog = "🌫️";
+  var wind_blowing_face = "🌬️";
   var hotdog = "🌭";
   var taco = "🌮";
   var burrito = "🌯";
@@ -1167,7 +1044,7 @@
   var deciduous_tree = "🌳";
   var palm_tree = "🌴";
   var cactus = "🌵";
-  var hot_pepper = "🌶";
+  var hot_pepper = "🌶️";
   var tulip = "🌷";
   var cherry_blossom = "🌸";
   var rose = "🌹";
@@ -1228,7 +1105,8 @@
   var cake = "🍰";
   var bento = "🍱";
   var stew = "🍲";
-  var egg = "🍳";
+  var fried_egg = "🍳";
+  var cooking = "🍳";
   var fork_and_knife = "🍴";
   var tea = "🍵";
   var sake = "🍶";
@@ -1238,7 +1116,7 @@
   var beer = "🍺";
   var beers = "🍻";
   var baby_bottle = "🍼";
-  var knife_fork_plate = "🍽";
+  var knife_fork_plate = "🍽️";
   var champagne = "🍾";
   var popcorn = "🍿";
   var ribbon = "🎀";
@@ -1261,13 +1139,13 @@
   var rice_scene = "🎑";
   var school_satchel = "🎒";
   var mortar_board = "🎓";
-  var medal = "🎖";
-  var reminder_ribbon = "🎗";
-  var studio_microphone = "🎙";
-  var level_slider = "🎚";
-  var control_knobs = "🎛";
-  var film_frames = "🎞";
-  var admission_tickets = "🎟";
+  var medal = "🎖️";
+  var reminder_ribbon = "🎗️";
+  var studio_microphone = "🎙️";
+  var level_slider = "🎚️";
+  var control_knobs = "🎛️";
+  var film_frames = "🎞️";
+  var admission_tickets = "🎟️";
   var carousel_horse = "🎠";
   var ferris_wheel = "🎡";
   var roller_coaster = "🎢";
@@ -1302,36 +1180,36 @@
   var basketball = "🏀";
   var checkered_flag = "🏁";
   var snowboarder = "🏂";
-  var runner = "🏃";
-  var running = "🏃";
-  var surfer = "🏄";
+  var runner = "🏃‍♂️";
+  var running = "🏃‍♂️";
+  var surfer = "🏄‍♂️";
   var sports_medal = "🏅";
   var trophy = "🏆";
   var horse_racing = "🏇";
   var football = "🏈";
   var rugby_football = "🏉";
-  var swimmer = "🏊";
-  var weight_lifter = "🏋";
-  var golfer = "🏌";
-  var racing_motorcycle = "🏍";
-  var racing_car = "🏎";
+  var swimmer = "🏊‍♂️";
+  var weight_lifter = "🏋️‍♂️";
+  var golfer = "🏌️‍♂️";
+  var racing_motorcycle = "🏍️";
+  var racing_car = "🏎️";
   var cricket_bat_and_ball = "🏏";
   var volleyball = "🏐";
   var field_hockey_stick_and_ball = "🏑";
   var ice_hockey_stick_and_puck = "🏒";
   var table_tennis_paddle_and_ball = "🏓";
-  var snow_capped_mountain = "🏔";
-  var camping = "🏕";
-  var beach_with_umbrella = "🏖";
-  var building_construction = "🏗";
-  var house_buildings = "🏘";
-  var cityscape = "🏙";
-  var derelict_house_building = "🏚";
-  var classical_building = "🏛";
-  var desert = "🏜";
-  var desert_island = "🏝";
-  var national_park = "🏞";
-  var stadium = "🏟";
+  var snow_capped_mountain = "🏔️";
+  var camping = "🏕️";
+  var beach_with_umbrella = "🏖️";
+  var building_construction = "🏗️";
+  var house_buildings = "🏘️";
+  var cityscape = "🏙️";
+  var derelict_house_building = "🏚️";
+  var classical_building = "🏛️";
+  var desert = "🏜️";
+  var desert_island = "🏝️";
+  var national_park = "🏞️";
+  var stadium = "🏟️";
   var house = "🏠";
   var house_with_garden = "🏡";
   var office = "🏢";
@@ -1350,10 +1228,10 @@
   var lantern = "🏮";
   var japanese_castle = "🏯";
   var european_castle = "🏰";
-  var waving_white_flag = "🏳";
+  var waving_white_flag = "🏳️";
   var waving_black_flag = "🏴";
-  var rosette = "🏵";
-  var label = "🏷";
+  var rosette = "🏵️";
+  var label = "🏷️";
   var badminton_racquet_and_shuttlecock = "🏸";
   var bow_and_arrow = "🏹";
   var amphora = "🏺";
@@ -1423,9 +1301,9 @@
   var pig_nose = "🐽";
   var feet = "🐾";
   var paw_prints = "🐾";
-  var chipmunk = "🐿";
+  var chipmunk = "🐿️";
   var eyes = "👀";
-  var eye = "👁";
+  var eye = "👁️";
   var ear = "👂";
   var nose = "👃";
   var lips = "👄";
@@ -1467,23 +1345,25 @@
   var busts_in_silhouette = "👥";
   var boy = "👦";
   var girl = "👧";
-  var man = "👨";
-  var woman = "👩";
   var family = "👨‍👩‍👦";
+  var man = "👨";
+  var couple_with_heart = "👩‍❤️‍👨";
+  var couplekiss = "👩‍❤️‍💋‍👨";
+  var woman = "👩";
   var couple = "👫";
   var man_and_woman_holding_hands = "👫";
   var two_men_holding_hands = "👬";
   var two_women_holding_hands = "👭";
-  var cop = "👮";
-  var dancers = "👯";
+  var cop = "👮‍♂️";
+  var dancers = "👯‍♀️";
   var bride_with_veil = "👰";
-  var person_with_blond_hair = "👱";
+  var person_with_blond_hair = "👱‍♂️";
   var man_with_gua_pi_mao = "👲";
-  var man_with_turban = "👳";
+  var man_with_turban = "👳‍♂️";
   var older_man = "👴";
   var older_woman = "👵";
   var baby = "👶";
-  var construction_worker = "👷";
+  var construction_worker = "👷‍♂️";
   var princess = "👸";
   var japanese_ogre = "👹";
   var japanese_goblin = "👺";
@@ -1493,13 +1373,13 @@
   var space_invader = "👾";
   var imp = "👿";
   var skull = "💀";
-  var information_desk_person = "💁";
-  var guardsman = "💂";
+  var information_desk_person = "💁‍♀️";
+  var guardsman = "💂‍♂️";
   var dancer = "💃";
   var lipstick = "💄";
   var nail_care = "💅";
-  var massage = "💆";
-  var haircut = "💇";
+  var massage = "💆‍♀️";
+  var haircut = "💇‍♀️";
   var barber = "💈";
   var syringe = "💉";
   var pill = "💊";
@@ -1507,9 +1387,7 @@
   var love_letter = "💌";
   var ring = "💍";
   var gem = "💎";
-  var couplekiss = "💏";
   var bouquet = "💐";
-  var couple_with_heart = "💑";
   var wedding = "💒";
   var heartbeat = "💓";
   var broken_heart = "💔";
@@ -1593,7 +1471,7 @@
   var telephone_receiver = "📞";
   var pager = "📟";
   var fax = "📠";
-  var satellite = "🛰";
+  var satellite_antenna = "📡";
   var loudspeaker = "📢";
   var mega = "📣";
   var outbox_tray = "📤";
@@ -1619,7 +1497,7 @@
   var tv = "📺";
   var radio = "📻";
   var vhs = "📼";
-  var film_projector = "📽";
+  var film_projector = "📽️";
   var prayer_beads = "📿";
   var twisted_rightwards_arrows = "🔀";
   var repeat = "🔁";
@@ -1683,8 +1561,8 @@
   var small_red_triangle_down = "🔻";
   var arrow_up_small = "🔼";
   var arrow_down_small = "🔽";
-  var om_symbol = "🕉";
-  var dove_of_peace = "🕊";
+  var om_symbol = "🕉️";
+  var dove_of_peace = "🕊️";
   var kaaba = "🕋";
   var mosque = "🕌";
   var synagogue = "🕍";
@@ -1713,43 +1591,45 @@
   var clock1030 = "🕥";
   var clock1130 = "🕦";
   var clock1230 = "🕧";
-  var candle = "🕯";
-  var mantelpiece_clock = "🕰";
-  var hole = "🕳";
-  var man_in_business_suit_levitating = "🕴";
-  var sleuth_or_spy = "🕵";
-  var dark_sunglasses = "🕶";
-  var spider = "🕷";
-  var spider_web = "🕸";
-  var joystick = "🕹";
-  var linked_paperclips = "🖇";
-  var lower_left_ballpoint_pen = "🖊";
-  var lower_left_fountain_pen = "🖋";
-  var lower_left_paintbrush = "🖌";
-  var lower_left_crayon = "🖍";
-  var raised_hand_with_fingers_splayed = "🖐";
+  var candle = "🕯️";
+  var mantelpiece_clock = "🕰️";
+  var hole = "🕳️";
+  var man_in_business_suit_levitating = "🕴️";
+  var sleuth_or_spy = "🕵️‍♂️";
+  var dark_sunglasses = "🕶️";
+  var spider = "🕷️";
+  var spider_web = "🕸️";
+  var joystick = "🕹️";
+  var man_dancing = "🕺";
+  var linked_paperclips = "🖇️";
+  var lower_left_ballpoint_pen = "🖊️";
+  var lower_left_fountain_pen = "🖋️";
+  var lower_left_paintbrush = "🖌️";
+  var lower_left_crayon = "🖍️";
+  var raised_hand_with_fingers_splayed = "🖐️";
   var middle_finger = "🖕";
   var reversed_hand_with_middle_finger_extended = "🖕";
-  var desktop_computer = "🖥";
-  var printer = "🖨";
-  var three_button_mouse = "🖱";
-  var trackball = "🖲";
-  var frame_with_picture = "🖼";
-  var card_index_dividers = "🗂";
-  var card_file_box = "🗃";
-  var file_cabinet = "🗄";
-  var wastebasket = "🗑";
-  var spiral_note_pad = "🗒";
-  var spiral_calendar_pad = "🗓";
-  var compression = "🗜";
-  var old_key = "🗝";
-  var rolled_up_newspaper = "🗞";
-  var dagger_knife = "🗡";
-  var speaking_head_in_silhouette = "🗣";
-  var left_speech_bubble = "🗨";
-  var right_anger_bubble = "🗯";
-  var ballot_box_with_ballot = "🗳";
-  var world_map = "🗺";
+  var black_heart = "🖤";
+  var desktop_computer = "🖥️";
+  var printer = "🖨️";
+  var three_button_mouse = "🖱️";
+  var trackball = "🖲️";
+  var frame_with_picture = "🖼️";
+  var card_index_dividers = "🗂️";
+  var card_file_box = "🗃️";
+  var file_cabinet = "🗄️";
+  var wastebasket = "🗑️";
+  var spiral_note_pad = "🗒️";
+  var spiral_calendar_pad = "🗓️";
+  var compression = "🗜️";
+  var old_key = "🗝️";
+  var rolled_up_newspaper = "🗞️";
+  var dagger_knife = "🗡️";
+  var speaking_head_in_silhouette = "🗣️";
+  var left_speech_bubble = "🗨️";
+  var right_anger_bubble = "🗯️";
+  var ballot_box_with_ballot = "🗳️";
+  var world_map = "🗺️";
   var mount_fuji = "🗻";
   var tokyo_tower = "🗼";
   var statue_of_liberty = "🗽";
@@ -1825,16 +1705,16 @@
   var slightly_smiling_face = "🙂";
   var upside_down_face = "🙃";
   var face_with_rolling_eyes = "🙄";
-  var no_good = "🙅";
-  var ok_woman = "🙆";
-  var bow = "🙇";
+  var no_good = "🙅‍♀️";
+  var ok_woman = "🙆‍♀️";
+  var bow = "🙇‍♂️";
   var see_no_evil = "🙈";
   var hear_no_evil = "🙉";
   var speak_no_evil = "🙊";
-  var raising_hand = "🙋";
+  var raising_hand = "🙋‍♀️";
   var raised_hands = "🙌";
-  var person_frowning = "🙍";
-  var person_with_pouting_face = "🙎";
+  var person_frowning = "🙍‍♀️";
+  var person_with_pouting_face = "🙎‍♀️";
   var pray = "🙏";
   var rocket = "🚀";
   var helicopter = "🚁";
@@ -1872,7 +1752,7 @@
   var mountain_cableway = "🚠";
   var aerial_tramway = "🚡";
   var ship = "🚢";
-  var rowboat = "🚣";
+  var rowboat = "🚣‍♂️";
   var speedboat = "🚤";
   var traffic_light = "🚥";
   var vertical_traffic_light = "🚦";
@@ -1888,9 +1768,9 @@
   var potable_water = "🚰";
   var bike = "🚲";
   var no_bicycles = "🚳";
-  var bicyclist = "🚴";
-  var mountain_bicyclist = "🚵";
-  var walking = "🚶";
+  var bicyclist = "🚴‍♂️";
+  var mountain_bicyclist = "🚵‍♂️";
+  var walking = "🚶‍♂️";
   var no_pedestrians = "🚷";
   var children_crossing = "🚸";
   var mens = "🚹";
@@ -1906,22 +1786,30 @@
   var customs = "🛃";
   var baggage_claim = "🛄";
   var left_luggage = "🛅";
-  var couch_and_lamp = "🛋";
+  var couch_and_lamp = "🛋️";
   var sleeping_accommodation = "🛌";
-  var shopping_bags = "🛍";
-  var bellhop_bell = "🛎";
-  var bed = "🛏";
+  var shopping_bags = "🛍️";
+  var bellhop_bell = "🛎️";
+  var bed = "🛏️";
   var place_of_worship = "🛐";
-  var hammer_and_wrench = "🛠";
-  var shield = "🛡";
-  var oil_drum = "🛢";
-  var motorway = "🛣";
-  var railway_track = "🛤";
-  var motor_boat = "🛥";
-  var small_airplane = "🛩";
+  var octagonal_sign = "🛑";
+  var shopping_trolley = "🛒";
+  var hammer_and_wrench = "🛠️";
+  var shield = "🛡️";
+  var oil_drum = "🛢️";
+  var motorway = "🛣️";
+  var railway_track = "🛤️";
+  var motor_boat = "🛥️";
+  var small_airplane = "🛩️";
   var airplane_departure = "🛫";
   var airplane_arriving = "🛬";
-  var passenger_ship = "🛳";
+  var satellite = "🛰️";
+  var passenger_ship = "🛳️";
+  var scooter = "🛴";
+  var motor_scooter = "🛵";
+  var canoe = "🛶";
+  var sled = "🛷";
+  var flying_saucer = "🛸";
   var zipper_mouth_face = "🤐";
   var money_mouth_face = "🤑";
   var face_with_thermometer = "🤒";
@@ -1932,205 +1820,344 @@
   var hugging_face = "🤗";
   var the_horns = "🤘";
   var sign_of_the_horns = "🤘";
+  var call_me_hand = "🤙";
+  var raised_back_of_hand = "🤚";
+  var handshake = "🤝";
+  var crossed_fingers = "🤞";
+  var hand_with_index_and_middle_fingers_crossed = "🤞";
+  var i_love_you_hand_sign = "🤟";
+  var face_with_cowboy_hat = "🤠";
+  var clown_face = "🤡";
+  var nauseated_face = "🤢";
+  var rolling_on_the_floor_laughing = "🤣";
+  var drooling_face = "🤤";
+  var lying_face = "🤥";
+  var face_palm = "🤦";
+  var sneezing_face = "🤧";
+  var face_with_raised_eyebrow = "🤨";
+  var face_with_one_eyebrow_raised = "🤨";
+  var grinning_face_with_star_eyes = "🤩";
+  var zany_face = "🤪";
+  var grinning_face_with_one_large_and_one_small_eye = "🤪";
+  var shushing_face = "🤫";
+  var face_with_finger_covering_closed_lips = "🤫";
+  var face_with_symbols_on_mouth = "🤬";
+  var serious_face_with_symbols_covering_mouth = "🤬";
+  var face_with_hand_over_mouth = "🤭";
+  var smiling_face_with_smiling_eyes_and_hand_covering_mouth = "🤭";
+  var face_vomiting = "🤮";
+  var face_with_open_mouth_vomiting = "🤮";
+  var exploding_head = "🤯";
+  var shocked_face_with_exploding_head = "🤯";
+  var pregnant_woman = "🤰";
+  var palms_up_together = "🤲";
+  var selfie = "🤳";
+  var prince = "🤴";
+  var man_in_tuxedo = "🤵";
+  var mrs_claus = "🤶";
+  var mother_christmas = "🤶";
+  var shrug = "🤷";
+  var person_doing_cartwheel = "🤸";
+  var juggling = "🤹";
+  var fencer = "🤺";
+  var wrestlers = "🤼";
+  var water_polo = "🤽";
+  var handball = "🤾";
+  var wilted_flower = "🥀";
+  var drum_with_drumsticks = "🥁";
+  var clinking_glasses = "🥂";
+  var tumbler_glass = "🥃";
+  var spoon = "🥄";
+  var goal_net = "🥅";
+  var first_place_medal = "🥇";
+  var second_place_medal = "🥈";
+  var third_place_medal = "🥉";
+  var boxing_glove = "🥊";
+  var martial_arts_uniform = "🥋";
+  var curling_stone = "🥌";
+  var croissant = "🥐";
+  var avocado = "🥑";
+  var cucumber = "🥒";
+  var bacon = "🥓";
+  var potato = "🥔";
+  var carrot = "🥕";
+  var baguette_bread = "🥖";
+  var green_salad = "🥗";
+  var shallow_pan_of_food = "🥘";
+  var stuffed_flatbread = "🥙";
+  var egg = "🥚";
+  var glass_of_milk = "🥛";
+  var peanuts = "🥜";
+  var kiwifruit = "🥝";
+  var pancakes = "🥞";
+  var dumpling = "🥟";
+  var fortune_cookie = "🥠";
+  var takeout_box = "🥡";
+  var chopsticks = "🥢";
+  var bowl_with_spoon = "🥣";
+  var cup_with_straw = "🥤";
+  var coconut = "🥥";
+  var broccoli = "🥦";
+  var pie = "🥧";
+  var pretzel = "🥨";
+  var cut_of_meat = "🥩";
+  var sandwich = "🥪";
+  var canned_food = "🥫";
   var crab = "🦀";
   var lion_face = "🦁";
   var scorpion = "🦂";
   var turkey = "🦃";
   var unicorn_face = "🦄";
+  var eagle = "🦅";
+  var duck = "🦆";
+  var bat = "🦇";
+  var shark = "🦈";
+  var owl = "🦉";
+  var fox_face = "🦊";
+  var butterfly = "🦋";
+  var deer = "🦌";
+  var gorilla = "🦍";
+  var lizard = "🦎";
+  var rhinoceros = "🦏";
+  var shrimp = "🦐";
+  var squid = "🦑";
+  var giraffe_face = "🦒";
+  var zebra_face = "🦓";
+  var hedgehog = "🦔";
+  var sauropod = "🦕";
+  var cricket = "🦗";
   var cheese_wedge = "🧀";
-  var hash = "#️⃣";
-  var keycap_star = "*⃣";
-  var zero = "0️⃣";
-  var one = "1️⃣";
-  var two = "2️⃣";
-  var three = "3️⃣";
-  var four = "4️⃣";
-  var five = "5️⃣";
-  var six = "6️⃣";
-  var seven = "7️⃣";
-  var eight = "8️⃣";
-  var nine = "9️⃣";
-  var cn = "🇨🇳";
-  var de = "🇩🇪";
-  var es = "🇪🇸";
-  var fr = "🇫🇷";
-  var gb = "🇬🇧";
-  var uk = "🇬🇧";
-  var it = "🇮🇹";
-  var jp = "🇯🇵";
-  var kr = "🇰🇷";
-  var ru = "🇷🇺";
-  var us = "🇺🇸";
+  var face_with_monocle = "🧐";
+  var adult = "🧑";
+  var child = "🧒";
+  var older_adult = "🧓";
+  var bearded_person = "🧔";
+  var person_with_headscarf = "🧕";
+  var woman_in_steamy_room = "🧖‍♀️";
+  var man_in_steamy_room = "🧖‍♂️";
+  var person_in_steamy_room = "🧖‍♂️";
+  var woman_climbing = "🧗‍♀️";
+  var person_climbing = "🧗‍♀️";
+  var man_climbing = "🧗‍♂️";
+  var woman_in_lotus_position = "🧘‍♀️";
+  var person_in_lotus_position = "🧘‍♀️";
+  var man_in_lotus_position = "🧘‍♂️";
+  var female_mage = "🧙‍♀️";
+  var mage = "🧙‍♀️";
+  var male_mage = "🧙‍♂️";
+  var female_fairy = "🧚‍♀️";
+  var fairy = "🧚‍♀️";
+  var male_fairy = "🧚‍♂️";
+  var female_vampire = "🧛‍♀️";
+  var vampire = "🧛‍♀️";
+  var male_vampire = "🧛‍♂️";
+  var mermaid = "🧜‍♀️";
+  var merman = "🧜‍♂️";
+  var merperson = "🧜‍♂️";
+  var female_elf = "🧝‍♀️";
+  var male_elf = "🧝‍♂️";
+  var elf = "🧝‍♂️";
+  var female_genie = "🧞‍♀️";
+  var male_genie = "🧞‍♂️";
+  var genie = "🧞‍♂️";
+  var female_zombie = "🧟‍♀️";
+  var male_zombie = "🧟‍♂️";
+  var zombie = "🧟‍♂️";
+  var brain = "🧠";
+  var orange_heart = "🧡";
+  var billed_cap = "🧢";
+  var scarf = "🧣";
+  var gloves = "🧤";
+  var coat = "🧥";
+  var socks = "🧦";
+  var bangbang = "‼️";
+  var interrobang = "⁉️";
+  var tm = "™️";
+  var information_source = "ℹ️";
+  var left_right_arrow = "↔️";
+  var arrow_up_down = "↕️";
+  var arrow_upper_left = "↖️";
+  var arrow_upper_right = "↗️";
+  var arrow_lower_right = "↘️";
+  var arrow_lower_left = "↙️";
+  var leftwards_arrow_with_hook = "↩️";
+  var arrow_right_hook = "↪️";
+  var watch = "⌚";
+  var hourglass = "⌛";
+  var keyboard = "⌨️";
+  var eject = "⏏️";
+  var fast_forward = "⏩";
+  var rewind = "⏪";
+  var arrow_double_up = "⏫";
+  var arrow_double_down = "⏬";
+  var black_right_pointing_double_triangle_with_vertical_bar = "⏭️";
+  var black_left_pointing_double_triangle_with_vertical_bar = "⏮️";
+  var black_right_pointing_triangle_with_double_vertical_bar = "⏯️";
+  var alarm_clock = "⏰";
+  var stopwatch = "⏱️";
+  var timer_clock = "⏲️";
+  var hourglass_flowing_sand = "⏳";
+  var double_vertical_bar = "⏸️";
+  var black_square_for_stop = "⏹️";
+  var black_circle_for_record = "⏺️";
+  var m = "Ⓜ️";
+  var black_small_square = "▪️";
+  var white_small_square = "▫️";
+  var arrow_forward = "▶️";
+  var arrow_backward = "◀️";
+  var white_medium_square = "◻️";
+  var black_medium_square = "◼️";
+  var white_medium_small_square = "◽";
+  var black_medium_small_square = "◾";
+  var sunny = "☀️";
+  var cloud = "☁️";
+  var umbrella = "☂️";
+  var snowman = "☃️";
+  var comet = "☄️";
+  var phone = "☎️";
+  var telephone = "☎️";
+  var ballot_box_with_check = "☑️";
+  var shamrock = "☘️";
+  var point_up = "☝️";
+  var skull_and_crossbones = "☠️";
+  var radioactive_sign = "☢️";
+  var biohazard_sign = "☣️";
+  var orthodox_cross = "☦️";
+  var star_and_crescent = "☪️";
+  var peace_symbol = "☮️";
+  var yin_yang = "☯️";
+  var wheel_of_dharma = "☸️";
+  var white_frowning_face = "☹️";
+  var relaxed = "☺️";
+  var female_sign = "♀️";
+  var male_sign = "♂️";
+  var gemini = "♊";
+  var cancer = "♋";
+  var leo = "♌";
+  var virgo = "♍";
+  var libra = "♎";
+  var scorpius = "♏";
+  var spades = "♠️";
+  var clubs = "♣️";
+  var hearts = "♥️";
+  var diamonds = "♦️";
+  var hotsprings = "♨️";
+  var recycle = "♻️";
+  var wheelchair = "♿";
+  var hammer_and_pick = "⚒️";
+  var crossed_swords = "⚔️";
+  var medical_symbol = "⚕️";
+  var staff_of_aesculapius = "⚕️";
+  var scales = "⚖️";
+  var alembic = "⚗️";
+  var gear = "⚙️";
+  var atom_symbol = "⚛️";
+  var fleur_de_lis = "⚜️";
+  var warning = "⚠️";
+  var zap = "⚡";
+  var white_circle = "⚪";
+  var black_circle = "⚫";
+  var coffin = "⚰️";
+  var funeral_urn = "⚱️";
+  var soccer = "⚽";
+  var baseball = "⚾";
+  var snowman_without_snow = "⛄";
+  var partly_sunny = "⛅";
+  var thunder_cloud_and_rain = "⛈️";
+  var ophiuchus = "⛎";
+  var pick = "⛏️";
+  var helmet_with_white_cross = "⛑️";
+  var chains = "⛓️";
+  var no_entry = "⛔";
+  var shinto_shrine = "⛩️";
+  var church = "⛪";
+  var mountain = "⛰️";
+  var umbrella_on_ground = "⛱️";
+  var fountain = "⛲";
+  var golf = "⛳";
+  var ferry = "⛴️";
+  var boat = "⛵";
+  var sailboat = "⛵";
+  var skier = "⛷️";
+  var ice_skate = "⛸️";
+  var person_with_ball = "⛹️‍♂️";
+  var tent = "⛺";
+  var fuelpump = "⛽";
+  var scissors = "✂️";
+  var airplane = "✈️";
+  var email = "✉️";
+  var envelope = "✉️";
+  var fist = "✊";
+  var hand = "✋";
+  var raised_hand = "✋";
+  var v = "✌️";
+  var writing_hand = "✍️";
+  var pencil2 = "✏️";
+  var black_nib = "✒️";
+  var heavy_check_mark = "✔️";
+  var heavy_multiplication_x = "✖️";
+  var latin_cross = "✝️";
+  var star_of_david = "✡️";
+  var eight_spoked_asterisk = "✳️";
+  var eight_pointed_black_star = "✴️";
+  var snowflake = "❄️";
+  var sparkle = "❇️";
+  var x = "❌";
+  var negative_squared_cross_mark = "❎";
+  var heavy_heart_exclamation_mark_ornament = "❣️";
+  var heart = "❤️";
+  var arrow_right = "➡️";
+  var curly_loop = "➰";
+  var loop = "➿";
+  var arrow_heading_up = "⤴️";
+  var arrow_heading_down = "⤵️";
+  var arrow_left = "⬅️";
+  var arrow_up = "⬆️";
+  var arrow_down = "⬇️";
+  var black_large_square = "⬛";
+  var white_large_square = "⬜";
+  var star = "⭐";
+  var o = "⭕";
+  var wavy_dash = "〰️";
+  var part_alternation_mark = "〽️";
+  var congratulations = "㊗️";
+  var secret = "㊙️";
   var emoji = {
   	"100": "💯",
   	"1234": "🔢",
-  	interrobang: interrobang,
-  	tm: tm,
-  	information_source: information_source,
-  	left_right_arrow: left_right_arrow,
-  	arrow_up_down: arrow_up_down,
-  	arrow_upper_left: arrow_upper_left,
-  	arrow_upper_right: arrow_upper_right,
-  	arrow_lower_right: arrow_lower_right,
-  	arrow_lower_left: arrow_lower_left,
-  	keyboard: keyboard,
-  	sunny: sunny,
-  	cloud: cloud,
-  	umbrella: umbrella,
-  	showman: showman,
-  	comet: comet,
-  	ballot_box_with_check: ballot_box_with_check,
+  	umbrella_with_rain_drops: umbrella_with_rain_drops,
   	coffee: coffee,
-  	shamrock: shamrock,
-  	skull_and_crossbones: skull_and_crossbones,
-  	radioactive_sign: radioactive_sign,
-  	biohazard_sign: biohazard_sign,
-  	orthodox_cross: orthodox_cross,
-  	wheel_of_dharma: wheel_of_dharma,
-  	white_frowning_face: white_frowning_face,
   	aries: aries,
   	taurus: taurus,
   	sagittarius: sagittarius,
   	capricorn: capricorn,
   	aquarius: aquarius,
   	pisces: pisces,
-  	spades: spades,
-  	clubs: clubs,
-  	hearts: hearts,
-  	diamonds: diamonds,
-  	hotsprings: hotsprings,
-  	hammer_and_pick: hammer_and_pick,
   	anchor: anchor,
-  	crossed_swords: crossed_swords,
-  	scales: scales,
-  	alembic: alembic,
-  	gear: gear,
-  	scissors: scissors,
   	white_check_mark: white_check_mark,
-  	airplane: airplane,
-  	email: email,
-  	envelope: envelope,
-  	black_nib: black_nib,
-  	heavy_check_mark: heavy_check_mark,
-  	heavy_multiplication_x: heavy_multiplication_x,
-  	star_of_david: star_of_david,
   	sparkles: sparkles,
-  	eight_spoked_asterisk: eight_spoked_asterisk,
-  	eight_pointed_black_star: eight_pointed_black_star,
-  	snowflake: snowflake,
-  	sparkle: sparkle,
   	question: question,
   	grey_question: grey_question,
   	grey_exclamation: grey_exclamation,
   	exclamation: exclamation,
   	heavy_exclamation_mark: heavy_exclamation_mark,
-  	heavy_heart_exclamation_mark_ornament: heavy_heart_exclamation_mark_ornament,
-  	heart: heart,
   	heavy_plus_sign: heavy_plus_sign,
   	heavy_minus_sign: heavy_minus_sign,
   	heavy_division_sign: heavy_division_sign,
-  	arrow_heading_up: arrow_heading_up,
-  	arrow_heading_down: arrow_heading_down,
-  	wavy_dash: wavy_dash,
-  	congratulations: congratulations,
-  	secret: secret,
+  	hash: hash,
+  	keycap_star: keycap_star,
+  	zero: zero,
+  	one: one,
+  	two: two,
+  	three: three,
+  	four: four,
+  	five: five,
+  	six: six,
+  	seven: seven,
+  	eight: eight,
+  	nine: nine,
   	copyright: copyright,
   	registered: registered,
-  	bangbang: bangbang,
-  	leftwards_arrow_with_hook: leftwards_arrow_with_hook,
-  	arrow_right_hook: arrow_right_hook,
-  	watch: watch,
-  	hourglass: hourglass,
-  	fast_forward: fast_forward,
-  	rewind: rewind,
-  	arrow_double_up: arrow_double_up,
-  	arrow_double_down: arrow_double_down,
-  	black_right_pointing_double_triangle_with_vertical_bar: black_right_pointing_double_triangle_with_vertical_bar,
-  	black_left_pointing_double_triangle_with_vertical_bar: black_left_pointing_double_triangle_with_vertical_bar,
-  	black_right_pointing_triangle_with_double_vertical_bar: black_right_pointing_triangle_with_double_vertical_bar,
-  	alarm_clock: alarm_clock,
-  	stopwatch: stopwatch,
-  	timer_clock: timer_clock,
-  	hourglass_flowing_sand: hourglass_flowing_sand,
-  	double_vertical_bar: double_vertical_bar,
-  	black_square_for_stop: black_square_for_stop,
-  	black_circle_for_record: black_circle_for_record,
-  	m: m,
-  	black_small_square: black_small_square,
-  	white_small_square: white_small_square,
-  	arrow_forward: arrow_forward,
-  	arrow_backward: arrow_backward,
-  	white_medium_square: white_medium_square,
-  	black_medium_square: black_medium_square,
-  	white_medium_small_square: white_medium_small_square,
-  	black_medium_small_square: black_medium_small_square,
-  	phone: phone,
-  	telephone: telephone,
-  	point_up: point_up,
-  	star_and_crescent: star_and_crescent,
-  	peace_symbol: peace_symbol,
-  	yin_yang: yin_yang,
-  	relaxed: relaxed,
-  	gemini: gemini,
-  	cancer: cancer,
-  	leo: leo,
-  	virgo: virgo,
-  	libra: libra,
-  	scorpius: scorpius,
-  	recycle: recycle,
-  	wheelchair: wheelchair,
-  	atom_symbol: atom_symbol,
-  	fleur_de_lis: fleur_de_lis,
-  	warning: warning,
-  	zap: zap,
-  	white_circle: white_circle,
-  	black_circle: black_circle,
-  	coffin: coffin,
-  	funeral_urn: funeral_urn,
-  	soccer: soccer,
-  	baseball: baseball,
-  	snowman: snowman,
-  	partly_sunny: partly_sunny,
-  	thunder_cloud_and_rain: thunder_cloud_and_rain,
-  	ophiuchus: ophiuchus,
-  	pick: pick,
-  	helmet_with_white_cross: helmet_with_white_cross,
-  	chains: chains,
-  	no_entry: no_entry,
-  	shinto_shrine: shinto_shrine,
-  	church: church,
-  	mountain: mountain,
-  	umbrella_on_ground: umbrella_on_ground,
-  	fountain: fountain,
-  	golf: golf,
-  	ferry: ferry,
-  	boat: boat,
-  	sailboat: sailboat,
-  	skier: skier,
-  	ice_skate: ice_skate,
-  	person_with_ball: person_with_ball,
-  	tent: tent,
-  	fuelpump: fuelpump,
-  	fist: fist,
-  	hand: hand,
-  	raised_hand: raised_hand,
-  	v: v,
-  	writing_hand: writing_hand,
-  	pencil2: pencil2,
-  	latin_cross: latin_cross,
-  	x: x,
-  	negative_squared_cross_mark: negative_squared_cross_mark,
-  	arrow_right: arrow_right,
-  	curly_loop: curly_loop,
-  	loop: loop,
-  	arrow_left: arrow_left,
-  	arrow_up: arrow_up,
-  	arrow_down: arrow_down,
-  	black_large_square: black_large_square,
-  	white_large_square: white_large_square,
-  	star: star,
-  	o: o,
-  	part_alternation_mark: part_alternation_mark,
   	mahjong: mahjong,
   	black_joker: black_joker,
   	a: a,
@@ -2148,6 +2175,275 @@
   	sos: sos,
   	up: up,
   	vs: vs,
+  	"flag-ac": "🇦🇨",
+  	"flag-ad": "🇦🇩",
+  	"flag-ae": "🇦🇪",
+  	"flag-af": "🇦🇫",
+  	"flag-ag": "🇦🇬",
+  	"flag-ai": "🇦🇮",
+  	"flag-al": "🇦🇱",
+  	"flag-am": "🇦🇲",
+  	"flag-ao": "🇦🇴",
+  	"flag-aq": "🇦🇶",
+  	"flag-ar": "🇦🇷",
+  	"flag-as": "🇦🇸",
+  	"flag-at": "🇦🇹",
+  	"flag-au": "🇦🇺",
+  	"flag-aw": "🇦🇼",
+  	"flag-ax": "🇦🇽",
+  	"flag-az": "🇦🇿",
+  	"flag-ba": "🇧🇦",
+  	"flag-bb": "🇧🇧",
+  	"flag-bd": "🇧🇩",
+  	"flag-be": "🇧🇪",
+  	"flag-bf": "🇧🇫",
+  	"flag-bg": "🇧🇬",
+  	"flag-bh": "🇧🇭",
+  	"flag-bi": "🇧🇮",
+  	"flag-bj": "🇧🇯",
+  	"flag-bl": "🇧🇱",
+  	"flag-bm": "🇧🇲",
+  	"flag-bn": "🇧🇳",
+  	"flag-bo": "🇧🇴",
+  	"flag-bq": "🇧🇶",
+  	"flag-br": "🇧🇷",
+  	"flag-bs": "🇧🇸",
+  	"flag-bt": "🇧🇹",
+  	"flag-bv": "🇧🇻",
+  	"flag-bw": "🇧🇼",
+  	"flag-by": "🇧🇾",
+  	"flag-bz": "🇧🇿",
+  	"flag-ca": "🇨🇦",
+  	"flag-cc": "🇨🇨",
+  	"flag-cd": "🇨🇩",
+  	"flag-cf": "🇨🇫",
+  	"flag-cg": "🇨🇬",
+  	"flag-ch": "🇨🇭",
+  	"flag-ci": "🇨🇮",
+  	"flag-ck": "🇨🇰",
+  	"flag-cl": "🇨🇱",
+  	"flag-cm": "🇨🇲",
+  	cn: cn,
+  	"flag-cn": "🇨🇳",
+  	"flag-co": "🇨🇴",
+  	"flag-cp": "🇨🇵",
+  	"flag-cr": "🇨🇷",
+  	"flag-cu": "🇨🇺",
+  	"flag-cv": "🇨🇻",
+  	"flag-cw": "🇨🇼",
+  	"flag-cx": "🇨🇽",
+  	"flag-cy": "🇨🇾",
+  	"flag-cz": "🇨🇿",
+  	de: de,
+  	"flag-de": "🇩🇪",
+  	"flag-dg": "🇩🇬",
+  	"flag-dj": "🇩🇯",
+  	"flag-dk": "🇩🇰",
+  	"flag-dm": "🇩🇲",
+  	"flag-do": "🇩🇴",
+  	"flag-dz": "🇩🇿",
+  	"flag-ea": "🇪🇦",
+  	"flag-ec": "🇪🇨",
+  	"flag-ee": "🇪🇪",
+  	"flag-eg": "🇪🇬",
+  	"flag-eh": "🇪🇭",
+  	"flag-er": "🇪🇷",
+  	es: es,
+  	"flag-es": "🇪🇸",
+  	"flag-et": "🇪🇹",
+  	"flag-eu": "🇪🇺",
+  	"flag-fi": "🇫🇮",
+  	"flag-fj": "🇫🇯",
+  	"flag-fk": "🇫🇰",
+  	"flag-fm": "🇫🇲",
+  	"flag-fo": "🇫🇴",
+  	fr: fr,
+  	"flag-fr": "🇫🇷",
+  	"flag-ga": "🇬🇦",
+  	gb: gb,
+  	uk: uk,
+  	"flag-gb": "🇬🇧",
+  	"flag-gd": "🇬🇩",
+  	"flag-ge": "🇬🇪",
+  	"flag-gf": "🇬🇫",
+  	"flag-gg": "🇬🇬",
+  	"flag-gh": "🇬🇭",
+  	"flag-gi": "🇬🇮",
+  	"flag-gl": "🇬🇱",
+  	"flag-gm": "🇬🇲",
+  	"flag-gn": "🇬🇳",
+  	"flag-gp": "🇬🇵",
+  	"flag-gq": "🇬🇶",
+  	"flag-gr": "🇬🇷",
+  	"flag-gs": "🇬🇸",
+  	"flag-gt": "🇬🇹",
+  	"flag-gu": "🇬🇺",
+  	"flag-gw": "🇬🇼",
+  	"flag-gy": "🇬🇾",
+  	"flag-hk": "🇭🇰",
+  	"flag-hm": "🇭🇲",
+  	"flag-hn": "🇭🇳",
+  	"flag-hr": "🇭🇷",
+  	"flag-ht": "🇭🇹",
+  	"flag-hu": "🇭🇺",
+  	"flag-ic": "🇮🇨",
+  	"flag-id": "🇮🇩",
+  	"flag-ie": "🇮🇪",
+  	"flag-il": "🇮🇱",
+  	"flag-im": "🇮🇲",
+  	"flag-in": "🇮🇳",
+  	"flag-io": "🇮🇴",
+  	"flag-iq": "🇮🇶",
+  	"flag-ir": "🇮🇷",
+  	"flag-is": "🇮🇸",
+  	it: it,
+  	"flag-it": "🇮🇹",
+  	"flag-je": "🇯🇪",
+  	"flag-jm": "🇯🇲",
+  	"flag-jo": "🇯🇴",
+  	jp: jp,
+  	"flag-jp": "🇯🇵",
+  	"flag-ke": "🇰🇪",
+  	"flag-kg": "🇰🇬",
+  	"flag-kh": "🇰🇭",
+  	"flag-ki": "🇰🇮",
+  	"flag-km": "🇰🇲",
+  	"flag-kn": "🇰🇳",
+  	"flag-kp": "🇰🇵",
+  	kr: kr,
+  	"flag-kr": "🇰🇷",
+  	"flag-kw": "🇰🇼",
+  	"flag-ky": "🇰🇾",
+  	"flag-kz": "🇰🇿",
+  	"flag-la": "🇱🇦",
+  	"flag-lb": "🇱🇧",
+  	"flag-lc": "🇱🇨",
+  	"flag-li": "🇱🇮",
+  	"flag-lk": "🇱🇰",
+  	"flag-lr": "🇱🇷",
+  	"flag-ls": "🇱🇸",
+  	"flag-lt": "🇱🇹",
+  	"flag-lu": "🇱🇺",
+  	"flag-lv": "🇱🇻",
+  	"flag-ly": "🇱🇾",
+  	"flag-ma": "🇲🇦",
+  	"flag-mc": "🇲🇨",
+  	"flag-md": "🇲🇩",
+  	"flag-me": "🇲🇪",
+  	"flag-mf": "🇲🇫",
+  	"flag-mg": "🇲🇬",
+  	"flag-mh": "🇲🇭",
+  	"flag-mk": "🇲🇰",
+  	"flag-ml": "🇲🇱",
+  	"flag-mm": "🇲🇲",
+  	"flag-mn": "🇲🇳",
+  	"flag-mo": "🇲🇴",
+  	"flag-mp": "🇲🇵",
+  	"flag-mq": "🇲🇶",
+  	"flag-mr": "🇲🇷",
+  	"flag-ms": "🇲🇸",
+  	"flag-mt": "🇲🇹",
+  	"flag-mu": "🇲🇺",
+  	"flag-mv": "🇲🇻",
+  	"flag-mw": "🇲🇼",
+  	"flag-mx": "🇲🇽",
+  	"flag-my": "🇲🇾",
+  	"flag-mz": "🇲🇿",
+  	"flag-na": "🇳🇦",
+  	"flag-nc": "🇳🇨",
+  	"flag-ne": "🇳🇪",
+  	"flag-nf": "🇳🇫",
+  	"flag-ng": "🇳🇬",
+  	"flag-ni": "🇳🇮",
+  	"flag-nl": "🇳🇱",
+  	"flag-no": "🇳🇴",
+  	"flag-np": "🇳🇵",
+  	"flag-nr": "🇳🇷",
+  	"flag-nu": "🇳🇺",
+  	"flag-nz": "🇳🇿",
+  	"flag-om": "🇴🇲",
+  	"flag-pa": "🇵🇦",
+  	"flag-pe": "🇵🇪",
+  	"flag-pf": "🇵🇫",
+  	"flag-pg": "🇵🇬",
+  	"flag-ph": "🇵🇭",
+  	"flag-pk": "🇵🇰",
+  	"flag-pl": "🇵🇱",
+  	"flag-pm": "🇵🇲",
+  	"flag-pn": "🇵🇳",
+  	"flag-pr": "🇵🇷",
+  	"flag-ps": "🇵🇸",
+  	"flag-pt": "🇵🇹",
+  	"flag-pw": "🇵🇼",
+  	"flag-py": "🇵🇾",
+  	"flag-qa": "🇶🇦",
+  	"flag-re": "🇷🇪",
+  	"flag-ro": "🇷🇴",
+  	"flag-rs": "🇷🇸",
+  	ru: ru,
+  	"flag-ru": "🇷🇺",
+  	"flag-rw": "🇷🇼",
+  	"flag-sa": "🇸🇦",
+  	"flag-sb": "🇸🇧",
+  	"flag-sc": "🇸🇨",
+  	"flag-sd": "🇸🇩",
+  	"flag-se": "🇸🇪",
+  	"flag-sg": "🇸🇬",
+  	"flag-sh": "🇸🇭",
+  	"flag-si": "🇸🇮",
+  	"flag-sj": "🇸🇯",
+  	"flag-sk": "🇸🇰",
+  	"flag-sl": "🇸🇱",
+  	"flag-sm": "🇸🇲",
+  	"flag-sn": "🇸🇳",
+  	"flag-so": "🇸🇴",
+  	"flag-sr": "🇸🇷",
+  	"flag-ss": "🇸🇸",
+  	"flag-st": "🇸🇹",
+  	"flag-sv": "🇸🇻",
+  	"flag-sx": "🇸🇽",
+  	"flag-sy": "🇸🇾",
+  	"flag-sz": "🇸🇿",
+  	"flag-ta": "🇹🇦",
+  	"flag-tc": "🇹🇨",
+  	"flag-td": "🇹🇩",
+  	"flag-tf": "🇹🇫",
+  	"flag-tg": "🇹🇬",
+  	"flag-th": "🇹🇭",
+  	"flag-tj": "🇹🇯",
+  	"flag-tk": "🇹🇰",
+  	"flag-tl": "🇹🇱",
+  	"flag-tm": "🇹🇲",
+  	"flag-tn": "🇹🇳",
+  	"flag-to": "🇹🇴",
+  	"flag-tr": "🇹🇷",
+  	"flag-tt": "🇹🇹",
+  	"flag-tv": "🇹🇻",
+  	"flag-tw": "🇹🇼",
+  	"flag-tz": "🇹🇿",
+  	"flag-ua": "🇺🇦",
+  	"flag-ug": "🇺🇬",
+  	"flag-um": "🇺🇲",
+  	"flag-un": "🇺🇳",
+  	us: us,
+  	"flag-us": "🇺🇸",
+  	"flag-uy": "🇺🇾",
+  	"flag-uz": "🇺🇿",
+  	"flag-va": "🇻🇦",
+  	"flag-vc": "🇻🇨",
+  	"flag-ve": "🇻🇪",
+  	"flag-vg": "🇻🇬",
+  	"flag-vi": "🇻🇮",
+  	"flag-vn": "🇻🇳",
+  	"flag-vu": "🇻🇺",
+  	"flag-wf": "🇼🇫",
+  	"flag-ws": "🇼🇸",
+  	"flag-xk": "🇽🇰",
+  	"flag-ye": "🇾🇪",
+  	"flag-yt": "🇾🇹",
+  	"flag-za": "🇿🇦",
+  	"flag-zm": "🇿🇲",
+  	"flag-zw": "🇿🇼",
   	koko: koko,
   	sa: sa,
   	u7121: u7121,
@@ -2282,7 +2578,8 @@
   	cake: cake,
   	bento: bento,
   	stew: stew,
-  	egg: egg,
+  	fried_egg: fried_egg,
+  	cooking: cooking,
   	fork_and_knife: fork_and_knife,
   	tea: tea,
   	sake: sake,
@@ -2357,16 +2654,26 @@
   	basketball: basketball,
   	checkered_flag: checkered_flag,
   	snowboarder: snowboarder,
+  	"woman-running": "🏃‍♀️",
+  	"man-running": "🏃‍♂️",
   	runner: runner,
   	running: running,
+  	"woman-surfing": "🏄‍♀️",
+  	"man-surfing": "🏄‍♂️",
   	surfer: surfer,
   	sports_medal: sports_medal,
   	trophy: trophy,
   	horse_racing: horse_racing,
   	football: football,
   	rugby_football: rugby_football,
+  	"woman-swimming": "🏊‍♀️",
+  	"man-swimming": "🏊‍♂️",
   	swimmer: swimmer,
+  	"woman-lifting-weights": "🏋️‍♀️",
+  	"man-lifting-weights": "🏋️‍♂️",
   	weight_lifter: weight_lifter,
+  	"woman-golfing": "🏌️‍♀️",
+  	"man-golfing": "🏌️‍♂️",
   	golfer: golfer,
   	racing_motorcycle: racing_motorcycle,
   	racing_car: racing_car,
@@ -2405,7 +2712,11 @@
   	lantern: lantern,
   	japanese_castle: japanese_castle,
   	european_castle: european_castle,
+  	"rainbow-flag": "🏳️‍🌈",
   	waving_white_flag: waving_white_flag,
+  	"flag-england": "🏴󠁧󠁢󠁥󠁮󠁧󠁿",
+  	"flag-scotland": "🏴󠁧󠁢󠁳󠁣󠁴󠁿",
+  	"flag-wales": "🏴󠁧󠁢󠁷󠁬󠁳󠁿",
   	waving_black_flag: waving_black_flag,
   	rosette: rosette,
   	label: label,
@@ -2485,6 +2796,7 @@
   	paw_prints: paw_prints,
   	chipmunk: chipmunk,
   	eyes: eyes,
+  	"eye-in-speech-bubble": "👁️‍🗨️",
   	eye: eye,
   	ear: ear,
   	nose: nose,
@@ -2529,23 +2841,97 @@
   	busts_in_silhouette: busts_in_silhouette,
   	boy: boy,
   	girl: girl,
-  	man: man,
-  	woman: woman,
-  	family: family,
+  	"male-farmer": "👨‍🌾",
+  	"male-cook": "👨‍🍳",
+  	"male-student": "👨‍🎓",
+  	"male-singer": "👨‍🎤",
+  	"male-artist": "👨‍🎨",
+  	"male-teacher": "👨‍🏫",
+  	"male-factory-worker": "👨‍🏭",
+  	"man-boy-boy": "👨‍👦‍👦",
+  	"man-boy": "👨‍👦",
+  	"man-girl-boy": "👨‍👧‍👦",
+  	"man-girl-girl": "👨‍👧‍👧",
+  	"man-girl": "👨‍👧",
+  	"man-man-boy": "👨‍👨‍👦",
+  	"man-man-boy-boy": "👨‍👨‍👦‍👦",
+  	"man-man-girl": "👨‍👨‍👧",
+  	"man-man-girl-boy": "👨‍👨‍👧‍👦",
+  	"man-man-girl-girl": "👨‍👨‍👧‍👧",
   	"man-woman-boy": "👨‍👩‍👦",
+  	family: family,
+  	"man-woman-boy-boy": "👨‍👩‍👦‍👦",
+  	"man-woman-girl": "👨‍👩‍👧",
+  	"man-woman-girl-boy": "👨‍👩‍👧‍👦",
+  	"man-woman-girl-girl": "👨‍👩‍👧‍👧",
+  	"male-technologist": "👨‍💻",
+  	"male-office-worker": "👨‍💼",
+  	"male-mechanic": "👨‍🔧",
+  	"male-scientist": "👨‍🔬",
+  	"male-astronaut": "👨‍🚀",
+  	"male-firefighter": "👨‍🚒",
+  	"male-doctor": "👨‍⚕️",
+  	"male-judge": "👨‍⚖️",
+  	"male-pilot": "👨‍✈️",
+  	"man-heart-man": "👨‍❤️‍👨",
+  	"man-kiss-man": "👨‍❤️‍💋‍👨",
+  	man: man,
+  	"female-farmer": "👩‍🌾",
+  	"female-cook": "👩‍🍳",
+  	"female-student": "👩‍🎓",
+  	"female-singer": "👩‍🎤",
+  	"female-artist": "👩‍🎨",
+  	"female-teacher": "👩‍🏫",
+  	"female-factory-worker": "👩‍🏭",
+  	"woman-boy-boy": "👩‍👦‍👦",
+  	"woman-boy": "👩‍👦",
+  	"woman-girl-boy": "👩‍👧‍👦",
+  	"woman-girl-girl": "👩‍👧‍👧",
+  	"woman-girl": "👩‍👧",
+  	"woman-woman-boy": "👩‍👩‍👦",
+  	"woman-woman-boy-boy": "👩‍👩‍👦‍👦",
+  	"woman-woman-girl": "👩‍👩‍👧",
+  	"woman-woman-girl-boy": "👩‍👩‍👧‍👦",
+  	"woman-woman-girl-girl": "👩‍👩‍👧‍👧",
+  	"female-technologist": "👩‍💻",
+  	"female-office-worker": "👩‍💼",
+  	"female-mechanic": "👩‍🔧",
+  	"female-scientist": "👩‍🔬",
+  	"female-astronaut": "👩‍🚀",
+  	"female-firefighter": "👩‍🚒",
+  	"female-doctor": "👩‍⚕️",
+  	"female-judge": "👩‍⚖️",
+  	"female-pilot": "👩‍✈️",
+  	"woman-heart-man": "👩‍❤️‍👨",
+  	couple_with_heart: couple_with_heart,
+  	"woman-heart-woman": "👩‍❤️‍👩",
+  	"woman-kiss-man": "👩‍❤️‍💋‍👨",
+  	couplekiss: couplekiss,
+  	"woman-kiss-woman": "👩‍❤️‍💋‍👩",
+  	woman: woman,
   	couple: couple,
   	man_and_woman_holding_hands: man_and_woman_holding_hands,
   	two_men_holding_hands: two_men_holding_hands,
   	two_women_holding_hands: two_women_holding_hands,
+  	"female-police-officer": "👮‍♀️",
+  	"male-police-officer": "👮‍♂️",
   	cop: cop,
+  	"woman-with-bunny-ears-partying": "👯‍♀️",
   	dancers: dancers,
+  	"man-with-bunny-ears-partying": "👯‍♂️",
   	bride_with_veil: bride_with_veil,
+  	"blond-haired-woman": "👱‍♀️",
+  	"blond-haired-man": "👱‍♂️",
   	person_with_blond_hair: person_with_blond_hair,
   	man_with_gua_pi_mao: man_with_gua_pi_mao,
+  	"woman-wearing-turban": "👳‍♀️",
+  	"man-wearing-turban": "👳‍♂️",
   	man_with_turban: man_with_turban,
   	older_man: older_man,
   	older_woman: older_woman,
   	baby: baby,
+  	"female-construction-worker": "👷‍♀️",
+  	"male-construction-worker": "👷‍♂️",
   	construction_worker: construction_worker,
   	princess: princess,
   	japanese_ogre: japanese_ogre,
@@ -2556,13 +2942,21 @@
   	space_invader: space_invader,
   	imp: imp,
   	skull: skull,
+  	"woman-tipping-hand": "💁‍♀️",
   	information_desk_person: information_desk_person,
+  	"man-tipping-hand": "💁‍♂️",
+  	"female-guard": "💂‍♀️",
+  	"male-guard": "💂‍♂️",
   	guardsman: guardsman,
   	dancer: dancer,
   	lipstick: lipstick,
   	nail_care: nail_care,
+  	"woman-getting-massage": "💆‍♀️",
   	massage: massage,
+  	"man-getting-massage": "💆‍♂️",
+  	"woman-getting-haircut": "💇‍♀️",
   	haircut: haircut,
+  	"man-getting-haircut": "💇‍♂️",
   	barber: barber,
   	syringe: syringe,
   	pill: pill,
@@ -2570,9 +2964,7 @@
   	love_letter: love_letter,
   	ring: ring,
   	gem: gem,
-  	couplekiss: couplekiss,
   	bouquet: bouquet,
-  	couple_with_heart: couple_with_heart,
   	wedding: wedding,
   	heartbeat: heartbeat,
   	broken_heart: broken_heart,
@@ -2656,7 +3048,7 @@
   	telephone_receiver: telephone_receiver,
   	pager: pager,
   	fax: fax,
-  	satellite: satellite,
+  	satellite_antenna: satellite_antenna,
   	loudspeaker: loudspeaker,
   	mega: mega,
   	outbox_tray: outbox_tray,
@@ -2782,11 +3174,14 @@
   	mantelpiece_clock: mantelpiece_clock,
   	hole: hole,
   	man_in_business_suit_levitating: man_in_business_suit_levitating,
+  	"female-detective": "🕵️‍♀️",
+  	"male-detective": "🕵️‍♂️",
   	sleuth_or_spy: sleuth_or_spy,
   	dark_sunglasses: dark_sunglasses,
   	spider: spider,
   	spider_web: spider_web,
   	joystick: joystick,
+  	man_dancing: man_dancing,
   	linked_paperclips: linked_paperclips,
   	lower_left_ballpoint_pen: lower_left_ballpoint_pen,
   	lower_left_fountain_pen: lower_left_fountain_pen,
@@ -2796,6 +3191,7 @@
   	middle_finger: middle_finger,
   	reversed_hand_with_middle_finger_extended: reversed_hand_with_middle_finger_extended,
   	"spock-hand": "🖖",
+  	black_heart: black_heart,
   	desktop_computer: desktop_computer,
   	printer: printer,
   	three_button_mouse: three_button_mouse,
@@ -2891,16 +3287,28 @@
   	slightly_smiling_face: slightly_smiling_face,
   	upside_down_face: upside_down_face,
   	face_with_rolling_eyes: face_with_rolling_eyes,
+  	"woman-gesturing-no": "🙅‍♀️",
   	no_good: no_good,
+  	"man-gesturing-no": "🙅‍♂️",
+  	"woman-gesturing-ok": "🙆‍♀️",
   	ok_woman: ok_woman,
+  	"man-gesturing-ok": "🙆‍♂️",
+  	"woman-bowing": "🙇‍♀️",
+  	"man-bowing": "🙇‍♂️",
   	bow: bow,
   	see_no_evil: see_no_evil,
   	hear_no_evil: hear_no_evil,
   	speak_no_evil: speak_no_evil,
+  	"woman-raising-hand": "🙋‍♀️",
   	raising_hand: raising_hand,
+  	"man-raising-hand": "🙋‍♂️",
   	raised_hands: raised_hands,
+  	"woman-frowning": "🙍‍♀️",
   	person_frowning: person_frowning,
+  	"man-frowning": "🙍‍♂️",
+  	"woman-pouting": "🙎‍♀️",
   	person_with_pouting_face: person_with_pouting_face,
+  	"man-pouting": "🙎‍♂️",
   	pray: pray,
   	rocket: rocket,
   	helicopter: helicopter,
@@ -2938,6 +3346,8 @@
   	mountain_cableway: mountain_cableway,
   	aerial_tramway: aerial_tramway,
   	ship: ship,
+  	"woman-rowing-boat": "🚣‍♀️",
+  	"man-rowing-boat": "🚣‍♂️",
   	rowboat: rowboat,
   	speedboat: speedboat,
   	traffic_light: traffic_light,
@@ -2955,8 +3365,14 @@
   	"non-potable_water": "🚱",
   	bike: bike,
   	no_bicycles: no_bicycles,
+  	"woman-biking": "🚴‍♀️",
+  	"man-biking": "🚴‍♂️",
   	bicyclist: bicyclist,
+  	"woman-mountain-biking": "🚵‍♀️",
+  	"man-mountain-biking": "🚵‍♂️",
   	mountain_bicyclist: mountain_bicyclist,
+  	"woman-walking": "🚶‍♀️",
+  	"man-walking": "🚶‍♂️",
   	walking: walking,
   	no_pedestrians: no_pedestrians,
   	children_crossing: children_crossing,
@@ -2979,6 +3395,8 @@
   	bellhop_bell: bellhop_bell,
   	bed: bed,
   	place_of_worship: place_of_worship,
+  	octagonal_sign: octagonal_sign,
+  	shopping_trolley: shopping_trolley,
   	hammer_and_wrench: hammer_and_wrench,
   	shield: shield,
   	oil_drum: oil_drum,
@@ -2988,7 +3406,13 @@
   	small_airplane: small_airplane,
   	airplane_departure: airplane_departure,
   	airplane_arriving: airplane_arriving,
+  	satellite: satellite,
   	passenger_ship: passenger_ship,
+  	scooter: scooter,
+  	motor_scooter: motor_scooter,
+  	canoe: canoe,
+  	sled: sled,
+  	flying_saucer: flying_saucer,
   	zipper_mouth_face: zipper_mouth_face,
   	money_mouth_face: money_mouth_face,
   	face_with_thermometer: face_with_thermometer,
@@ -2999,480 +3423,366 @@
   	hugging_face: hugging_face,
   	the_horns: the_horns,
   	sign_of_the_horns: sign_of_the_horns,
+  	call_me_hand: call_me_hand,
+  	raised_back_of_hand: raised_back_of_hand,
+  	"left-facing_fist": "🤛",
+  	"right-facing_fist": "🤜",
+  	handshake: handshake,
+  	crossed_fingers: crossed_fingers,
+  	hand_with_index_and_middle_fingers_crossed: hand_with_index_and_middle_fingers_crossed,
+  	i_love_you_hand_sign: i_love_you_hand_sign,
+  	face_with_cowboy_hat: face_with_cowboy_hat,
+  	clown_face: clown_face,
+  	nauseated_face: nauseated_face,
+  	rolling_on_the_floor_laughing: rolling_on_the_floor_laughing,
+  	drooling_face: drooling_face,
+  	lying_face: lying_face,
+  	"woman-facepalming": "🤦‍♀️",
+  	"man-facepalming": "🤦‍♂️",
+  	face_palm: face_palm,
+  	sneezing_face: sneezing_face,
+  	face_with_raised_eyebrow: face_with_raised_eyebrow,
+  	face_with_one_eyebrow_raised: face_with_one_eyebrow_raised,
+  	"star-struck": "🤩",
+  	grinning_face_with_star_eyes: grinning_face_with_star_eyes,
+  	zany_face: zany_face,
+  	grinning_face_with_one_large_and_one_small_eye: grinning_face_with_one_large_and_one_small_eye,
+  	shushing_face: shushing_face,
+  	face_with_finger_covering_closed_lips: face_with_finger_covering_closed_lips,
+  	face_with_symbols_on_mouth: face_with_symbols_on_mouth,
+  	serious_face_with_symbols_covering_mouth: serious_face_with_symbols_covering_mouth,
+  	face_with_hand_over_mouth: face_with_hand_over_mouth,
+  	smiling_face_with_smiling_eyes_and_hand_covering_mouth: smiling_face_with_smiling_eyes_and_hand_covering_mouth,
+  	face_vomiting: face_vomiting,
+  	face_with_open_mouth_vomiting: face_with_open_mouth_vomiting,
+  	exploding_head: exploding_head,
+  	shocked_face_with_exploding_head: shocked_face_with_exploding_head,
+  	pregnant_woman: pregnant_woman,
+  	"breast-feeding": "🤱",
+  	palms_up_together: palms_up_together,
+  	selfie: selfie,
+  	prince: prince,
+  	man_in_tuxedo: man_in_tuxedo,
+  	mrs_claus: mrs_claus,
+  	mother_christmas: mother_christmas,
+  	"woman-shrugging": "🤷‍♀️",
+  	"man-shrugging": "🤷‍♂️",
+  	shrug: shrug,
+  	"woman-cartwheeling": "🤸‍♀️",
+  	"man-cartwheeling": "🤸‍♂️",
+  	person_doing_cartwheel: person_doing_cartwheel,
+  	"woman-juggling": "🤹‍♀️",
+  	"man-juggling": "🤹‍♂️",
+  	juggling: juggling,
+  	fencer: fencer,
+  	"woman-wrestling": "🤼‍♀️",
+  	"man-wrestling": "🤼‍♂️",
+  	wrestlers: wrestlers,
+  	"woman-playing-water-polo": "🤽‍♀️",
+  	"man-playing-water-polo": "🤽‍♂️",
+  	water_polo: water_polo,
+  	"woman-playing-handball": "🤾‍♀️",
+  	"man-playing-handball": "🤾‍♂️",
+  	handball: handball,
+  	wilted_flower: wilted_flower,
+  	drum_with_drumsticks: drum_with_drumsticks,
+  	clinking_glasses: clinking_glasses,
+  	tumbler_glass: tumbler_glass,
+  	spoon: spoon,
+  	goal_net: goal_net,
+  	first_place_medal: first_place_medal,
+  	second_place_medal: second_place_medal,
+  	third_place_medal: third_place_medal,
+  	boxing_glove: boxing_glove,
+  	martial_arts_uniform: martial_arts_uniform,
+  	curling_stone: curling_stone,
+  	croissant: croissant,
+  	avocado: avocado,
+  	cucumber: cucumber,
+  	bacon: bacon,
+  	potato: potato,
+  	carrot: carrot,
+  	baguette_bread: baguette_bread,
+  	green_salad: green_salad,
+  	shallow_pan_of_food: shallow_pan_of_food,
+  	stuffed_flatbread: stuffed_flatbread,
+  	egg: egg,
+  	glass_of_milk: glass_of_milk,
+  	peanuts: peanuts,
+  	kiwifruit: kiwifruit,
+  	pancakes: pancakes,
+  	dumpling: dumpling,
+  	fortune_cookie: fortune_cookie,
+  	takeout_box: takeout_box,
+  	chopsticks: chopsticks,
+  	bowl_with_spoon: bowl_with_spoon,
+  	cup_with_straw: cup_with_straw,
+  	coconut: coconut,
+  	broccoli: broccoli,
+  	pie: pie,
+  	pretzel: pretzel,
+  	cut_of_meat: cut_of_meat,
+  	sandwich: sandwich,
+  	canned_food: canned_food,
   	crab: crab,
   	lion_face: lion_face,
   	scorpion: scorpion,
   	turkey: turkey,
   	unicorn_face: unicorn_face,
+  	eagle: eagle,
+  	duck: duck,
+  	bat: bat,
+  	shark: shark,
+  	owl: owl,
+  	fox_face: fox_face,
+  	butterfly: butterfly,
+  	deer: deer,
+  	gorilla: gorilla,
+  	lizard: lizard,
+  	rhinoceros: rhinoceros,
+  	shrimp: shrimp,
+  	squid: squid,
+  	giraffe_face: giraffe_face,
+  	zebra_face: zebra_face,
+  	hedgehog: hedgehog,
+  	sauropod: sauropod,
+  	"t-rex": "🦖",
+  	cricket: cricket,
   	cheese_wedge: cheese_wedge,
-  	hash: hash,
-  	keycap_star: keycap_star,
-  	zero: zero,
-  	one: one,
-  	two: two,
-  	three: three,
-  	four: four,
-  	five: five,
-  	six: six,
-  	seven: seven,
-  	eight: eight,
-  	nine: nine,
-  	"flag-ac": "🇦🇨",
-  	"flag-ad": "🇦🇩",
-  	"flag-ae": "🇦🇪",
-  	"flag-af": "🇦🇫",
-  	"flag-ag": "🇦🇬",
-  	"flag-ai": "🇦🇮",
-  	"flag-al": "🇦🇱",
-  	"flag-am": "🇦🇲",
-  	"flag-ao": "🇦🇴",
-  	"flag-aq": "🇦🇶",
-  	"flag-ar": "🇦🇷",
-  	"flag-as": "🇦🇸",
-  	"flag-at": "🇦🇹",
-  	"flag-au": "🇦🇺",
-  	"flag-aw": "🇦🇼",
-  	"flag-ax": "🇦🇽",
-  	"flag-az": "🇦🇿",
-  	"flag-ba": "🇧🇦",
-  	"flag-bb": "🇧🇧",
-  	"flag-bd": "🇧🇩",
-  	"flag-be": "🇧🇪",
-  	"flag-bf": "🇧🇫",
-  	"flag-bg": "🇧🇬",
-  	"flag-bh": "🇧🇭",
-  	"flag-bi": "🇧🇮",
-  	"flag-bj": "🇧🇯",
-  	"flag-bl": "🇧🇱",
-  	"flag-bm": "🇧🇲",
-  	"flag-bn": "🇧🇳",
-  	"flag-bo": "🇧🇴",
-  	"flag-bq": "🇧🇶",
-  	"flag-br": "🇧🇷",
-  	"flag-bs": "🇧🇸",
-  	"flag-bt": "🇧🇹",
-  	"flag-bv": "🇧🇻",
-  	"flag-bw": "🇧🇼",
-  	"flag-by": "🇧🇾",
-  	"flag-bz": "🇧🇿",
-  	"flag-ca": "🇨🇦",
-  	"flag-cc": "🇨🇨",
-  	"flag-cd": "🇨🇩",
-  	"flag-cf": "🇨🇫",
-  	"flag-cg": "🇨🇬",
-  	"flag-ch": "🇨🇭",
-  	"flag-ci": "🇨🇮",
-  	"flag-ck": "🇨🇰",
-  	"flag-cl": "🇨🇱",
-  	"flag-cm": "🇨🇲",
-  	"flag-cn": "🇨🇳",
-  	cn: cn,
-  	"flag-co": "🇨🇴",
-  	"flag-cp": "🇨🇵",
-  	"flag-cr": "🇨🇷",
-  	"flag-cu": "🇨🇺",
-  	"flag-cv": "🇨🇻",
-  	"flag-cw": "🇨🇼",
-  	"flag-cx": "🇨🇽",
-  	"flag-cy": "🇨🇾",
-  	"flag-cz": "🇨🇿",
-  	"flag-de": "🇩🇪",
-  	de: de,
-  	"flag-dg": "🇩🇬",
-  	"flag-dj": "🇩🇯",
-  	"flag-dk": "🇩🇰",
-  	"flag-dm": "🇩🇲",
-  	"flag-do": "🇩🇴",
-  	"flag-dz": "🇩🇿",
-  	"flag-ea": "🇪🇦",
-  	"flag-ec": "🇪🇨",
-  	"flag-ee": "🇪🇪",
-  	"flag-eg": "🇪🇬",
-  	"flag-eh": "🇪🇭",
-  	"flag-er": "🇪🇷",
-  	"flag-es": "🇪🇸",
-  	es: es,
-  	"flag-et": "🇪🇹",
-  	"flag-eu": "🇪🇺",
-  	"flag-fi": "🇫🇮",
-  	"flag-fj": "🇫🇯",
-  	"flag-fk": "🇫🇰",
-  	"flag-fm": "🇫🇲",
-  	"flag-fo": "🇫🇴",
-  	"flag-fr": "🇫🇷",
-  	fr: fr,
-  	"flag-ga": "🇬🇦",
-  	"flag-gb": "🇬🇧",
-  	gb: gb,
-  	uk: uk,
-  	"flag-gd": "🇬🇩",
-  	"flag-ge": "🇬🇪",
-  	"flag-gf": "🇬🇫",
-  	"flag-gg": "🇬🇬",
-  	"flag-gh": "🇬🇭",
-  	"flag-gi": "🇬🇮",
-  	"flag-gl": "🇬🇱",
-  	"flag-gm": "🇬🇲",
-  	"flag-gn": "🇬🇳",
-  	"flag-gp": "🇬🇵",
-  	"flag-gq": "🇬🇶",
-  	"flag-gr": "🇬🇷",
-  	"flag-gs": "🇬🇸",
-  	"flag-gt": "🇬🇹",
-  	"flag-gu": "🇬🇺",
-  	"flag-gw": "🇬🇼",
-  	"flag-gy": "🇬🇾",
-  	"flag-hk": "🇭🇰",
-  	"flag-hm": "🇭🇲",
-  	"flag-hn": "🇭🇳",
-  	"flag-hr": "🇭🇷",
-  	"flag-ht": "🇭🇹",
-  	"flag-hu": "🇭🇺",
-  	"flag-ic": "🇮🇨",
-  	"flag-id": "🇮🇩",
-  	"flag-ie": "🇮🇪",
-  	"flag-il": "🇮🇱",
-  	"flag-im": "🇮🇲",
-  	"flag-in": "🇮🇳",
-  	"flag-io": "🇮🇴",
-  	"flag-iq": "🇮🇶",
-  	"flag-ir": "🇮🇷",
-  	"flag-is": "🇮🇸",
-  	"flag-it": "🇮🇹",
-  	it: it,
-  	"flag-je": "🇯🇪",
-  	"flag-jm": "🇯🇲",
-  	"flag-jo": "🇯🇴",
-  	"flag-jp": "🇯🇵",
-  	jp: jp,
-  	"flag-ke": "🇰🇪",
-  	"flag-kg": "🇰🇬",
-  	"flag-kh": "🇰🇭",
-  	"flag-ki": "🇰🇮",
-  	"flag-km": "🇰🇲",
-  	"flag-kn": "🇰🇳",
-  	"flag-kp": "🇰🇵",
-  	"flag-kr": "🇰🇷",
-  	kr: kr,
-  	"flag-kw": "🇰🇼",
-  	"flag-ky": "🇰🇾",
-  	"flag-kz": "🇰🇿",
-  	"flag-la": "🇱🇦",
-  	"flag-lb": "🇱🇧",
-  	"flag-lc": "🇱🇨",
-  	"flag-li": "🇱🇮",
-  	"flag-lk": "🇱🇰",
-  	"flag-lr": "🇱🇷",
-  	"flag-ls": "🇱🇸",
-  	"flag-lt": "🇱🇹",
-  	"flag-lu": "🇱🇺",
-  	"flag-lv": "🇱🇻",
-  	"flag-ly": "🇱🇾",
-  	"flag-ma": "🇲🇦",
-  	"flag-mc": "🇲🇨",
-  	"flag-md": "🇲🇩",
-  	"flag-me": "🇲🇪",
-  	"flag-mf": "🇲🇫",
-  	"flag-mg": "🇲🇬",
-  	"flag-mh": "🇲🇭",
-  	"flag-mk": "🇲🇰",
-  	"flag-ml": "🇲🇱",
-  	"flag-mm": "🇲🇲",
-  	"flag-mn": "🇲🇳",
-  	"flag-mo": "🇲🇴",
-  	"flag-mp": "🇲🇵",
-  	"flag-mq": "🇲🇶",
-  	"flag-mr": "🇲🇷",
-  	"flag-ms": "🇲🇸",
-  	"flag-mt": "🇲🇹",
-  	"flag-mu": "🇲🇺",
-  	"flag-mv": "🇲🇻",
-  	"flag-mw": "🇲🇼",
-  	"flag-mx": "🇲🇽",
-  	"flag-my": "🇲🇾",
-  	"flag-mz": "🇲🇿",
-  	"flag-na": "🇳🇦",
-  	"flag-nc": "🇳🇨",
-  	"flag-ne": "🇳🇪",
-  	"flag-nf": "🇳🇫",
-  	"flag-ng": "🇳🇬",
-  	"flag-ni": "🇳🇮",
-  	"flag-nl": "🇳🇱",
-  	"flag-no": "🇳🇴",
-  	"flag-np": "🇳🇵",
-  	"flag-nr": "🇳🇷",
-  	"flag-nu": "🇳🇺",
-  	"flag-nz": "🇳🇿",
-  	"flag-om": "🇴🇲",
-  	"flag-pa": "🇵🇦",
-  	"flag-pe": "🇵🇪",
-  	"flag-pf": "🇵🇫",
-  	"flag-pg": "🇵🇬",
-  	"flag-ph": "🇵🇭",
-  	"flag-pk": "🇵🇰",
-  	"flag-pl": "🇵🇱",
-  	"flag-pm": "🇵🇲",
-  	"flag-pn": "🇵🇳",
-  	"flag-pr": "🇵🇷",
-  	"flag-ps": "🇵🇸",
-  	"flag-pt": "🇵🇹",
-  	"flag-pw": "🇵🇼",
-  	"flag-py": "🇵🇾",
-  	"flag-qa": "🇶🇦",
-  	"flag-re": "🇷🇪",
-  	"flag-ro": "🇷🇴",
-  	"flag-rs": "🇷🇸",
-  	"flag-ru": "🇷🇺",
-  	ru: ru,
-  	"flag-rw": "🇷🇼",
-  	"flag-sa": "🇸🇦",
-  	"flag-sb": "🇸🇧",
-  	"flag-sc": "🇸🇨",
-  	"flag-sd": "🇸🇩",
-  	"flag-se": "🇸🇪",
-  	"flag-sg": "🇸🇬",
-  	"flag-sh": "🇸🇭",
-  	"flag-si": "🇸🇮",
-  	"flag-sj": "🇸🇯",
-  	"flag-sk": "🇸🇰",
-  	"flag-sl": "🇸🇱",
-  	"flag-sm": "🇸🇲",
-  	"flag-sn": "🇸🇳",
-  	"flag-so": "🇸🇴",
-  	"flag-sr": "🇸🇷",
-  	"flag-ss": "🇸🇸",
-  	"flag-st": "🇸🇹",
-  	"flag-sv": "🇸🇻",
-  	"flag-sx": "🇸🇽",
-  	"flag-sy": "🇸🇾",
-  	"flag-sz": "🇸🇿",
-  	"flag-ta": "🇹🇦",
-  	"flag-tc": "🇹🇨",
-  	"flag-td": "🇹🇩",
-  	"flag-tf": "🇹🇫",
-  	"flag-tg": "🇹🇬",
-  	"flag-th": "🇹🇭",
-  	"flag-tj": "🇹🇯",
-  	"flag-tk": "🇹🇰",
-  	"flag-tl": "🇹🇱",
-  	"flag-tm": "🇹🇲",
-  	"flag-tn": "🇹🇳",
-  	"flag-to": "🇹🇴",
-  	"flag-tr": "🇹🇷",
-  	"flag-tt": "🇹🇹",
-  	"flag-tv": "🇹🇻",
-  	"flag-tw": "🇹🇼",
-  	"flag-tz": "🇹🇿",
-  	"flag-ua": "🇺🇦",
-  	"flag-ug": "🇺🇬",
-  	"flag-um": "🇺🇲",
-  	"flag-us": "🇺🇸",
-  	us: us,
-  	"flag-uy": "🇺🇾",
-  	"flag-uz": "🇺🇿",
-  	"flag-va": "🇻🇦",
-  	"flag-vc": "🇻🇨",
-  	"flag-ve": "🇻🇪",
-  	"flag-vg": "🇻🇬",
-  	"flag-vi": "🇻🇮",
-  	"flag-vn": "🇻🇳",
-  	"flag-vu": "🇻🇺",
-  	"flag-wf": "🇼🇫",
-  	"flag-ws": "🇼🇸",
-  	"flag-xk": "🇽🇰",
-  	"flag-ye": "🇾🇪",
-  	"flag-yt": "🇾🇹",
-  	"flag-za": "🇿🇦",
-  	"flag-zm": "🇿🇲",
-  	"flag-zw": "🇿🇼",
-  	"man-man-boy": "👨‍👨‍👦",
-  	"man-man-boy-boy": "👨‍👨‍👦‍👦",
-  	"man-man-girl": "👨‍👨‍👧",
-  	"man-man-girl-boy": "👨‍👨‍👧‍👦",
-  	"man-man-girl-girl": "👨‍👨‍👧‍👧",
-  	"man-woman-boy-boy": "👨‍👩‍👦‍👦",
-  	"man-woman-girl": "👨‍👩‍👧",
-  	"man-woman-girl-boy": "👨‍👩‍👧‍👦",
-  	"man-woman-girl-girl": "👨‍👩‍👧‍👧",
-  	"man-heart-man": "👨‍❤️‍👨",
-  	"man-kiss-man": "👨‍❤️‍💋‍👨",
-  	"woman-woman-boy": "👩‍👩‍👦",
-  	"woman-woman-boy-boy": "👩‍👩‍👦‍👦",
-  	"woman-woman-girl": "👩‍👩‍👧",
-  	"woman-woman-girl-boy": "👩‍👩‍👧‍👦",
-  	"woman-woman-girl-girl": "👩‍👩‍👧‍👧",
-  	"woman-heart-woman": "👩‍❤️‍👩",
-  	"woman-kiss-woman": "👩‍❤️‍💋‍👩"
+  	face_with_monocle: face_with_monocle,
+  	adult: adult,
+  	child: child,
+  	older_adult: older_adult,
+  	bearded_person: bearded_person,
+  	person_with_headscarf: person_with_headscarf,
+  	woman_in_steamy_room: woman_in_steamy_room,
+  	man_in_steamy_room: man_in_steamy_room,
+  	person_in_steamy_room: person_in_steamy_room,
+  	woman_climbing: woman_climbing,
+  	person_climbing: person_climbing,
+  	man_climbing: man_climbing,
+  	woman_in_lotus_position: woman_in_lotus_position,
+  	person_in_lotus_position: person_in_lotus_position,
+  	man_in_lotus_position: man_in_lotus_position,
+  	female_mage: female_mage,
+  	mage: mage,
+  	male_mage: male_mage,
+  	female_fairy: female_fairy,
+  	fairy: fairy,
+  	male_fairy: male_fairy,
+  	female_vampire: female_vampire,
+  	vampire: vampire,
+  	male_vampire: male_vampire,
+  	mermaid: mermaid,
+  	merman: merman,
+  	merperson: merperson,
+  	female_elf: female_elf,
+  	male_elf: male_elf,
+  	elf: elf,
+  	female_genie: female_genie,
+  	male_genie: male_genie,
+  	genie: genie,
+  	female_zombie: female_zombie,
+  	male_zombie: male_zombie,
+  	zombie: zombie,
+  	brain: brain,
+  	orange_heart: orange_heart,
+  	billed_cap: billed_cap,
+  	scarf: scarf,
+  	gloves: gloves,
+  	coat: coat,
+  	socks: socks,
+  	bangbang: bangbang,
+  	interrobang: interrobang,
+  	tm: tm,
+  	information_source: information_source,
+  	left_right_arrow: left_right_arrow,
+  	arrow_up_down: arrow_up_down,
+  	arrow_upper_left: arrow_upper_left,
+  	arrow_upper_right: arrow_upper_right,
+  	arrow_lower_right: arrow_lower_right,
+  	arrow_lower_left: arrow_lower_left,
+  	leftwards_arrow_with_hook: leftwards_arrow_with_hook,
+  	arrow_right_hook: arrow_right_hook,
+  	watch: watch,
+  	hourglass: hourglass,
+  	keyboard: keyboard,
+  	eject: eject,
+  	fast_forward: fast_forward,
+  	rewind: rewind,
+  	arrow_double_up: arrow_double_up,
+  	arrow_double_down: arrow_double_down,
+  	black_right_pointing_double_triangle_with_vertical_bar: black_right_pointing_double_triangle_with_vertical_bar,
+  	black_left_pointing_double_triangle_with_vertical_bar: black_left_pointing_double_triangle_with_vertical_bar,
+  	black_right_pointing_triangle_with_double_vertical_bar: black_right_pointing_triangle_with_double_vertical_bar,
+  	alarm_clock: alarm_clock,
+  	stopwatch: stopwatch,
+  	timer_clock: timer_clock,
+  	hourglass_flowing_sand: hourglass_flowing_sand,
+  	double_vertical_bar: double_vertical_bar,
+  	black_square_for_stop: black_square_for_stop,
+  	black_circle_for_record: black_circle_for_record,
+  	m: m,
+  	black_small_square: black_small_square,
+  	white_small_square: white_small_square,
+  	arrow_forward: arrow_forward,
+  	arrow_backward: arrow_backward,
+  	white_medium_square: white_medium_square,
+  	black_medium_square: black_medium_square,
+  	white_medium_small_square: white_medium_small_square,
+  	black_medium_small_square: black_medium_small_square,
+  	sunny: sunny,
+  	cloud: cloud,
+  	umbrella: umbrella,
+  	snowman: snowman,
+  	comet: comet,
+  	phone: phone,
+  	telephone: telephone,
+  	ballot_box_with_check: ballot_box_with_check,
+  	shamrock: shamrock,
+  	point_up: point_up,
+  	skull_and_crossbones: skull_and_crossbones,
+  	radioactive_sign: radioactive_sign,
+  	biohazard_sign: biohazard_sign,
+  	orthodox_cross: orthodox_cross,
+  	star_and_crescent: star_and_crescent,
+  	peace_symbol: peace_symbol,
+  	yin_yang: yin_yang,
+  	wheel_of_dharma: wheel_of_dharma,
+  	white_frowning_face: white_frowning_face,
+  	relaxed: relaxed,
+  	female_sign: female_sign,
+  	male_sign: male_sign,
+  	gemini: gemini,
+  	cancer: cancer,
+  	leo: leo,
+  	virgo: virgo,
+  	libra: libra,
+  	scorpius: scorpius,
+  	spades: spades,
+  	clubs: clubs,
+  	hearts: hearts,
+  	diamonds: diamonds,
+  	hotsprings: hotsprings,
+  	recycle: recycle,
+  	wheelchair: wheelchair,
+  	hammer_and_pick: hammer_and_pick,
+  	crossed_swords: crossed_swords,
+  	medical_symbol: medical_symbol,
+  	staff_of_aesculapius: staff_of_aesculapius,
+  	scales: scales,
+  	alembic: alembic,
+  	gear: gear,
+  	atom_symbol: atom_symbol,
+  	fleur_de_lis: fleur_de_lis,
+  	warning: warning,
+  	zap: zap,
+  	white_circle: white_circle,
+  	black_circle: black_circle,
+  	coffin: coffin,
+  	funeral_urn: funeral_urn,
+  	soccer: soccer,
+  	baseball: baseball,
+  	snowman_without_snow: snowman_without_snow,
+  	partly_sunny: partly_sunny,
+  	thunder_cloud_and_rain: thunder_cloud_and_rain,
+  	ophiuchus: ophiuchus,
+  	pick: pick,
+  	helmet_with_white_cross: helmet_with_white_cross,
+  	chains: chains,
+  	no_entry: no_entry,
+  	shinto_shrine: shinto_shrine,
+  	church: church,
+  	mountain: mountain,
+  	umbrella_on_ground: umbrella_on_ground,
+  	fountain: fountain,
+  	golf: golf,
+  	ferry: ferry,
+  	boat: boat,
+  	sailboat: sailboat,
+  	skier: skier,
+  	ice_skate: ice_skate,
+  	"woman-bouncing-ball": "⛹️‍♀️",
+  	"man-bouncing-ball": "⛹️‍♂️",
+  	person_with_ball: person_with_ball,
+  	tent: tent,
+  	fuelpump: fuelpump,
+  	scissors: scissors,
+  	airplane: airplane,
+  	email: email,
+  	envelope: envelope,
+  	fist: fist,
+  	hand: hand,
+  	raised_hand: raised_hand,
+  	v: v,
+  	writing_hand: writing_hand,
+  	pencil2: pencil2,
+  	black_nib: black_nib,
+  	heavy_check_mark: heavy_check_mark,
+  	heavy_multiplication_x: heavy_multiplication_x,
+  	latin_cross: latin_cross,
+  	star_of_david: star_of_david,
+  	eight_spoked_asterisk: eight_spoked_asterisk,
+  	eight_pointed_black_star: eight_pointed_black_star,
+  	snowflake: snowflake,
+  	sparkle: sparkle,
+  	x: x,
+  	negative_squared_cross_mark: negative_squared_cross_mark,
+  	heavy_heart_exclamation_mark_ornament: heavy_heart_exclamation_mark_ornament,
+  	heart: heart,
+  	arrow_right: arrow_right,
+  	curly_loop: curly_loop,
+  	loop: loop,
+  	arrow_heading_up: arrow_heading_up,
+  	arrow_heading_down: arrow_heading_down,
+  	arrow_left: arrow_left,
+  	arrow_up: arrow_up,
+  	arrow_down: arrow_down,
+  	black_large_square: black_large_square,
+  	white_large_square: white_large_square,
+  	star: star,
+  	o: o,
+  	wavy_dash: wavy_dash,
+  	part_alternation_mark: part_alternation_mark,
+  	congratulations: congratulations,
+  	secret: secret
   };
 
   var emoji$1 = /*#__PURE__*/Object.freeze({
-    interrobang: interrobang,
-    tm: tm,
-    information_source: information_source,
-    left_right_arrow: left_right_arrow,
-    arrow_up_down: arrow_up_down,
-    arrow_upper_left: arrow_upper_left,
-    arrow_upper_right: arrow_upper_right,
-    arrow_lower_right: arrow_lower_right,
-    arrow_lower_left: arrow_lower_left,
-    keyboard: keyboard,
-    sunny: sunny,
-    cloud: cloud,
-    umbrella: umbrella,
-    showman: showman,
-    comet: comet,
-    ballot_box_with_check: ballot_box_with_check,
+    __proto__: null,
+    umbrella_with_rain_drops: umbrella_with_rain_drops,
     coffee: coffee,
-    shamrock: shamrock,
-    skull_and_crossbones: skull_and_crossbones,
-    radioactive_sign: radioactive_sign,
-    biohazard_sign: biohazard_sign,
-    orthodox_cross: orthodox_cross,
-    wheel_of_dharma: wheel_of_dharma,
-    white_frowning_face: white_frowning_face,
     aries: aries,
     taurus: taurus,
     sagittarius: sagittarius,
     capricorn: capricorn,
     aquarius: aquarius,
     pisces: pisces,
-    spades: spades,
-    clubs: clubs,
-    hearts: hearts,
-    diamonds: diamonds,
-    hotsprings: hotsprings,
-    hammer_and_pick: hammer_and_pick,
     anchor: anchor,
-    crossed_swords: crossed_swords,
-    scales: scales,
-    alembic: alembic,
-    gear: gear,
-    scissors: scissors,
     white_check_mark: white_check_mark,
-    airplane: airplane,
-    email: email,
-    envelope: envelope,
-    black_nib: black_nib,
-    heavy_check_mark: heavy_check_mark,
-    heavy_multiplication_x: heavy_multiplication_x,
-    star_of_david: star_of_david,
     sparkles: sparkles,
-    eight_spoked_asterisk: eight_spoked_asterisk,
-    eight_pointed_black_star: eight_pointed_black_star,
-    snowflake: snowflake,
-    sparkle: sparkle,
     question: question,
     grey_question: grey_question,
     grey_exclamation: grey_exclamation,
     exclamation: exclamation,
     heavy_exclamation_mark: heavy_exclamation_mark,
-    heavy_heart_exclamation_mark_ornament: heavy_heart_exclamation_mark_ornament,
-    heart: heart,
     heavy_plus_sign: heavy_plus_sign,
     heavy_minus_sign: heavy_minus_sign,
     heavy_division_sign: heavy_division_sign,
-    arrow_heading_up: arrow_heading_up,
-    arrow_heading_down: arrow_heading_down,
-    wavy_dash: wavy_dash,
-    congratulations: congratulations,
-    secret: secret,
+    hash: hash,
+    keycap_star: keycap_star,
+    zero: zero,
+    one: one,
+    two: two,
+    three: three,
+    four: four,
+    five: five,
+    six: six,
+    seven: seven,
+    eight: eight,
+    nine: nine,
     copyright: copyright,
     registered: registered,
-    bangbang: bangbang,
-    leftwards_arrow_with_hook: leftwards_arrow_with_hook,
-    arrow_right_hook: arrow_right_hook,
-    watch: watch,
-    hourglass: hourglass,
-    fast_forward: fast_forward,
-    rewind: rewind,
-    arrow_double_up: arrow_double_up,
-    arrow_double_down: arrow_double_down,
-    black_right_pointing_double_triangle_with_vertical_bar: black_right_pointing_double_triangle_with_vertical_bar,
-    black_left_pointing_double_triangle_with_vertical_bar: black_left_pointing_double_triangle_with_vertical_bar,
-    black_right_pointing_triangle_with_double_vertical_bar: black_right_pointing_triangle_with_double_vertical_bar,
-    alarm_clock: alarm_clock,
-    stopwatch: stopwatch,
-    timer_clock: timer_clock,
-    hourglass_flowing_sand: hourglass_flowing_sand,
-    double_vertical_bar: double_vertical_bar,
-    black_square_for_stop: black_square_for_stop,
-    black_circle_for_record: black_circle_for_record,
-    m: m,
-    black_small_square: black_small_square,
-    white_small_square: white_small_square,
-    arrow_forward: arrow_forward,
-    arrow_backward: arrow_backward,
-    white_medium_square: white_medium_square,
-    black_medium_square: black_medium_square,
-    white_medium_small_square: white_medium_small_square,
-    black_medium_small_square: black_medium_small_square,
-    phone: phone,
-    telephone: telephone,
-    point_up: point_up,
-    star_and_crescent: star_and_crescent,
-    peace_symbol: peace_symbol,
-    yin_yang: yin_yang,
-    relaxed: relaxed,
-    gemini: gemini,
-    cancer: cancer,
-    leo: leo,
-    virgo: virgo,
-    libra: libra,
-    scorpius: scorpius,
-    recycle: recycle,
-    wheelchair: wheelchair,
-    atom_symbol: atom_symbol,
-    fleur_de_lis: fleur_de_lis,
-    warning: warning,
-    zap: zap,
-    white_circle: white_circle,
-    black_circle: black_circle,
-    coffin: coffin,
-    funeral_urn: funeral_urn,
-    soccer: soccer,
-    baseball: baseball,
-    snowman: snowman,
-    partly_sunny: partly_sunny,
-    thunder_cloud_and_rain: thunder_cloud_and_rain,
-    ophiuchus: ophiuchus,
-    pick: pick,
-    helmet_with_white_cross: helmet_with_white_cross,
-    chains: chains,
-    no_entry: no_entry,
-    shinto_shrine: shinto_shrine,
-    church: church,
-    mountain: mountain,
-    umbrella_on_ground: umbrella_on_ground,
-    fountain: fountain,
-    golf: golf,
-    ferry: ferry,
-    boat: boat,
-    sailboat: sailboat,
-    skier: skier,
-    ice_skate: ice_skate,
-    person_with_ball: person_with_ball,
-    tent: tent,
-    fuelpump: fuelpump,
-    fist: fist,
-    hand: hand,
-    raised_hand: raised_hand,
-    v: v,
-    writing_hand: writing_hand,
-    pencil2: pencil2,
-    latin_cross: latin_cross,
-    x: x,
-    negative_squared_cross_mark: negative_squared_cross_mark,
-    arrow_right: arrow_right,
-    curly_loop: curly_loop,
-    loop: loop,
-    arrow_left: arrow_left,
-    arrow_up: arrow_up,
-    arrow_down: arrow_down,
-    black_large_square: black_large_square,
-    white_large_square: white_large_square,
-    star: star,
-    o: o,
-    part_alternation_mark: part_alternation_mark,
     mahjong: mahjong,
     black_joker: black_joker,
     a: a,
@@ -3489,6 +3799,17 @@
     sos: sos,
     up: up,
     vs: vs,
+    cn: cn,
+    de: de,
+    es: es,
+    fr: fr,
+    gb: gb,
+    uk: uk,
+    it: it,
+    jp: jp,
+    kr: kr,
+    ru: ru,
+    us: us,
     koko: koko,
     sa: sa,
     u7121: u7121,
@@ -3623,7 +3944,8 @@
     cake: cake,
     bento: bento,
     stew: stew,
-    egg: egg,
+    fried_egg: fried_egg,
+    cooking: cooking,
     fork_and_knife: fork_and_knife,
     tea: tea,
     sake: sake,
@@ -3862,9 +4184,11 @@
     busts_in_silhouette: busts_in_silhouette,
     boy: boy,
     girl: girl,
-    man: man,
-    woman: woman,
     family: family,
+    man: man,
+    couple_with_heart: couple_with_heart,
+    couplekiss: couplekiss,
+    woman: woman,
     couple: couple,
     man_and_woman_holding_hands: man_and_woman_holding_hands,
     two_men_holding_hands: two_men_holding_hands,
@@ -3902,9 +4226,7 @@
     love_letter: love_letter,
     ring: ring,
     gem: gem,
-    couplekiss: couplekiss,
     bouquet: bouquet,
-    couple_with_heart: couple_with_heart,
     wedding: wedding,
     heartbeat: heartbeat,
     broken_heart: broken_heart,
@@ -3988,7 +4310,7 @@
     telephone_receiver: telephone_receiver,
     pager: pager,
     fax: fax,
-    satellite: satellite,
+    satellite_antenna: satellite_antenna,
     loudspeaker: loudspeaker,
     mega: mega,
     outbox_tray: outbox_tray,
@@ -4117,6 +4439,7 @@
     spider: spider,
     spider_web: spider_web,
     joystick: joystick,
+    man_dancing: man_dancing,
     linked_paperclips: linked_paperclips,
     lower_left_ballpoint_pen: lower_left_ballpoint_pen,
     lower_left_fountain_pen: lower_left_fountain_pen,
@@ -4125,6 +4448,7 @@
     raised_hand_with_fingers_splayed: raised_hand_with_fingers_splayed,
     middle_finger: middle_finger,
     reversed_hand_with_middle_finger_extended: reversed_hand_with_middle_finger_extended,
+    black_heart: black_heart,
     desktop_computer: desktop_computer,
     printer: printer,
     three_button_mouse: three_button_mouse,
@@ -4307,6 +4631,8 @@
     bellhop_bell: bellhop_bell,
     bed: bed,
     place_of_worship: place_of_worship,
+    octagonal_sign: octagonal_sign,
+    shopping_trolley: shopping_trolley,
     hammer_and_wrench: hammer_and_wrench,
     shield: shield,
     oil_drum: oil_drum,
@@ -4316,7 +4642,13 @@
     small_airplane: small_airplane,
     airplane_departure: airplane_departure,
     airplane_arriving: airplane_arriving,
+    satellite: satellite,
     passenger_ship: passenger_ship,
+    scooter: scooter,
+    motor_scooter: motor_scooter,
+    canoe: canoe,
+    sled: sled,
+    flying_saucer: flying_saucer,
     zipper_mouth_face: zipper_mouth_face,
     money_mouth_face: money_mouth_face,
     face_with_thermometer: face_with_thermometer,
@@ -4327,36 +4659,309 @@
     hugging_face: hugging_face,
     the_horns: the_horns,
     sign_of_the_horns: sign_of_the_horns,
+    call_me_hand: call_me_hand,
+    raised_back_of_hand: raised_back_of_hand,
+    handshake: handshake,
+    crossed_fingers: crossed_fingers,
+    hand_with_index_and_middle_fingers_crossed: hand_with_index_and_middle_fingers_crossed,
+    i_love_you_hand_sign: i_love_you_hand_sign,
+    face_with_cowboy_hat: face_with_cowboy_hat,
+    clown_face: clown_face,
+    nauseated_face: nauseated_face,
+    rolling_on_the_floor_laughing: rolling_on_the_floor_laughing,
+    drooling_face: drooling_face,
+    lying_face: lying_face,
+    face_palm: face_palm,
+    sneezing_face: sneezing_face,
+    face_with_raised_eyebrow: face_with_raised_eyebrow,
+    face_with_one_eyebrow_raised: face_with_one_eyebrow_raised,
+    grinning_face_with_star_eyes: grinning_face_with_star_eyes,
+    zany_face: zany_face,
+    grinning_face_with_one_large_and_one_small_eye: grinning_face_with_one_large_and_one_small_eye,
+    shushing_face: shushing_face,
+    face_with_finger_covering_closed_lips: face_with_finger_covering_closed_lips,
+    face_with_symbols_on_mouth: face_with_symbols_on_mouth,
+    serious_face_with_symbols_covering_mouth: serious_face_with_symbols_covering_mouth,
+    face_with_hand_over_mouth: face_with_hand_over_mouth,
+    smiling_face_with_smiling_eyes_and_hand_covering_mouth: smiling_face_with_smiling_eyes_and_hand_covering_mouth,
+    face_vomiting: face_vomiting,
+    face_with_open_mouth_vomiting: face_with_open_mouth_vomiting,
+    exploding_head: exploding_head,
+    shocked_face_with_exploding_head: shocked_face_with_exploding_head,
+    pregnant_woman: pregnant_woman,
+    palms_up_together: palms_up_together,
+    selfie: selfie,
+    prince: prince,
+    man_in_tuxedo: man_in_tuxedo,
+    mrs_claus: mrs_claus,
+    mother_christmas: mother_christmas,
+    shrug: shrug,
+    person_doing_cartwheel: person_doing_cartwheel,
+    juggling: juggling,
+    fencer: fencer,
+    wrestlers: wrestlers,
+    water_polo: water_polo,
+    handball: handball,
+    wilted_flower: wilted_flower,
+    drum_with_drumsticks: drum_with_drumsticks,
+    clinking_glasses: clinking_glasses,
+    tumbler_glass: tumbler_glass,
+    spoon: spoon,
+    goal_net: goal_net,
+    first_place_medal: first_place_medal,
+    second_place_medal: second_place_medal,
+    third_place_medal: third_place_medal,
+    boxing_glove: boxing_glove,
+    martial_arts_uniform: martial_arts_uniform,
+    curling_stone: curling_stone,
+    croissant: croissant,
+    avocado: avocado,
+    cucumber: cucumber,
+    bacon: bacon,
+    potato: potato,
+    carrot: carrot,
+    baguette_bread: baguette_bread,
+    green_salad: green_salad,
+    shallow_pan_of_food: shallow_pan_of_food,
+    stuffed_flatbread: stuffed_flatbread,
+    egg: egg,
+    glass_of_milk: glass_of_milk,
+    peanuts: peanuts,
+    kiwifruit: kiwifruit,
+    pancakes: pancakes,
+    dumpling: dumpling,
+    fortune_cookie: fortune_cookie,
+    takeout_box: takeout_box,
+    chopsticks: chopsticks,
+    bowl_with_spoon: bowl_with_spoon,
+    cup_with_straw: cup_with_straw,
+    coconut: coconut,
+    broccoli: broccoli,
+    pie: pie,
+    pretzel: pretzel,
+    cut_of_meat: cut_of_meat,
+    sandwich: sandwich,
+    canned_food: canned_food,
     crab: crab,
     lion_face: lion_face,
     scorpion: scorpion,
     turkey: turkey,
     unicorn_face: unicorn_face,
+    eagle: eagle,
+    duck: duck,
+    bat: bat,
+    shark: shark,
+    owl: owl,
+    fox_face: fox_face,
+    butterfly: butterfly,
+    deer: deer,
+    gorilla: gorilla,
+    lizard: lizard,
+    rhinoceros: rhinoceros,
+    shrimp: shrimp,
+    squid: squid,
+    giraffe_face: giraffe_face,
+    zebra_face: zebra_face,
+    hedgehog: hedgehog,
+    sauropod: sauropod,
+    cricket: cricket,
     cheese_wedge: cheese_wedge,
-    hash: hash,
-    keycap_star: keycap_star,
-    zero: zero,
-    one: one,
-    two: two,
-    three: three,
-    four: four,
-    five: five,
-    six: six,
-    seven: seven,
-    eight: eight,
-    nine: nine,
-    cn: cn,
-    de: de,
-    es: es,
-    fr: fr,
-    gb: gb,
-    uk: uk,
-    it: it,
-    jp: jp,
-    kr: kr,
-    ru: ru,
-    us: us,
-    default: emoji
+    face_with_monocle: face_with_monocle,
+    adult: adult,
+    child: child,
+    older_adult: older_adult,
+    bearded_person: bearded_person,
+    person_with_headscarf: person_with_headscarf,
+    woman_in_steamy_room: woman_in_steamy_room,
+    man_in_steamy_room: man_in_steamy_room,
+    person_in_steamy_room: person_in_steamy_room,
+    woman_climbing: woman_climbing,
+    person_climbing: person_climbing,
+    man_climbing: man_climbing,
+    woman_in_lotus_position: woman_in_lotus_position,
+    person_in_lotus_position: person_in_lotus_position,
+    man_in_lotus_position: man_in_lotus_position,
+    female_mage: female_mage,
+    mage: mage,
+    male_mage: male_mage,
+    female_fairy: female_fairy,
+    fairy: fairy,
+    male_fairy: male_fairy,
+    female_vampire: female_vampire,
+    vampire: vampire,
+    male_vampire: male_vampire,
+    mermaid: mermaid,
+    merman: merman,
+    merperson: merperson,
+    female_elf: female_elf,
+    male_elf: male_elf,
+    elf: elf,
+    female_genie: female_genie,
+    male_genie: male_genie,
+    genie: genie,
+    female_zombie: female_zombie,
+    male_zombie: male_zombie,
+    zombie: zombie,
+    brain: brain,
+    orange_heart: orange_heart,
+    billed_cap: billed_cap,
+    scarf: scarf,
+    gloves: gloves,
+    coat: coat,
+    socks: socks,
+    bangbang: bangbang,
+    interrobang: interrobang,
+    tm: tm,
+    information_source: information_source,
+    left_right_arrow: left_right_arrow,
+    arrow_up_down: arrow_up_down,
+    arrow_upper_left: arrow_upper_left,
+    arrow_upper_right: arrow_upper_right,
+    arrow_lower_right: arrow_lower_right,
+    arrow_lower_left: arrow_lower_left,
+    leftwards_arrow_with_hook: leftwards_arrow_with_hook,
+    arrow_right_hook: arrow_right_hook,
+    watch: watch,
+    hourglass: hourglass,
+    keyboard: keyboard,
+    eject: eject,
+    fast_forward: fast_forward,
+    rewind: rewind,
+    arrow_double_up: arrow_double_up,
+    arrow_double_down: arrow_double_down,
+    black_right_pointing_double_triangle_with_vertical_bar: black_right_pointing_double_triangle_with_vertical_bar,
+    black_left_pointing_double_triangle_with_vertical_bar: black_left_pointing_double_triangle_with_vertical_bar,
+    black_right_pointing_triangle_with_double_vertical_bar: black_right_pointing_triangle_with_double_vertical_bar,
+    alarm_clock: alarm_clock,
+    stopwatch: stopwatch,
+    timer_clock: timer_clock,
+    hourglass_flowing_sand: hourglass_flowing_sand,
+    double_vertical_bar: double_vertical_bar,
+    black_square_for_stop: black_square_for_stop,
+    black_circle_for_record: black_circle_for_record,
+    m: m,
+    black_small_square: black_small_square,
+    white_small_square: white_small_square,
+    arrow_forward: arrow_forward,
+    arrow_backward: arrow_backward,
+    white_medium_square: white_medium_square,
+    black_medium_square: black_medium_square,
+    white_medium_small_square: white_medium_small_square,
+    black_medium_small_square: black_medium_small_square,
+    sunny: sunny,
+    cloud: cloud,
+    umbrella: umbrella,
+    snowman: snowman,
+    comet: comet,
+    phone: phone,
+    telephone: telephone,
+    ballot_box_with_check: ballot_box_with_check,
+    shamrock: shamrock,
+    point_up: point_up,
+    skull_and_crossbones: skull_and_crossbones,
+    radioactive_sign: radioactive_sign,
+    biohazard_sign: biohazard_sign,
+    orthodox_cross: orthodox_cross,
+    star_and_crescent: star_and_crescent,
+    peace_symbol: peace_symbol,
+    yin_yang: yin_yang,
+    wheel_of_dharma: wheel_of_dharma,
+    white_frowning_face: white_frowning_face,
+    relaxed: relaxed,
+    female_sign: female_sign,
+    male_sign: male_sign,
+    gemini: gemini,
+    cancer: cancer,
+    leo: leo,
+    virgo: virgo,
+    libra: libra,
+    scorpius: scorpius,
+    spades: spades,
+    clubs: clubs,
+    hearts: hearts,
+    diamonds: diamonds,
+    hotsprings: hotsprings,
+    recycle: recycle,
+    wheelchair: wheelchair,
+    hammer_and_pick: hammer_and_pick,
+    crossed_swords: crossed_swords,
+    medical_symbol: medical_symbol,
+    staff_of_aesculapius: staff_of_aesculapius,
+    scales: scales,
+    alembic: alembic,
+    gear: gear,
+    atom_symbol: atom_symbol,
+    fleur_de_lis: fleur_de_lis,
+    warning: warning,
+    zap: zap,
+    white_circle: white_circle,
+    black_circle: black_circle,
+    coffin: coffin,
+    funeral_urn: funeral_urn,
+    soccer: soccer,
+    baseball: baseball,
+    snowman_without_snow: snowman_without_snow,
+    partly_sunny: partly_sunny,
+    thunder_cloud_and_rain: thunder_cloud_and_rain,
+    ophiuchus: ophiuchus,
+    pick: pick,
+    helmet_with_white_cross: helmet_with_white_cross,
+    chains: chains,
+    no_entry: no_entry,
+    shinto_shrine: shinto_shrine,
+    church: church,
+    mountain: mountain,
+    umbrella_on_ground: umbrella_on_ground,
+    fountain: fountain,
+    golf: golf,
+    ferry: ferry,
+    boat: boat,
+    sailboat: sailboat,
+    skier: skier,
+    ice_skate: ice_skate,
+    person_with_ball: person_with_ball,
+    tent: tent,
+    fuelpump: fuelpump,
+    scissors: scissors,
+    airplane: airplane,
+    email: email,
+    envelope: envelope,
+    fist: fist,
+    hand: hand,
+    raised_hand: raised_hand,
+    v: v,
+    writing_hand: writing_hand,
+    pencil2: pencil2,
+    black_nib: black_nib,
+    heavy_check_mark: heavy_check_mark,
+    heavy_multiplication_x: heavy_multiplication_x,
+    latin_cross: latin_cross,
+    star_of_david: star_of_david,
+    eight_spoked_asterisk: eight_spoked_asterisk,
+    eight_pointed_black_star: eight_pointed_black_star,
+    snowflake: snowflake,
+    sparkle: sparkle,
+    x: x,
+    negative_squared_cross_mark: negative_squared_cross_mark,
+    heavy_heart_exclamation_mark_ornament: heavy_heart_exclamation_mark_ornament,
+    heart: heart,
+    arrow_right: arrow_right,
+    curly_loop: curly_loop,
+    loop: loop,
+    arrow_heading_up: arrow_heading_up,
+    arrow_heading_down: arrow_heading_down,
+    arrow_left: arrow_left,
+    arrow_up: arrow_up,
+    arrow_down: arrow_down,
+    black_large_square: black_large_square,
+    white_large_square: white_large_square,
+    star: star,
+    o: o,
+    wavy_dash: wavy_dash,
+    part_alternation_mark: part_alternation_mark,
+    congratulations: congratulations,
+    secret: secret,
+    'default': emoji
   });
 
   var emojiByName = getCjsExportFromNamespace(emoji$1);
@@ -4368,7 +4973,7 @@
 
   /**
    * regex to trim whitespace
-   * use instead of String.prototype.trim() for IE8 supprt
+   * use instead of String.prototype.trim() for IE8 support
    */
   var trimSpaceRegex = /^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g;
 
@@ -4901,6 +5506,10 @@
     '👍',
     '✅',
     '❤️',
+    '🎉',
+    '👏',
+    '⭕',
+    '❌',
     '😀',
     '😁',
     '😂',
@@ -5202,11 +5811,9 @@
         </span>
       </button>
       <div class="typetalk_emoreact_reaction--users">
-        ${
-          Array.from(reaction.users)
-            .map(u => u.name)
-            .join(', ')
-        }
+        ${Array.from(reaction.users)
+          .map(u => u.name)
+          .join(', ')}
       </div>
     </div>
   `;
@@ -5444,14 +6051,19 @@
     const actions_ = typetalkSideEffect(typetalk)(actions);
 
     // TODO ここの取得もいい感じにしたい
-    let myNameOpt = document.querySelector('.profile-content__name');
+    let myNameOpt = document.querySelector('.settings-menu-content__name');
     myNameOpt =
       myNameOpt &&
       (myNameOpt.textContent.match(/(.*) さん/) ||
         myNameOpt.textContent.match(/Hi, (.*)/));
     myNameOpt = myNameOpt && myNameOpt[1];
 
-    if (!myNameOpt) return;
+    if (!myNameOpt) {
+      console.error(
+        '名前の取得に失敗しました！Typetalkの仕様変更が行われたようです。開発者にお問い合わせください。'
+      );
+      return;
+    }
 
     const myName = myNameOpt;
 
@@ -5481,8 +6093,8 @@
     const messages = buildMessages();
 
     const messagesWithReactions = messages.map(message => {
-      const reactions$$1 = Reactions.fromLikes(message.likes);
-      return message.withReactions(reactions$$1);
+      const reactions = Reactions.fromLikes(message.likes);
+      return message.withReactions(reactions);
     });
 
     console.log(messagesWithReactions);
