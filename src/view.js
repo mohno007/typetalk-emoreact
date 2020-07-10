@@ -225,11 +225,9 @@ const reaction = ({ me, message, reaction }, actions, reduce) => {
         </span>
       </button>
       <div class="typetalk_emoreact_reaction--users">
-        ${
-          Array.from(reaction.users)
-            .map(u => u.name)
-            .join(', ')
-        }
+        ${Array.from(reaction.users)
+          .map(u => u.name)
+          .join(', ')}
       </div>
     </div>
   `;

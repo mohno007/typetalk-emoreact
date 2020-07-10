@@ -93,14 +93,19 @@ const mountEmoreact = messages => {
   const actions_ = typetalkSideEffect(typetalk)(actions);
 
   // TODO ここの取得もいい感じにしたい
-  let myNameOpt = document.querySelector('.profile-content__name');
+  let myNameOpt = document.querySelector('.settings-menu-content__name');
   myNameOpt =
     myNameOpt &&
     (myNameOpt.textContent.match(/(.*) さん/) ||
       myNameOpt.textContent.match(/Hi, (.*)/));
   myNameOpt = myNameOpt && myNameOpt[1];
 
-  if (!myNameOpt) return;
+  if (!myNameOpt) {
+    console.error(
+      '名前の取得に失敗しました！Typetalkの仕様変更が行われたようです。開発者にお問い合わせください。'
+    );
+    return;
+  }
 
   const myName = myNameOpt;
 
