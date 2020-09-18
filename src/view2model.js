@@ -2,59 +2,18 @@ import { User } from './users.js';
 import { Message } from './message.js';
 import { Like } from './like.js';
 
-const notNull = e => e !== null;
-
-// いいね を作る
-const buildLike = likeNode => {
-  const node = likeNode.querySelector('img[tt-effect-like=""]');
-
-  if (node === null) {
-    return null;
-  }
-
-  const tooltip = node.getAttribute('tt-tooltip');
-
-  if (tooltip) {
-    // いったん名前に" by "が含まれている場合を考慮しない
-    const match = tooltip.match(/(.*) by (.*)/);
-
-    console.log(match);
-
-    // マッチしない場合は名前のみで、コメントがないものとみなす
-    if (match === null) {
-      const username = tooltip;
-      const user = new User(username);
-      return Like.noComment(user);
-    }
-
-    const comment = match[1];
-    const username = match[2];
-    const user = new User(username);
-
-    return Like.withComment(user, comment);
-  }
-
-  const c = node.getAttribute('c');
-
-  if (c) {
-    const user = new User(c);
-    return Like.noComment(user);
-  }
-
-  throw new Error(
-    'いいねの抽出に必要な含まれていません。破壊的変更が行われたと考えられるため、作者に連絡してください。'
-  );
-};
-
 // いいねのリストを作る
-const buildLikes = messageNode =>
-  Array.from(
-    messageNode.querySelectorAll(
-      '.message-like__users > .message-like__users-inner > .message-like__users-img'
-    )
-  )
-    .map(buildLike)
-    .filter(notNull);
+const buildLikes = messageNode => {
+  const ttLike = messageNode.querySelector('tt-message-like');
+  /* global angular */
+  const likes = angular.element(ttLike).data().$ttMessageLikeController.likes;
+  return likes.map(like => {
+    const user = new User(like.account.fullName);
+    return like.comment.length === 0
+      ? Like.noComment(user)
+      : Like.withComment(user, like.comment);
+  });
+};
 
 // メッセージを構築する
 const buildMessage = messageNode => {
@@ -71,7 +30,7 @@ const buildMessage = messageNode => {
 };
 
 export const buildMessages = () =>
-  Array.from(document.querySelectorAll('.message > .message__post')).map(
+  Array.from(document.querySelectorAll('.messages tt-message')).map(
     buildMessage
   );
 
