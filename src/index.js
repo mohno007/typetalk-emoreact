@@ -45,6 +45,11 @@ const actions = {
     };
   },
 
+  updateSearchText: text => state => ({
+    ...state,
+    searchText: text,
+  }),
+
   showEmojiList: () => state => ({
     ...state,
     showEmojiList: true,
@@ -86,6 +91,7 @@ const createState = (message, me) => ({
   message,
   me,
   showEmojiList: false,
+  searchText: '',
 });
 
 const mountEmoreact = messages => {
@@ -125,7 +131,7 @@ const mountEmoreact = messages => {
         '描画対象のDOMの取得に失敗しました。開発者にお問い合わせください。'
       );
 
-    messageContainer.insertBefore(root, messageOptions.nextSibilings);
+    messageOptions.parentNode.insertBefore(root, messageOptions.nextSibilings);
 
     mount(
       root,

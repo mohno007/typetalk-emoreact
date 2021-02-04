@@ -1,3 +1,5 @@
+import nodeEmoji from 'node-emoji';
+
 export const emojis = [
   '👍',
   '✅',
@@ -80,3 +82,5 @@ export const emojis = [
   '😻',
   '😼',
 ];
+
+export const searchEmoji = text => nodeEmoji.search(text).map(e => e.emoji);

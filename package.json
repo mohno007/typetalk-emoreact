@@ -15,8 +15,11 @@
   },
   "author": "Motohiro OHNO <m-ohno@atware.co.jp>",
   "license": "AGPL-3.0-or-later",
-  "devDependencies": {
+  "dependencies": {
     "emoji-regex": "^8.0.0",
+    "node-emoji": "^1.10.0"
+  },
+  "devDependencies": {
     "eslint": "^6.8.0",
     "eslint-config-prettier": "^6.11.0",
     "eslint-plugin-prettier": "^3.1.4",
@@ -24,7 +27,6 @@
     "intelli-espower-loader": "^1.0.1",
     "lint-staged": "^9.5.0",
     "mocha": "^6.2.3",
-    "node-emoji": "^1.10.0",
     "power-assert": "^1.6.1",
     "prettier": "1.18.2",
     "rollup": "^1.32.1",

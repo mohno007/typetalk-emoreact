@@ -1,5 +1,5 @@
 //import nodeEmoji from 'node-emoji';
-import { emojis } from './emoji.js';
+import { emojis, searchEmoji } from './emoji.js';
 
 const addChild = (parent, child) => {
   if (child == null) {
@@ -97,12 +97,31 @@ style.textContent = `
     box-shadow: 0 0 1px #333;
   }
 
+  .typetalk_emoreact_search {
+    margin: 5px 0;
+    padding: 2px 5px;
+    border: 1px solid var(--ttemoreact-border);
+    border-radius: 3px;
+  }
+  .typetalk_emoreact_search::before {
+    content: '🔍';
+    padding-left: 0.1em;
+    border-right: 1px solid var(--ttemoreact-border);
+  }
+
+  .typetalk_emoreact_search--input {
+    padding: 2px 5px;
+    background: var(--ttemoreact-background);
+    color: var(--ttemoreact-color);
+    width: 11em;
+  }
+
   .typetalk_emoreact_reaction--emoji_list {
     position: absolute;
     bottom: 2em;
     right: 0;
     width: 15em;
-    height: 8em;
+    height: 9em;
     overflow-y: scroll;
 
     padding: 0.25em 0.75em;
@@ -191,12 +210,16 @@ style.textContent = `
   }
 `;
 
-const emojiList = ({ message, me }, actions, reduce) => {
+const emojiList = ({ message, me, searchText }, actions, reduce) => {
   const addEmoji = emoji => {
     // TODO ビューの責務ではないので必ず直す
     const like = message.likes.find(like => like.user.equals(me));
     const newComment = ((like && like.comment) || '') + emoji;
     reduce(actions.updateLike(message.postUrl.match(/(\d+)$/)[1], newComment));
+  };
+
+  const setSearchText = text => {
+    reduce(actions.updateSearchText(text));
   };
 
   return h(
@@ -205,7 +228,15 @@ const emojiList = ({ message, me }, actions, reduce) => {
       class: 'typetalk_emoreact_reaction--emoji_list',
     },
     [
-      ...emojis.map(emoji =>
+      h('div', { class: 'typetalk_emoreact_search' }, [
+        h('input', {
+          class: 'typetalk_emoreact_search--input',
+          type: 'text',
+          onChange: ev => setSearchText(ev.currentTarget.value),
+          value: searchText,
+        }),
+      ]),
+      (searchText.length > 0 ? searchEmoji(searchText) : emojis).map(emoji =>
         h(
           'button',
           {
@@ -214,41 +245,6 @@ const emojiList = ({ message, me }, actions, reduce) => {
           },
           [emoji]
         )
-      ),
-    ]
-  );
-};
-
-// リアクションの一覧を出す
-export const reactions = ({ me, message, showEmojiList }, actions, reduce) => {
-  const toggleEmojiList = () => {
-    if (!showEmojiList) {
-      reduce(actions.showEmojiList());
-    } else {
-      reduce(actions.hideEmojiList());
-    }
-  };
-
-  const hideEmojiList = () => reduce(actions.hideEmojiList());
-
-  return h(
-    'div',
-    {
-      class: 'typetalk_emoreact_reactions',
-      onMouseLeave: hideEmojiList,
-    },
-    [
-      h(
-        'button',
-        {
-          class: 'typetalk_emoreact_reactions--add_button',
-          onClick: toggleEmojiList,
-        },
-        ['＋']
-      ),
-      showEmojiList ? emojiList({ me, message }, actions, reduce) : null,
-      [...message.reactions].map(r =>
-        reaction({ message, me, reaction: r }, actions, reduce)
       ),
     ]
   );
@@ -284,4 +280,45 @@ const reaction = ({ me, message, reaction }, actions, reduce) => {
       [...reaction.users].map(u => u.name).join(', '),
     ]),
   ]);
+};
+
+// リアクションの一覧を出す
+export const reactions = (
+  { me, message, showEmojiList, searchText },
+  actions,
+  reduce
+) => {
+  const toggleEmojiList = () => {
+    if (!showEmojiList) {
+      reduce(actions.showEmojiList());
+    } else {
+      reduce(actions.hideEmojiList());
+    }
+  };
+
+  const hideEmojiList = () => reduce(actions.hideEmojiList());
+
+  return h(
+    'div',
+    {
+      class: 'typetalk_emoreact_reactions',
+      onMouseLeave: hideEmojiList,
+    },
+    [
+      h(
+        'button',
+        {
+          class: 'typetalk_emoreact_reactions--add_button',
+          onClick: toggleEmojiList,
+        },
+        ['＋']
+      ),
+      showEmojiList
+        ? emojiList({ me, message, searchText }, actions, reduce)
+        : null,
+      [...message.reactions].map(r =>
+        reaction({ message, me, reaction: r }, actions, reduce)
+      ),
+    ]
+  );
 };
