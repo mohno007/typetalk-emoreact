@@ -4,6 +4,7 @@
   "description": "",
   "scripts": {
     "build": "rollup --config",
+    "watch": "rollup --config --watch",
     "test": "rollup --config ./rollup-test.config.js && mocha --require intelli-espower-loader ./build/test/",
     "lint": "eslint src/ test/",
     "fix": "eslint --fix src/ test/"

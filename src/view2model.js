@@ -18,8 +18,7 @@ const buildLikes = messageNode => {
 // メッセージを構築する
 const buildMessage = messageNode => {
   const postUrlOpt = messageNode.querySelector('a[ng-href]');
-  const postUrl =
-    postUrlOpt === null ? null : postUrlOpt.getAttribute('ng-href');
+  const postUrl = postUrlOpt && postUrlOpt.getAttribute('ng-href');
   const user = new User('');
   const likes = buildLikes(messageNode);
 

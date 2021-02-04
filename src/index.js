@@ -115,10 +115,15 @@ const mountEmoreact = messages => {
     if (!found) return;
 
     const root = document.createElement('div');
-    const messageContainer = found.parentNode.parentNode.parentNode;
+    const messageContainer =
+      found.parentNode.parentNode.parentNode.parentNode.parentNode;
     const messageOptions = messageContainer.querySelector(
       '.message__option-wrap'
     );
+    if (!messageOptions)
+      throw new Error(
+        '描画対象のDOMの取得に失敗しました。開発者にお問い合わせください。'
+      );
 
     messageContainer.insertBefore(root, messageOptions.nextSibilings);
 
