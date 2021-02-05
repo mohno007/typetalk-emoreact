@@ -58,6 +58,7 @@ const actions = {
   hideEmojiList: () => (state) => ({
     ...state,
     showEmojiList: false,
+    searchText: '',
   }),
 };
 
