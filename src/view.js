@@ -5,7 +5,7 @@ const addChild = (parent, child) => {
   if (child == null) {
     // skip
   } else if (child instanceof Array) {
-    child.forEach(c => addChild(parent, c));
+    child.forEach((c) => addChild(parent, c));
   } else if (
     child instanceof HTMLElement ||
     child instanceof DocumentFragment
@@ -66,7 +66,6 @@ style.textContent = `
     position: absolute;
     bottom: 8px;
     right: 90px;
-    border: 1px solid var(--ttemoreact-border);
     border-radius: 5px;
     padding: 5px;
     display: flex;
@@ -211,14 +210,14 @@ style.textContent = `
 `;
 
 const emojiList = ({ message, me, searchText }, actions, reduce) => {
-  const addEmoji = emoji => {
+  const addEmoji = (emoji) => {
     // TODO ビューの責務ではないので必ず直す
-    const like = message.likes.find(like => like.user.equals(me));
+    const like = message.likes.find((like) => like.user.equals(me));
     const newComment = ((like && like.comment) || '') + emoji;
     reduce(actions.updateLike(message.postUrl.match(/(\d+)$/)[1], newComment));
   };
 
-  const setSearchText = text => {
+  const setSearchText = (text) => {
     reduce(actions.updateSearchText(text));
   };
 
@@ -232,11 +231,11 @@ const emojiList = ({ message, me, searchText }, actions, reduce) => {
         h('input', {
           class: 'typetalk_emoreact_search--input',
           type: 'text',
-          onChange: ev => setSearchText(ev.currentTarget.value),
+          onChange: (ev) => setSearchText(ev.currentTarget.value),
           value: searchText,
         }),
       ]),
-      (searchText.length > 0 ? searchEmoji(searchText) : emojis).map(emoji =>
+      (searchText.length > 0 ? searchEmoji(searchText) : emojis).map((emoji) =>
         h(
           'button',
           {
@@ -252,10 +251,10 @@ const emojiList = ({ message, me, searchText }, actions, reduce) => {
 
 // 単一のリアクションを出す
 const reaction = ({ me, message, reaction }, actions, reduce) => {
-  const addEmoji = ev => {
+  const addEmoji = (ev) => {
     ev.preventDefault();
     // TODO ビューの責務ではないので必ず直す
-    const like = message.likes.find(like => like.user.equals(me));
+    const like = message.likes.find((like) => like.user.equals(me));
     const newComment = ((like && like.comment) || '') + reaction.emoji;
     reduce(actions.updateLike(message.postUrl.match(/(\d+)$/)[1], newComment));
   };
@@ -277,7 +276,7 @@ const reaction = ({ me, message, reaction }, actions, reduce) => {
       ]
     ),
     h('div', { class: 'typetalk_emoreact_reaction--users' }, [
-      [...reaction.users].map(u => u.name).join(', '),
+      [...reaction.users].map((u) => u.name).join(', '),
     ]),
   ]);
 };
@@ -316,7 +315,7 @@ export const reactions = (
       showEmojiList
         ? emojiList({ me, message, searchText }, actions, reduce)
         : null,
-      [...message.reactions].map(r =>
+      [...message.reactions].map((r) =>
         reaction({ message, me, reaction: r }, actions, reduce)
       ),
     ]
