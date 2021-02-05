@@ -10,26 +10,26 @@ import { Typetalk } from './typetalk_request.js';
 // const sleep = x => new Promise(res => setTimeout(res, x));
 
 const mount = (root, view, actions, initialState) => {
-  const reduce = state => async reducer => {
+  const reduce = (state) => async (reducer) => {
     const _reducer = await reducer;
     const newState = _reducer(state);
     const newView = view(newState, actions, reduce(newState));
 
-    Array.from(root.childNodes).forEach(node => root.removeChild(node));
+    Array.from(root.childNodes).forEach((node) => root.removeChild(node));
     root.appendChild(newView);
   };
 
-  reduce(initialState)(e => e);
+  reduce(initialState)((e) => e);
 };
 
 const actions = {
   // TODO もうちょっとマシなアクション名考えたい
-  updateLikeOk: newComment => state => {
+  updateLikeOk: (newComment) => (state) => {
     // TODO ここの責務じゃないし危ないし、何やってるか分かりづらい
     const newMessage = new Message();
     Object.assign(newMessage, state.message);
     newMessage.likes = [...state.message.likes];
-    const index = newMessage.likes.findIndex(l => l.user.equals(state.me));
+    const index = newMessage.likes.findIndex((l) => l.user.equals(state.me));
 
     if (index < 0) {
       newMessage.likes.push(Like.withComment(state.me, newComment));
@@ -45,24 +45,24 @@ const actions = {
     };
   },
 
-  updateSearchText: text => state => ({
+  updateSearchText: (text) => (state) => ({
     ...state,
     searchText: text,
   }),
 
-  showEmojiList: () => state => ({
+  showEmojiList: () => (state) => ({
     ...state,
     showEmojiList: true,
   }),
 
-  hideEmojiList: () => state => ({
+  hideEmojiList: () => (state) => ({
     ...state,
     showEmojiList: false,
   }),
 };
 
-const typetalkSideEffect = typetalk =>
-  createSideEffect(actions => ({
+const typetalkSideEffect = (typetalk) =>
+  createSideEffect((actions) => ({
     async updateLike(messageId, newComment) {
       // TODO ここでtopicId引いてきてるのダサいので直したい
       const topicId = location.href.match(/topics\/(\d+)/)[1];
@@ -94,7 +94,7 @@ const createState = (message, me) => ({
   searchText: '',
 });
 
-const mountEmoreact = messages => {
+const mountEmoreact = (messages) => {
   const typetalk = new Typetalk();
   const actions_ = typetalkSideEffect(typetalk)(actions);
 
@@ -115,7 +115,7 @@ const mountEmoreact = messages => {
 
   const myName = myNameOpt;
 
-  messages.forEach(message => {
+  messages.forEach((message) => {
     const found = document.querySelector(`a[ng-href="${message.postUrl}"]`);
 
     if (!found) return;
@@ -145,7 +145,7 @@ const mountEmoreact = messages => {
 const renderMessages = () => {
   const messages = view2model.buildMessages();
 
-  const messagesWithReactions = messages.map(message => {
+  const messagesWithReactions = messages.map((message) => {
     const reactions = Reactions.fromLikes(message.likes);
     return message.withReactions(reactions);
   });
@@ -164,7 +164,7 @@ const removeMessages = () => {
 */
 
 const loadEmoreact = () => {
-  setTimeout(function() {
+  setTimeout(function () {
     document.head.appendChild(view.style);
     renderMessages();
 
@@ -186,7 +186,7 @@ const loadEmoreact = () => {
 };
 
 // メインの処理
-window.addEventListener('load', function() {
+window.addEventListener('load', function () {
   loadEmoreact();
 
   let url = location.href;

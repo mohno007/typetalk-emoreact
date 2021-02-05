@@ -38,7 +38,7 @@ export class Users {
   }
 
   includes(user) {
-    return !!this.users.find(u => u.equals(user));
+    return !!this.users.find((u) => u.equals(user));
   }
 
   notIncludes(user) {
@@ -47,7 +47,7 @@ export class Users {
 
   [Symbol.iterator]() {
     let self = this;
-    return (function*() {
+    return (function* () {
       for (const user of self.users) {
         yield user;
       }

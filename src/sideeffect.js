@@ -1,5 +1,5 @@
 // TODO もっといい感じに抽象化できるのでは
-export const createSideEffect = sideEffect => actions =>
+export const createSideEffect = (sideEffect) => (actions) =>
   new Proxy(actions, {
     get(target, propertyName /*, receiver*/) {
       const effect = sideEffect(target);

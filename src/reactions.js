@@ -136,7 +136,7 @@ export class Reactions {
 
   [Symbol.iterator]() {
     let self = this;
-    return (function*() {
+    return (function* () {
       for (const [emoji, users] of self.reactions) {
         yield new Reaction(emoji, users);
       }

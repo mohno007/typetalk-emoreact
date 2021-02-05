@@ -3,8 +3,8 @@ import { User } from '../src/users.js';
 import { Reactions } from '../src/reactions.js';
 import Assert from 'assert';
 
-describe('Reactions', function() {
-  it('は、コメント付きいいねから生成できる', function() {
+describe('Reactions', function () {
+  it('は、コメント付きいいねから生成できる', function () {
     const user = new User('hoge');
     const like = Like.withComment(user, '😊😁😂');
     const reactions = Reactions.fromLike(like);
@@ -12,7 +12,7 @@ describe('Reactions', function() {
     Assert(reactions instanceof Reactions);
   });
 
-  it('は、コメント無しいいねから生成できる', function() {
+  it('は、コメント無しいいねから生成できる', function () {
     const user = new User('hoge');
     const like = Like.noComment(user);
     const reactions = Reactions.fromLike(like);
@@ -20,7 +20,7 @@ describe('Reactions', function() {
     Assert(reactions instanceof Reactions);
   });
 
-  it('は、iterableである', function() {
+  it('は、iterableである', function () {
     const user = new User('hoge');
     const like = Like.withComment(user, '😊😁😂');
     const reactions = Reactions.fromLike(like);
@@ -32,7 +32,7 @@ describe('Reactions', function() {
     Assert(iter.next !== undefined);
   });
 
-  describe('#merge', function() {
+  describe('#merge', function () {
     const user1 = new User('hoge');
     const like1 = Like.withComment(user1, '😊😁😂');
     const reactions1 = Reactions.fromLike(like1);
@@ -43,11 +43,11 @@ describe('Reactions', function() {
 
     const merged = reactions1.merge(reactions2);
 
-    it('は、Reactionsを返す', function() {
+    it('は、Reactionsを返す', function () {
       Assert(merged instanceof Reactions);
     });
 
-    it('は、両方のコメントを含むこと', function() {});
+    it('は、両方のコメントを含むこと', function () {});
   });
 });
 

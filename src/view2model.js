@@ -3,11 +3,11 @@ import { Message } from './message.js';
 import { Like } from './like.js';
 
 // いいねのリストを作る
-const buildLikes = messageNode => {
+const buildLikes = (messageNode) => {
   const ttLike = messageNode.querySelector('tt-message-like');
   /* global angular */
   const likes = angular.element(ttLike).data().$ttMessageLikeController.likes;
-  return likes.map(like => {
+  return likes.map((like) => {
     const user = new User(like.account.fullName);
     return like.comment.length === 0
       ? Like.noComment(user)
@@ -16,7 +16,7 @@ const buildLikes = messageNode => {
 };
 
 // メッセージを構築する
-const buildMessage = messageNode => {
+const buildMessage = (messageNode) => {
   const postUrlOpt = messageNode.querySelector('a[ng-href]');
   const postUrl = postUrlOpt && postUrlOpt.getAttribute('ng-href');
   const user = new User('');

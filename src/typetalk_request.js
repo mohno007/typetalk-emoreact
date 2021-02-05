@@ -26,7 +26,7 @@ export class Typetalk {
     return await fetch(
       `/topics/${topicId}/posts/${messageId}/like.json`,
       request
-    ).then(res =>
+    ).then((res) =>
       res.status === 200
         ? res.json()
         : Promise.reject(new Error('リクエストに失敗しました'))
@@ -39,7 +39,7 @@ export class Typetalk {
     return await fetch(
       `/topics/${topicId}/posts/${messageId}/unlike.json`,
       request
-    ).then(res =>
+    ).then((res) =>
       res.status === 200
         ? res.json()
         : Promise.reject(new Error('リクエストに失敗しました'))

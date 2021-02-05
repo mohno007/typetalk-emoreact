@@ -83,4 +83,4 @@ export const emojis = [
   '😼',
 ];
 
-export const searchEmoji = text => nodeEmoji.search(text).map(e => e.emoji);
+export const searchEmoji = (text) => nodeEmoji.search(text).map((e) => e.emoji);
