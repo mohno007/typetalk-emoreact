@@ -6,7 +6,9 @@ import { Like } from './like.js';
 const buildLikes = (messageNode) => {
   const ttLike = messageNode.querySelector('tt-message-like');
   /* global angular */
-  const likes = angular.element(ttLike).data().$ttMessageLikeController.likes;
+  const controller = angular.element(ttLike).data().$ttMessageLikeController;
+  const likes = controller.post.likes;
+
   return likes.map((like) => {
     const user = new User(like.account.fullName);
     return like.comment.length === 0
